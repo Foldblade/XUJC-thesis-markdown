@@ -342,6 +342,14 @@ python processer.py --post -O result.docx -F ./build/pandoc_processed.docx
 - `-O` 或 `--output`：后接您期望的输出 docx 文件路径。可选，默认为该项目下的 `build/final.docx`。
 - `-F` 或 `--file`：后接输入的、pandoc 处理过的 docx 文件路径。可选，默认为该项目下的 `build/pandoc_processed.docx`。
 
+## 清理
+
+```
+python processer.py --clean
+```
+
+该命令将清理临时文件。
+
 ## 帮助文本
 
 ```bash

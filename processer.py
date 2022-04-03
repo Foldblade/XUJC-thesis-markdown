@@ -272,6 +272,30 @@ def post_process(*, source=os.path.join(WHERE_SCRIPT, 'build/pandoc_processed.do
     print("Output file: %s" % output)
 
 
+def clean():
+    '''
+    清理工作
+    :return: 无
+    '''
+    print("Cleaning...")
+    if os.path.exists(os.path.join(WHERE_SCRIPT, 'build')):
+        shutil.rmtree(os.path.join(WHERE_SCRIPT, 'build'))
+    if os.path.exists(os.path.join(WHERE_SCRIPT, 'bin')):
+        shutil.rmtree(os.path.join(WHERE_SCRIPT, 'bin'))
+    if os.path.exists(os.path.join(WHERE_SCRIPT, 'pandoc_eqnos.py')):
+        os.remove(os.path.join(WHERE_SCRIPT, 'pandoc_eqnos.py'))
+    if os.path.exists(os.path.join(WHERE_SCRIPT, './assets/chinese-gb7714-2005-numeric.csl.py')):
+        os.remove(os.path.join(WHERE_SCRIPT,
+                  './assets/chinese-gb7714-2005-numeric.csl.py'))
+    if os.path.exists(os.path.join(WHERE_SCRIPT, './assets/logo_image.png')):
+        os.remove(os.path.join(WHERE_SCRIPT, './assets/logo_image.png'))
+    if os.path.exists(os.path.join(WHERE_SCRIPT, './assets/school_name_image.png')):
+        os.remove(os.path.join(WHERE_SCRIPT, './assets/school_name_image.png'))
+    if os.path.exists(os.path.join(WHERE_SCRIPT, './assets/template.docx')):
+        os.remove(os.path.join(WHERE_SCRIPT, './assets/template.docx'))
+    print("Cleaning done.")
+
+
 def print_helper():
     '''
     打印帮助文本
@@ -310,6 +334,10 @@ process.py
 \tThe Bibtex format bibliography file path which you want for pandoc convertation
 \t用于 Pandoc 转换的 Bibtex 格式参考文献文件路径。
 
+--clean
+\tClean the temporary files.
+\t清理临时文件。
+
 -H\t--help
 \tPrint helper text.
 \t打印帮助文本。
@@ -330,6 +358,9 @@ if __name__ == '__main__':
             PRE_PROCESSING = True
         if arg == '--post':
             POST_PROCESSING = True
+        if arg == '--clean':
+            clean()
+            sys.exit(0)
         if arg == '-H' or arg == '--help':
             print_helper()
             sys.exit(0)
