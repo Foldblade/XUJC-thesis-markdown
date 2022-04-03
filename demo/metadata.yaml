@@ -1,0 +1,64 @@
+title: 'XUJC Markdown 论文模板'
+titleEn: 'XUJC Thesis Markdown'
+author: 
+- V # 作者
+school: 赛博学院 # 分院、系
+major: 控制论 # 专业
+grade: 2077 # 年级
+studentID: CYB77001 # 学号
+adviser: 强尼・银手 # 指导教师
+academicTitle: 主唱 # 职称
+date: 2020-12-10 # 封面底部年月日
+abstract: |-
+    在这里撰写你的中文摘要。
+    
+    你可以试着换行，不过我们的模板只允许一段摘要。
+    
+    所以虽然你可以在这里分段 / 换行，
+    
+    但是我们的过滤器会把它拼成一段。
+keywords:
+- 甲
+- 乙
+- 丙
+- 丁
+abstractEn: |-
+    Write your English abstract here.
+    
+    You can try to wrap lines, but our template only allows one paragraph in summary.
+    
+    So although you can paragraph / wrap here,
+    
+    our filter will put these together anyway.
+keywordsEn:
+- A
+- B
+- C
+- D
+
+# 
+link-citations: true
+link-bibliography: true
+
+#
+xnos-cleveref: true
+
+# 
+fignos-plus-name: 图
+fignos-star-name: 图
+fignos-caption-name: 图
+fignos-caption-separator: period
+fignos-number-by-section: false # 是否按章节编号
+
+# 
+tablenos-plus-name: 表
+tablenos-star-name: 表
+tablenos-caption-name: 表
+tablenos-caption-separator: period
+tablenos-number-by-section: false # 是否按章节编号
+
+# 
+eqnos-plus-name: 式
+eqnos-star-name: 式
+eqnos-eqref: true
+eqnos-number-by-section: false # 是否按章节编号

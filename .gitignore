@@ -1,0 +1,7 @@
+/build
+/assets/logo_image.png
+/assets/school_name_image.png
+/assets/template.docx
+/assets/chinese-gb7714-2005-numeric.csl
+pandoc_eqnos.py
+*.docx
