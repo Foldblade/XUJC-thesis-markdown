@@ -123,13 +123,13 @@ def pandoc_process(*, source=os.path.join(WHERE_SCRIPT, 'demo/paper.md'),
                       # 请关注 https://github.com/tomduck/pandoc-eqnos/pull/64 是否被合并、
                       # pandoc_eqnos 是否更新高于 2.5.0 的版本。若是、且想使用官方版本，
                       # 请：注释下一行，并取消上方“公式自动编号”行的注释。
-                      + '--filter pandoc_eqnos.py '  # 公式自动编号，
+                      + '--filter "%s" ' % os.path.join(WHERE_SCRIPT, 'pandoc_eqnos.py')
 
                       # 上面三个自动编号过滤器必须前置于我们的自定义过滤器与 --citeproc
 
                       # 自定义过滤器
                       + '--filter "%s" ' % os.path.join(WHERE_SCRIPT, 'filter.py')
-                      + ('--bibliography %s ' %
+                      + ('--bibliography "%s" ' %
                          BIBLIOGRAPHY if BIBLIOGRAPHY is not None else '')
                       + '--citeproc '  # 处理引用
                       # 引用格式，预处理时会自动下载
@@ -248,7 +248,7 @@ def pre_process():
         file.write(imgdata)
         file.close()
 
-    print("Pre-processing done.")
+    print("Pre-processing done.\n")
 
 
 def post_process(*, source=os.path.join(WHERE_SCRIPT, 'build/pandoc_processed.docx'),
@@ -267,6 +267,12 @@ def post_process(*, source=os.path.join(WHERE_SCRIPT, 'build/pandoc_processed.do
     document_process(unzipped_dir_path)
     print(r"Modifying document setting...")
     modify_compress_punctuation(unzipped_dir_path)
+    if os.path.join(WHERE_SCRIPT, 'build/final.docx') == output:
+        zipDir(unzipped_dir_path, output)
+    else:
+        zipDir(unzipped_dir_path, os.path.join(
+            WHERE_SCRIPT, 'build/final.docx'))
+        shutil.copy(os.path.join(WHERE_SCRIPT, 'build/final.docx'), output)
     zipDir(unzipped_dir_path, output)
     print("Post-processing done.")
     print("Output file: %s" % output)
@@ -365,13 +371,17 @@ if __name__ == '__main__':
             print_helper()
             sys.exit(0)
         if arg == '-F' or arg == '--file':
-            FILE = sys.argv[sys.argv.index(arg) + 1]
+            FILE = os.path.join(os.getcwd(),
+                                sys.argv[sys.argv.index(arg) + 1])
         if arg == '-O' or arg == '--output':
-            OUTPUT = sys.argv[sys.argv.index(arg) + 1]
+            OUTPUT = os.path.join(os.getcwd(),
+                                  sys.argv[sys.argv.index(arg) + 1])
         if arg == '-M' or arg == '--metadata-file':
-            METADATA_FILE = sys.argv[sys.argv.index(arg) + 1]
+            METADATA_FILE = os.path.join(os.getcwd(),
+                                         sys.argv[sys.argv.index(arg) + 1])
         if arg == '-B' or arg == '--bibliography':
-            BIBLIOGRAPHY = sys.argv[sys.argv.index(arg) + 1]
+            BIBLIOGRAPHY = os.path.join(os.getcwd(),
+                                        sys.argv[sys.argv.index(arg) + 1])
         if arg == '--overwrite-pandoc-command':
             PANDOC_COMMAND = sys.argv[sys.argv.index(arg) + 1]
 

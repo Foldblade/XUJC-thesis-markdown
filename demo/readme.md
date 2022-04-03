@@ -22,11 +22,13 @@
 
 # 引言 {.unnumbered}
 
+Markdown 是一种轻量级标记语言，排版语法简洁，让人们更多地关注内容本身而非排版。而 Word 排版则常常需要反复调整、打乱写作节奏。基于这一现状，我们开发了一套基于 Pandoc 与 Python 的 XUJC 毕业论文解决方案，该解决方案能为您提供 Markdown 到符合排版规范的 docx 格式毕业论文的一站式开箱即用体验。
+
 # 绪论
 
 ## 研究现状
 
-我们注意到，有人为 XMU 制作了相应的 LaTeX 毕业论文模板。然而，我并没有检索到我们学校的 LaTeX 模板。
+我们注意到，有人为 XMU 制作了相应的 $\LaTeX$ 毕业论文模板。然而，我并没有检索到我们学校的 $\LaTeX$ 模板。
 
 ## 本文内容概述
 
@@ -47,7 +49,7 @@
 
 ## 环境要求
 
-- pandoc（需加入 PATH）
+- Pandoc（需加入 PATH）
 - Python 3.x （>= 3.7）
 - Zotero，用于管理文献
 
@@ -104,13 +106,14 @@ Markdown 的基础语法，我相信凭借自己实力找到这个项目的人�
 您可以使用我们自定义的一些类 $\LaTeX$ 命令辅助 docx 的排版。相信您应该已经在本文件的开头部分见过它们了：
 
 ```LaTex
-\newSectionInNewPage - 分节符（下一页）
 \cover - 封面
 \statementOfOriginality - 原创性声明
-\pageBreak - 分页符
 \abstract - 生成中文摘要
 \abstractEn - 生成英文摘要
 \toc - 目录
+\newSectionInNewPage - 分节符（下一页）
+\newSection - 分节符
+\pageBreak - 分页符
 ```
 
 部分 Markdown 编辑器支持 [TOC] 目录。您也可以在适当位置插入 [TOC]，我们的过滤器会将 [TOC] 视为 `\toc`。这些命令的转换过程发生在项目根目录的`filter.py`中，您可以自行前往，查看具体的转换与实现。
@@ -131,7 +134,15 @@ Pandoc 提供了 YAML 元数据扩展。您可以发现一个 `demo/metadata.yam
 
 我们默认配置了章节标题自动编号——包括每章开头自动转变为“第 x 章”，您仅需在 Markdown 中行云流水地创作即可。如果您选择了章节标题自动编号，正如本文件一样，您还需要在引言、结论、致谢、参考文献、附录的后面加上`{.unnumbered}`，这会让 Pandoc 意识到这几节是无需自动编号的。
 
-当然，您也可以选择手动编号。请在根目录的 `processer.py` 中找到 `pandoc_process` 函数中，注释以下内容：
+当然，您也可以选择手动编号——这将给你标题编号的更多自由度，比如结构为：
+
+- 第一章
+  - （一）
+    - 1.
+      - （1）
+        - ①
+
+等。请在根目录的 `processer.py` 中找到 `pandoc_process` 函数，在其中注释以下内容：
 
 ````diff
 --- processer.py
@@ -268,8 +279,8 @@ $$ S = \pi \times r^{2} $$ {#eq:area_of_circle}
                       # 请关注 https://github.com/tomduck/pandoc-eqnos/pull/64 是否被合并、
                       # pandoc_eqnos 是否更新高于 2.5.0 的版本。若是、且想使用官方版本，
                       # 请：注释下一行，并取消上方“公式自动编号”行的注释。
--                     '--filter pandoc_eqnos.py '  # 公式自动编号，
-+                     # '--filter pandoc_eqnos.py '  # 公式自动编号，
+-                     + '--filter "%s" ' % os.path.join(WHERE_SCRIPT, 'pandoc_eqnos.py')
++                     # + '--filter "%s" ' % os.path.join(WHERE_SCRIPT, 'pandoc_eqnos.py')
 
                       # 上面三个自动编号过滤器必须前置于我们的自定义过滤器与 --citeproc
 ```
@@ -396,10 +407,6 @@ python processer.py --h
 
 以下所述“样式”，均参考自排版规范[@ShaMenDa]。
 
-### 三号黑体，居中（一行写不下可分为两行，题目与摘要之间空一行）
-
-- 中文论文题目
-
 ### Title ZH
 
 样式：小三号 Arial 字体加粗，居中
@@ -514,7 +521,7 @@ Markdown 对应：3-6 级标题（H3-6）
 
 样式：小四号宋体，每段首行缩进 2 字符
 
-备注：模板中该样式的“段落-行距”按个人习惯设定为 1.2 倍行高。撰写规范中的**建议**值为 20 ~~磅，而小四号字体的高度为 12 磅，1.6 倍后的行高为 19.2 磅，感知不强。~~Word 中的行高似乎依赖网格，具体特性尚在研究，但确实是感知不强。
+备注：模板中该样式的“段落-行距”按个人习惯设定为 1.2 倍行高。撰写规范中的**建议**值为 20 磅，~~而小四号字体的高度为 12 磅，1.6 倍后的行高为 19.2 磅，感知不强。~~Word 中的行高似乎依赖网格，具体特性尚在研究，但确实是感知不强。
 
 Markdown 对应：段落
 
