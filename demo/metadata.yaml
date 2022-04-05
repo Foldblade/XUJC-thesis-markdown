@@ -36,28 +36,27 @@ keywordsEn:
 - C
 - D
 
-# 
 link-citations: true
 link-bibliography: true
 
-#
+# pandoc-xnos 配置
 xnos-cleveref: true
 
-# 
+# pandoc-fignos 配置
 fignos-plus-name: 图
 fignos-star-name: 图
 fignos-caption-name: 图
 fignos-caption-separator: period
 fignos-number-by-section: false # 是否按章节编号
 
-# 
+# pandoc-tablenos 配置
 tablenos-plus-name: 表
 tablenos-star-name: 表
 tablenos-caption-name: 表
 tablenos-caption-separator: period
 tablenos-number-by-section: false # 是否按章节编号
 
-# 
+# pandoc-eqnos 配置
 eqnos-plus-name: 式
 eqnos-star-name: 式
 eqnos-eqref: true

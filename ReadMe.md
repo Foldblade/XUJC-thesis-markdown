@@ -57,7 +57,7 @@
 
 请自行前往 [Pandoc 官网](https://pandoc.org/installing.html)、[Python 官网](https://www.python.org/downloads/)、[Zotero 官网](https://www.zotero.org/download/)下载安装。
 
-⚠务请注意，Pandoc 与 Python 应加入 PATH。如您不想将 Pandoc 加入 PATH，请在该项目根目录下新建 `bin` 目录，再前往 [Pandoc Releases 页](https://github.com/jgm/pandoc/releases)自行下载适合您系统版本的可执行文件，并将可执行文件放在 `bin` 目录中。在 Windows 上，目录结构看起来应该类似：
+⚠务请注意，Pandoc 与 Python 应加入 PATH。如若您从官网下载、采用安装包方式进行安装，Pandoc 似乎应该会默认加入 PATH。如您不想将 Pandoc 加入 PATH，请在该项目根目录下新建 `bin` 目录，再前往 [Pandoc Releases 页](https://github.com/jgm/pandoc/releases)自行下载适合您系统版本的可执行文件，并将可执行文件放在 `bin` 目录中。在 Windows 上，目录结构看起来应该类似：
 
 ```
 │  .gitignore
@@ -106,3 +106,7 @@ python processer.py -O result.docx -F ./demo/readme.md -M ./demo/metadata.yaml -
 ### 会支持 WPS 吗？
 
 仅通过了 Office 2016、Office 2019 等版本的测试，未进行 WPS 等其他软件测试，如有异常也不计划进行支持。我们建议您采用较新版本的 Office 编辑、查看。不过，Pull Request 我们是欢迎的。
+
+### 出现 `PermissionError:` 之类的错误
+
+检查您是否打开了生成的 docx 文档。当 docx 文档被打开或占用时，我们的程序将无法完成修改保存的操作，因此请您确认完全关闭生成的 docx 文档后再试。

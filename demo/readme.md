@@ -72,7 +72,7 @@ Markdown 是一种轻量级标记语言，排版语法简洁，让人们更多�
 
 请自行前往 [Pandoc 官网](https://pandoc.org/installing.html)、[Python 官网](https://www.python.org/downloads/)、[Zotero 官网](https://www.zotero.org/download/)下载安装。
 
-⚠务请注意，Pandoc 与 Python 应加入 PATH。如您不想将 Pandoc 加入 PATH，请在该项目根目录下新建 `bin` 目录，再前往 [Pandoc Releases 页](https://github.com/jgm/pandoc/releases)自行下载适合您系统版本的可执行文件，并将可执行文件放在 `bin` 目录中。在 Windows 上，目录结构看起来应该类似：
+⚠务请注意，Pandoc 与 Python 应加入 PATH。如若您从官网下载、采用安装包方式进行安装，Pandoc 似乎应该会默认加入 PATH。如您不想将 Pandoc 加入 PATH，请在该项目根目录下新建 `bin` 目录，再前往 [Pandoc Releases 页](https://github.com/jgm/pandoc/releases)自行下载适合您系统版本的可执行文件，并将可执行文件放在 `bin` 目录中。在 Windows 上，目录结构看起来应该类似：
 
 ```
 │  .gitignore
@@ -159,11 +159,11 @@ Pandoc 提供了 YAML 元数据扩展。您可以发现一个 `demo/metadata.yam
 
 ## 章节标题及自动编号
 
-为了正确生成对应的样式，您的引言、结论、致谢、参考文献、附录，**能且只能**取值为：引言、总结、结论、致谢、致谢语、参考文献、附录。具体细节，请参阅[模板文件样式说明](## 模板文件样式说明)一节。如果您变换了这些标题，它们将无法得到正确处理。
+为了正确生成对应的样式，您的引言、结论、致谢、参考文献、附录，**能且只能**取值为：引言、总结、结论、致谢、致谢语、参考文献、附录。具体细节，请参阅[模板文件样式说明](#模板文件样式说明)一节。如果您变换了这些标题，它们将无法得到正确处理。
 
 我们默认配置了章节标题自动编号——包括每章开头自动转变为“第 x 章”，您仅需在 Markdown 中行云流水地创作即可。如果您选择了章节标题自动编号，正如本文件一样，您还需要在引言、结论、致谢、参考文献、附录的后面加上`{.unnumbered}`，这会让 Pandoc 意识到这几节是无需自动编号的。
 
-当然，您也可以选择手动编号——这将给你标题编号的更多自由度，比如结构为：
+当然，您也可以选择手动编号——这将给您标题编号的更多自由度，比如结构为：
 
 - 第一章
   - （一）
@@ -270,7 +270,13 @@ Pandoc 提供了 YAML 元数据扩展。您可以发现一个 `demo/metadata.yam
 
 公式显示：`pi = 3.14159265  (1)`
 
-公式引用：`式 1`
+公式引用：开启美国数学协会风格：`式 (1)`、关闭美国数学协会风格：`式 1`
+
+美国数学协会风格默认开启。您可以在 `metadata.yaml` 中修改它的配置，将 `true` 改为 `false`：
+
+```yaml
+eqnos-eqref: true # 开启美国数学协会（AMS）风格引用
+```
 
 您可以以下列命令输入 $TeX$ 格式公式：
 
@@ -606,6 +612,7 @@ Markdown 对应：一级标题（H1）。标题内容仅可取值为：参考文
 - [Markdown 写作，Pandoc 转换：我的纯文本学术写作流程]( https://sspai.com/post/64842)
 - [如何用 Markdown 写论文？](https://sspai.com/post/43471)
 - [zotero 本地常见插件配置](https://www.cnblogs.com/wwyt123/p/16031880.html)（BETTER BIBTEX FOR ZOTERO 中文文献 cite key 缩短）
+- [Office Open XML](http://www.officeopenxml.com)，OpenXML 快速入门
 
 # 结论 {.unnumbered}
 
