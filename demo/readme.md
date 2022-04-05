@@ -24,6 +24,8 @@
 
 Markdown 是一种轻量级标记语言，排版语法简洁，让人们更多地关注内容本身而非排版。而 Word 排版则常常需要反复调整、打乱写作节奏。基于这一现状，我们开发了一套基于 Pandoc 与 Python 的 XUJC 毕业论文解决方案，该解决方案能为您提供 Markdown 到符合排版规范的 docx 格式毕业论文的一站式开箱即用体验。
 
+\pageBreak
+
 # 绪论
 
 ## 研究现状
@@ -40,33 +42,52 @@ Markdown 是一种轻量级标记语言，排版语法简洁，让人们更多�
 
 # 需求分析
 
-1. 使用Markdown进行论文撰写，并可通过git进行版本控制
+1. 使用 Markdown 进行论文撰写，并可通过 Git 进行版本控制
 2. 自动进行标题、图片、表格、公式编号
 3. 自动生成引文
-4. 快速生成符合学校排版要求的docx文档
+4. 快速生成符合学校排版要求的 docx 文档
 
 # 开始使用
 
 ## 环境要求
 
-- Pandoc（需加入 PATH）
-- Python 3.x （>= 3.7）
+- Pandoc >= 2.13 （更老版本未经测试）
+- Python 3.x （>= 3.7，更老版本未经测试）
 - Zotero，用于管理文献
 
 ## 开发环境
 
-我们的开发环境是：
+我们的开发及测试环境是：
 
 - Windows 10
 - Python 3.7.3
-- pandoc 2.13
-  - Compiled with pandoc-types 1.22, texmath 0.12.2, skylighting 0.10.5, citeproc 0.3.0.9, ipynb 0.1.0.1
+- pandoc 2.18
+  Compiled with pandoc-types 1.22.2, texmath 0.12.5, skylighting 0.12.3,
+  citeproc 0.7, ipynb 0.2, hslua 2.2.0
+  Scripting engine: Lua 5.4
 
 该项目未经过大规模测试，如有问题，欢迎提出 issue。我们将尽力解答。
 
 ## 环境搭建
 
-请自行前往 [Pandoc 官网](https://pandoc.org/installing.html)、[Python 官网](https://www.python.org/downloads/)、[Zotero 官网](https://www.zotero.org/download/)下载安装。务请注意，Pandoc 与 Python 应加入 PATH。
+请自行前往 [Pandoc 官网](https://pandoc.org/installing.html)、[Python 官网](https://www.python.org/downloads/)、[Zotero 官网](https://www.zotero.org/download/)下载安装。
+
+⚠务请注意，Pandoc 与 Python 应加入 PATH。如您不想将 Pandoc 加入 PATH，请在该项目根目录下新建 `bin` 目录，再前往 [Pandoc Releases 页](https://github.com/jgm/pandoc/releases)自行下载适合您系统版本的可执行文件，并将可执行文件放在 `bin` 目录中。在 Windows 上，目录结构看起来应该类似：
+
+```
+│  .gitignore
+│  filter.py
+│  LICENSE
+│  processer.py
+│  略...
+│
+├─bin
+│  │  pandoc.exe
+│
+├─略...
+│
+└─略...
+```
 
 ## 快速上手
 
@@ -85,13 +106,19 @@ pip install panflute python-docx regex lxml pandoc-fignos pandoc-eqnos pandoc-ta
 python processer.py -O result.docx -F ./demo/readme.md -M ./demo/metadata.yaml -B ./demo/ref.bib
 ```
 
-如不出意外，您应该可以看到，在项目的根目录生成了`result.docx`——快去体验吧！
+该命令可能会出现 `[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:` 字样，Don't panic，毋需惊慌，只要最末一行出现 `Output file: ` 即告成功——您应该可以看到，在项目的根目录生成了`result.docx`——快去看看吧！
 
 # 如何撰写
 
+我们建议您做好 demo 目录下所有文件的备份，最好一开始就复制一份出来，以免修改过多导致自己都不知道修改了什么。
+
+如果您没有足够的耐心阅读文档，我们更建议您复制本文件后进行修改——且时常运行生成命令以检查错误，而不是从一份空白的 Markdown 文档开始。
+
+## Markdown
+
 Markdown 的基础语法，我相信凭借自己实力找到这个项目的人无需多言。
 
-但如果您还不会 Markdown，我建议您花费一些时间学习它——比起排版浪费的时间，我认为您更应该将时间花费在学习Markdown上。您可以参考[这个教程](https://markdown.com.cn/intro.html)，或是[这个知乎问题](https://www.zhihu.com/question/20409634)。当然，学好 Word 排版也是很有用的，但如果您连排版毕业论文都不会，我还是建议您好好学习一下 Office 操作。
+但如果您还不会 Markdown，我建议您花费一些时间学习它——比起排版浪费的时间，我认为您更应该将时间花费在学习 Markdown 上。您可以参考[这个教程](https://markdown.com.cn/intro.html)，或是[这个知乎问题](https://www.zhihu.com/question/20409634)。当然，学好 Word 排版也是很有用的，但如果您连排版毕业论文都不会，我还是建议您好好学习一下 Office 操作。
 
 但单纯的 Markdown 并不足以支持我们完成毕业论文的生成。因此，请继续向下看。
 
@@ -122,6 +149,8 @@ Markdown 的基础语法，我相信凭借自己实力找到这个项目的人�
 
 您**必须**在文档开头插入一个 `\newSectionInNewPage`。Pandoc 在生成时，会自动在文档开头生成元数据中的标题、作者等信息，这对我们来说是多余的。因此，在后处理流程中，我们会删除第一个 `\newSectionInNewPage` 及其之前的所有内容。
 
+比如，依照撰写规范[@ShaMenDa]，引言及正文之间是需要另起一页的。所以，您应该在引言与第一章之间，插入一个 `\pageBreak`。
+
 ## 元数据
 
 Pandoc 提供了 YAML 元数据扩展。您可以发现一个 `demo/metadata.yaml` 文件。在该文件中，您可以修改标题、作者等信息，撰写您的摘要，也可以进行一些诸如图片自动编号、表格自动编号、公式自动编号的配置。
@@ -138,11 +167,11 @@ Pandoc 提供了 YAML 元数据扩展。您可以发现一个 `demo/metadata.yam
 
 - 第一章
   - （一）
-    - 1.
+    - `1.`
       - （1）
         - ①
 
-等。请在根目录的 `processer.py` 中找到 `pandoc_process` 函数，在其中注释以下内容：
+等，这需要您在撰写标题时就手动加入，如 `# 第一章 绪论`而不像自动编号这样的 `# 绪论`。请在根目录的 `processer.py` 中找到 `pandoc_process` 函数，在其中注释以下内容：
 
 ````diff
 --- processer.py
@@ -180,7 +209,7 @@ Pandoc 提供了 YAML 元数据扩展。您可以发现一个 `demo/metadata.yam
 ![Photo by Baim Hanif on Unsplash, Free to use under the Unsplash License](readme.assets/baim-hanif-pYWuOMhtc6k-unsplash.jpg){#fig:graduation}
 ```
 
-其中，中括号内写图片的说明文字，括号内是文件的路径（建议用编辑器生成相对 markdown 的文件路径），最后的大括号中 `#fig:` 来自 pandoc-fignos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@fig:graduation{nolink=True}` 这样的语法去引用图片并实现自动标号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@fig:graduation}`。具体细节，请参阅 [pandoc-fignos 文档](https://github.com/tomduck/pandoc-tablenos)。
+其中，中括号内写图片的说明文字，括号内是文件的路径（建议用编辑器生成相对 markdown 文件的**相对路径**，因为我们会默认 markdown 文件所在目录为资源所在目录），最后的大括号中 `#fig:` 来自 pandoc-fignos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@fig:graduation{nolink=True}` 这样的语法去引用图片并实现自动标号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@fig:graduation}`。具体细节，请参阅 [pandoc-fignos 文档](https://github.com/tomduck/pandoc-tablenos)。
 
 上述语法插入的图片来自 [Unsplash](https://unsplash.com/s/photos/graduation?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) 网站的 [Baim Hanif](https://unsplash.com/@baim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)，采用 [Unsplash License](https://unsplash.com/license) 授权免费使用，如下+@fig:graduation{nolink=True}所示：
 
@@ -261,9 +290,9 @@ $$ S = \pi \times r^{2} $$ {#eq:area_of_circle}
 
 行内公式，可以使用语法 `$\pi = 3.141592653589793238462643 \ldots$` 。结果是这样的：$\pi = 3.141592653589793238462643 \ldots$。
 
-请注意⚠：由于本文档中出现了部分的 $\LaTeX$ 语法，在转换时可能出现 Warning。在撰写时，请尽量保证公式采用 $\TeX$ 语法。
+⚠请注意：由于本文档中出现了部分的 $\LaTeX$ 语法，在转换时可能出现 Warning，诸如 `[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:` 。在撰写时，请尽量保证公式采用 $\TeX$ 语法。
 
-另请注意⚠：根据笔者在 2022 年 3 月 31 日的测试，pandoc_eqnos 存在 bug，会导致生成的 docx 文件无法打开。开发者 nOkuda 提出了问题并提交了 [Pull Requests](https://github.com/tomduck/pandoc-eqnos/pull/64)。目前，我们会下载 [pandoc_eqnos.py](https://raw.githubusercontent.com/nOkuda/pandoc-eqnos/docxOpen/pandoc_eqnos.py) 文件，并将 pandoc_eqnos.py 放置在本文件的同一层级目录下，并使用该文件作为 pandoc_qunos 的过滤器。请关注上述 Pull Requests 是否被合并、pandoc_eqnos 是否更新高于 2.5.0 的版本。若是、且想使用官方版本，请按下修改 `processer.py`：
+⚠另请注意：根据笔者在 2022 年 3 月 31 日的测试，pandoc_eqnos 存在 bug，会导致生成的 docx 文件无法打开。开发者 nOkuda 提出了问题并提交了 [Pull Requests](https://github.com/tomduck/pandoc-eqnos/pull/64)。目前，我们会下载 [pandoc_eqnos.py](https://raw.githubusercontent.com/nOkuda/pandoc-eqnos/docxOpen/pandoc_eqnos.py) 文件，并将 pandoc_eqnos.py 放置在本文件的同一层级目录下，并使用该文件作为 pandoc_qunos 的过滤器。请关注上述 Pull Requests 是否被合并、pandoc_eqnos 是否更新高于 2.5.0 的版本。若是、且想使用官方版本，请按下修改 `processer.py`：
 
 ```diff
 --- processer.py
@@ -334,7 +363,7 @@ python processer.py -O result.docx -F ./demo/readme.md -M ./demo/metadata.yaml -
 - `-O` 或 `--output`：后接您期望的输出 docx 文件路径。必须。
 - `-F` 或 `--file`：后接输入的 Markdown 文件路径。必须。
 - `-M` 或 `--metadata-file`：后接输入的元数据 yaml 文件路径。必须。
-- `-B` 或 `--bibliography`：后接输入的参考文献 BibTeX 文件路径。该参数是可选的，便于您在尚未添加引文时查看文档的排版效果。
+- `-B` 或 `--bibliography`：后接输入的参考文献 BibTeX 文件路径。该参数是可选的，便于您在尚未添加引文时查看文档的排版效果。比如，当您尚未进行到引文的引入时，可以仅运行有三个参数的命令：`python processer.py -O result.docx -F ./demo/readme.md -M ./demo/metadata.yaml`
 
 ## 仅进行预处理
 
@@ -405,7 +434,7 @@ python processer.py --h
 
 本模板的样式中，中文采取黑体的地方，西文字体统一采用 Arial；中文采取宋体的地方，西文字体统一采用 Times New Roman。
 
-以下所述“样式”，均参考自排版规范[@ShaMenDa]。
+以下所述“样式”，均参考自撰写规范[@ShaMenDa]。
 
 ### Title ZH
 
@@ -572,7 +601,7 @@ Markdown 对应：一级标题（H1）。标题内容仅可取值为：参考文
 
 - 参考文献内容
 
-# 扩展阅读
+# 拓展阅读
 
 - [Markdown 写作，Pandoc 转换：我的纯文本学术写作流程]( https://sspai.com/post/64842)
 - [如何用 Markdown 写论文？](https://sspai.com/post/43471)

@@ -101,6 +101,12 @@ def pandoc_process(*, source=os.path.join(WHERE_SCRIPT, 'demo/paper.md'),
     将 Markdown 文档通过 Pandoc 转换成 Word 文档
     :return: os.system 包裹的 pandoc 命令，可取返回值
     '''
+    print("Using Pandoc to convert Markdown to Word...")
+    # 检测 PATH 中是否存在 pandoc 命令，不存在则将 bin 临时加入 PATH
+    if shutil.which('pandoc') is None:
+        print("Pandoc not found in PATH, temporarily add the bin directory to the PATH...")
+        os.environ["PATH"] += os.pathsep + \
+            os.path.join(WHERE_SCRIPT, 'bin') + os.pathsep
     pandoc_command = ('pandoc '
                       # 注意：每行后面必须加个空格
                       # docx 样式模板
@@ -136,7 +142,7 @@ def pandoc_process(*, source=os.path.join(WHERE_SCRIPT, 'demo/paper.md'),
                       + '--csl "%s" ' % os.path.join(WHERE_SCRIPT, 'assets/chinese-gb7714-2005-numeric.csl')
                       + '--number-sections '  # 章节自动编号
                       + source)
-    print("Using Pandoc to convert Markdown to Word...")
+
     print("Pandoc command: ")
     print(pandoc_command)
     print("Here goes with the Pandoc debug: ")
