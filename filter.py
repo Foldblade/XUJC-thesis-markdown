@@ -273,7 +273,7 @@ def generate_cover(metadata):
 <w:p>
     <w:pPr>
         <w:spacing w:before="0" w:after="0" w:line="240"/>
-        <w:ind w:leftChars="225" w:left="2323" w:hanging="1783"/>
+        <w:ind w:leftChars="225" w:left="2525" w:hanging="1985"/>
         <w:jc w:val="left"/>
         <!-- Original -->
         <!-- <w:ind w:firstLineChars="122" w:firstLine="539"/> -->
@@ -649,7 +649,7 @@ def action(elem, doc):
                 debug("目录")
                 para = [Para(Str("目录"))]
                 div = Div(*para, attributes={"custom-style": "TOC Heading"})
-                # 目录下空两行，目录，目录后接分节符（下一页）
+                # 目录下空两行，目录
                 elem = [div, Para(SoftBreak()), Para(SoftBreak()), toc]
             else:
                 elem = []
@@ -661,7 +661,7 @@ def action(elem, doc):
             debug('Markdown [TOC]')
             para = [Para(Str("目录"))]
             div = Div(*para, attributes={"custom-style": "TOC Heading"})
-            # 目录下空两行，目录，目录后接分节符（下一页）
+            # 目录下空两行，目录
             elem = [div, Para(SoftBreak()), Para(SoftBreak()), toc]
     '''
     按要求处理特殊标题
@@ -719,9 +719,6 @@ def action(elem, doc):
     也并没有什么很好的解决方法，唯有在前后加个空格了。
     '''
     if isinstance(elem, Quoted):
-        _contents = elem.content
-        _firstcont = _contents[0]
-        _lastcont = _contents[-1]
         return_list = [elem]
         if not isinstance(elem.prev, Space):
             return_list.insert(0, Space)

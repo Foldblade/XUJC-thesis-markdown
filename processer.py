@@ -4,6 +4,7 @@ import os
 import sys
 import shutil
 import base64
+import re
 from docx.shared import Cm
 from docx import Document
 from lxml import etree
@@ -114,6 +115,11 @@ def pandoc_process(*, source=os.path.join(WHERE_SCRIPT, 'demo/paper.md'),
                       + '-o "%s" ' % output  # 目标输出文件
                       + ('--metadata-file="%s" ' %
                          METADATA_FILE if METADATA_FILE is not None else '')  # 元数据文件
+                      + ('--bibliography "%s" ' %
+                         BIBLIOGRAPHY if BIBLIOGRAPHY is not None else '')  # 引用文件
+                      # 引用格式，预处理时会自动下载
+                      + '--csl "%s" ' % os.path.join(WHERE_SCRIPT, 'assets/chinese-gb7714-2005-numeric.csl')
+                      + '--number-sections '  # 章节自动编号
 
                       # 资源文件路径，默认与输入文件一致
                       + '--resource-path="%s" ' % os.path.dirname(source)
@@ -135,12 +141,7 @@ def pandoc_process(*, source=os.path.join(WHERE_SCRIPT, 'demo/paper.md'),
 
                       # 自定义过滤器
                       + '--filter "%s" ' % os.path.join(WHERE_SCRIPT, 'filter.py')
-                      + ('--bibliography "%s" ' %
-                         BIBLIOGRAPHY if BIBLIOGRAPHY is not None else '')
                       + '--citeproc '  # 处理引用
-                      # 引用格式，预处理时会自动下载
-                      + '--csl "%s" ' % os.path.join(WHERE_SCRIPT, 'assets/chinese-gb7714-2005-numeric.csl')
-                      + '--number-sections '  # 章节自动编号
                       + source)
 
     print("Pandoc command: ")
@@ -173,15 +174,15 @@ def document_process(dir_path):
             break
 
     for p in body.findall("w:p", namespaces):
-        # 处理 Pandoc 生成的 H1 编号为"第 x 章"，并将 tab 换成 空格
         for r in p.findall("w:r", namespaces):
+            t = r.find("w:t", namespaces)
             rpr = r.find("w:rPr", namespaces)
+            # 处理 Pandoc 生成的 H1 编号为"第 x 章"，并将 tab 换成 空格
             if rpr is not None:
                 rStyle = rpr.find("w:rStyle", namespaces)
                 if rStyle is not None and rStyle.attrib.get("{%s}val" % namespaces["w"]) == "SectionNumber":
-                    t = r.find("w:t", namespaces)
                     # H1 标号数字变 第 x 章
-                    if len(t.text) == 1:
+                    if re.match(r'^[0-9]+$', t.text):
                         t.text = "第 %s 章" % t.text
                     # 章节标号后 Tab 换空格
                     maybeTab = r.getnext().find("w:tab", namespaces)
@@ -192,17 +193,33 @@ def document_process(dir_path):
                         space.text = " "
                         space.set(
                             "{http://www.w3.org/XML/1998/namespace}space", "preserve")
+                else:
+                    break
             else:
                 break
+
+    # 禁止表格行进行跨页换行
+    # for tbl in body.findall("w:tbl", namespaces):
+    #     for tr in tbl.findall("w:tr", namespaces):
+    #         trPr = tr.find("w:trPr", namespaces)
+    #         if trPr is not None and trPr.find("w:cantSplit", namespaces) is None:
+    #             etree.SubElement(
+    #                 trPr, "{%s}cantSplit" % namespaces["w"])
+    #         elif trPr is None:
+    #             new_trPr = etree.SubElement(
+    #                 tr, "{%s}trPr" % namespaces["w"])
+    #             etree.SubElement(
+    #                 new_trPr, "{%s}cantSplit" % namespaces["w"])
 
     tree.write(os.path.join(dir_path, 'word/document.xml'),
                encoding='utf-8', xml_declaration=True, standalone=True)
 
 
-def modify_compress_punctuation(dir_path):
+def modify_document_setting(dir_path):
     '''
     后处理流程之二
     修改 Word 文档版式设定中的 字符间距控制 - 只压缩标点符号
+    设定 <w:defaultTabStop w:val="420"/>， Tab 宽度 2 字符
     :param dir_path: 待处理的解压后的 docx 目录
     :return: 无
     '''
@@ -213,6 +230,9 @@ def modify_compress_punctuation(dir_path):
 
     root.find("w:characterSpacingControl", namespaces).set(
         '{%s}val' % namespaces["w"], 'compressPunctuation')
+    root.find("w:defaultTabStop", namespaces).set(
+        '{%s}val' % namespaces["w"], '420')
+
     tree.write(os.path.join(dir_path, 'word/settings.xml'),
                encoding='utf-8', xml_declaration=True, standalone=True)
 
@@ -260,8 +280,11 @@ def pre_process():
 def post_process(*, source=os.path.join(WHERE_SCRIPT, 'build/pandoc_processed.docx'),
                  output=os.path.join(WHERE_SCRIPT, 'build/final.docx')):
     '''
-    后处理将向过滤器输出的 docx 文件添加校徽与校名图片，并自动设置字符间距控制为
-    “只压缩标点符号”，同时修改 Header 1 为“第 x 章”、替换 Header 后面的 Tab 为空格。
+    后处理将向过滤器输出的 docx 文件添加校徽与校名图片，
+    设置字符间距控制为“只压缩标点符号”
+    设定 <w:defaultTabStop w:val="420"/>， Tab 宽度 2 字符
+    修改 Header 1 为“第 x 章”
+    替换 Header 后面的 Tab 为空格
 
     部分后处理需要解压缩 docx 文件，大部分是 XML 操作，请参阅 [document_process()]
     :return: 无
@@ -272,7 +295,7 @@ def post_process(*, source=os.path.join(WHERE_SCRIPT, 'build/pandoc_processed.do
     print(r"Removing first \newSectionInNewPage and previous contents...")
     document_process(unzipped_dir_path)
     print(r"Modifying document setting...")
-    modify_compress_punctuation(unzipped_dir_path)
+    modify_document_setting(unzipped_dir_path)
     if os.path.join(WHERE_SCRIPT, 'build/final.docx') == output:
         zipDir(unzipped_dir_path, output)
     else:
