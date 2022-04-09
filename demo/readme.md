@@ -106,7 +106,7 @@ pip install panflute python-docx regex lxml pandoc-fignos pandoc-eqnos pandoc-ta
 python processer.py -O result.docx -F ./demo/readme.md -M ./demo/metadata.yaml -B ./demo/ref.bib
 ```
 
-该命令可能会出现 `[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:` 字样，Don't panic，毋需惊慌，只要最末一行出现 `Output file: ` 即告成功——您应该可以看到，在项目的根目录生成了`result.docx`——快去看看吧！
+该命令可能会出现 `[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:` 字样，Don't panic，毋需惊慌，只要最末一行出现 `Output file:` 即告成功——您应该可以看到，在项目的根目录生成了`result.docx`——快去看看吧！
 
 # 如何撰写
 
@@ -126,7 +126,7 @@ Markdown 的基础语法，我相信凭借自己实力找到这个项目的人�
 
 由于 Markdown 到 docx 转换采用的是 Pandoc[@Pandoc]，这里就不得不提 Pandoc Markdown 语法了。您可以在撰写时使用 Pandoc Markdown 语法实现一些 Pandoc 特性，不过这可能需要您对 Pandoc 有着熟练掌握，并按需修改 `filter.py`。具体细节，请查阅[官方文档](https://pandoc.org/MANUAL.html#pandocs-markdown)，或是[这份（可能有些过时的）中文翻译](http://pages.tzengyuxio.me/pandoc/)。
 
-💡提示：如您需保留一个空段落——或者更通常情况下的，换行；例如，您的指导老师要求您在“结论”后空一行；那您应该在结论后空出一段，并输入四个空格 `    `。
+💡提示：如您需保留一个空段落——或者更通常情况下的，换行；例如，您的指导老师要求您在“结论”后空一行；那您应该在结论后空出一段，并输入四个空格。
 
 ## 自定义类 $\LaTeX$ 命令
 
@@ -145,11 +145,15 @@ Markdown 的基础语法，我相信凭借自己实力找到这个项目的人�
 
 部分 Markdown 编辑器支持 `[TOC]` 目录。您也可以在适当位置插入 `[TOC]`，我们的过滤器会将 `[TOC]` 视为 `\toc`。这些命令的转换过程发生在项目根目录的 `filter.py` 中，您可以自行前往，查看具体的转换与实现。
 
-封面、原创性声明均取自学校提供的模板文件。有关封面内容、页眉内容的自动填写，请参阅下一节[元数据](## 元数据)。
+封面、原创性声明均取自学校提供的模板文件。有关封面内容、页眉内容的自动填写，请参阅下一节[元数据](#元数据)。
 
 您**必须**在文档开头插入一个 `\newSectionInNewPage`。Pandoc 在生成时，会自动在文档开头生成元数据中的标题、作者等信息，这对我们来说是多余的。因此，在后处理流程中，我们会删除第一个 `\newSectionInNewPage` 及其之前的所有内容。
 
 比如，依照撰写规范[@ShaMenDa]，引言及正文之间是需要另起一页的。所以，您应该在引言与第一章之间，插入一个 `\pageBreak`。如若您的学院要求“每个章节以新一页作为开始”，则也需在每个章节标题前插入一个 `\pageBreak`。
+
+## 封底
+
+默认会在文档末尾生成空白页作为封底。如您不需要，请参阅[不在文档末尾生成空白页作为封底](#不在文档末尾生成空白页作为封底)一节，在生成命令后加上参数 `--no-blank-back-cover`。
 
 ## 元数据
 
@@ -280,7 +284,7 @@ Pandoc 提供了 YAML 元数据扩展。您可以发现一个 `demo/metadata.yam
 eqnos-eqref: true # 开启美国数学协会（AMS）风格引用
 ```
 
-您可以以下列命令输入 $TeX$ 格式公式：
+您可以以下列命令输入 $\TeX$ 格式公式：
 
 ```markdown
 $$ \pi = 3.141592653589793238462643 \ldots $$ {#eq:pi}
@@ -404,11 +408,27 @@ python processer.py --clean
 python processer.py --h
 ```
 
+## 不在文档末尾生成空白页作为封底
+
+```bash
+python processer.py ...略... --no-blank-back-cover
+```
+
+若不添加该参数，则默认会在文档末尾生成空白页作为封底。
+
+## 创建模板
+
+```bash
+python processer.py --new path_of_your_destination_directory
+```
+
+使用该命令，在指定目录创建最小化的模板以便快速开始，
+
 ## 更多
 
 参阅 `processer.py`。
 
-时间紧迫，参数未经过详细测试。使用非上方指明参数写法，一切后果由您自负。
+时间紧迫，参数未经过详细测试。使用非上方指明参数写法，可能会产生意料之外的结果。
 
 # 生成后的操作
 

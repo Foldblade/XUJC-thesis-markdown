@@ -5,8 +5,10 @@ import sys
 import shutil
 import base64
 import re
+import argparse
 from docx.shared import Cm
 from docx import Document
+from docx.enum.section import WD_SECTION
 from lxml import etree
 import urllib.request
 
@@ -67,7 +69,7 @@ def download(url, file_name):
 
 def add_cover_image(filepath):
     '''
-    添加校徽与校名图片
+    添加校徽与校名图片、处理封底
     :param file: 目标文件路径
     :return: 无
     '''
@@ -92,6 +94,14 @@ def add_cover_image(filepath):
             found_school_name = True
         if(found_logo and found_school_name):
             break
+
+    # 添加封底空白页
+    if ARGS.no_blank_back_cover:
+        back_cover = doc.add_section(WD_SECTION.ODD_PAGE)
+        header = back_cover.header
+        header.is_linked_to_previous = False
+        footer = back_cover.footer
+        footer.is_linked_to_previous = False
     doc.save(filepath)
     print("Adding cover image done.")
 
@@ -114,9 +124,9 @@ def pandoc_process(*, source=os.path.join(WHERE_SCRIPT, 'demo/paper.md'),
                       + '--reference-doc "%s" ' % os.path.join(WHERE_SCRIPT, 'assets/template.docx')
                       + '-o "%s" ' % output  # 目标输出文件
                       + ('--metadata-file="%s" ' %
-                         METADATA_FILE if METADATA_FILE is not None else '')  # 元数据文件
+                         ARGS.metadata_file if ARGS.metadata_file is not None else '')  # 元数据文件
                       + ('--bibliography "%s" ' %
-                         BIBLIOGRAPHY if BIBLIOGRAPHY is not None else '')  # 引用文件
+                         ARGS.bibliography if ARGS.bibliography is not None else '')  # 引用文件
                       # 引用格式，预处理时会自动下载
                       + '--csl "%s" ' % os.path.join(WHERE_SCRIPT, 'assets/chinese-gb7714-2005-numeric.csl')
                       + '--number-sections '  # 章节自动编号
@@ -143,7 +153,6 @@ def pandoc_process(*, source=os.path.join(WHERE_SCRIPT, 'demo/paper.md'),
                       + '--filter "%s" ' % os.path.join(WHERE_SCRIPT, 'filter.py')
                       + '--citeproc '  # 处理引用
                       + source)
-
     print("Pandoc command: ")
     print(pandoc_command)
     print("Here goes with the Pandoc debug: ")
@@ -307,6 +316,19 @@ def post_process(*, source=os.path.join(WHERE_SCRIPT, 'build/pandoc_processed.do
     print("Output file: %s" % output)
 
 
+def init(path):
+    '''
+    新建（复制最小化模板到指定位置）
+    :return: 无
+    '''
+    dest = os.path.join(os.getcwd(), path)
+    print(dest)
+    if not os.path.exists(dest):
+        shutil.copytree(os.path.join(WHERE_SCRIPT, 'assets/minimal'), dest)
+    else:
+        print("The specified directory already exists.")
+
+
 def clean():
     '''
     清理工作
@@ -331,120 +353,76 @@ def clean():
     print("Cleaning done.")
 
 
-def print_helper():
-    '''
-    打印帮助文本
-    '''
-    print('''
-process.py
+parser = argparse.ArgumentParser(
+    description="Generate XUJC thesis docx from markdown.")
+parser.add_argument("--new", help="Create a new template directory at the specified location. " +
+                    "在指定位置新建模板目录。")
+pre_post_group = parser.add_mutually_exclusive_group()
+pre_post_group.add_argument(
+    "--pre", action="store_true", help="Pre processing only. " +
+    "仅进行预处理。")
+pre_post_group.add_argument(
+    "--post", action="store_true", help="Post processing only. " +
+    "仅进行后处理。")
+parser.add_argument("-F",
+                    "--file", help="The file which you want for pandoc convertation or post processing. " +
+                    "Pandoc 转换或后处理的文件。")
+parser.add_argument("-O",
+                    "--output", help="The output file path which you want to save from pandoc convertation or post processing. " +
+                    "Pandoc 转换或后处理后文件的保存路径。")
+parser.add_argument("-M",
+                    "--metadata-file", help="The metadata yaml file path which you want for pandoc convertation." +
+                    "用于 Pandoc 转换的 metadata 文件路径。")
+parser.add_argument("-B",
+                    "--bibliography", help="The Bibtex format bibliography file path which you want for pandoc convertation. " +
+                    "用于 Pandoc 转换的 Bibtex 格式参考文献文件路径。")
+parser.add_argument("--pandoc-command", help="Overwrite Pandoc command. " +
+                    "覆盖 Pandoc 命令。")
+parser.add_argument("--no-blank-back-cover", action="store_false", default=True,
+                    help="Do not add a blank page as back cover. " +
+                    "不要添加空白页作为封底。")
+parser.add_argument("--clean", action="store_true", help="Clean the temporary files. " +
+                    "清理临时文件。")
+# parser.add_argument(
+#     "--debug", action="store_true", help="Print debug info. " +
+#     "输出调试信息。")
 
---pre
-\tPre processing only.
-\t仅进行预处理。
-\tPre processing will download the csl file and generate the template docx.
-\t预处理将会下载 cls 文件并生成模板 docx。
-
---post
-\tPost processing only.
-\t仅进行后处理。
-\tPost processing will add the logo and school name to the docx,
-\tand automatically set compress punctuation, modify Header 1.
-\t后处理将向过滤器输出的 docx 文件添加校徽与校名图片，并自动设置字符间距控制为
-\t“只压缩标点符号”，同时修改 Header 1 为“第 x 章”、替换 Header 后面的 Tab 为空格。
-
--F\t--file
-\tThe file which you want for pandoc convertation or post processing.
-\t文件以供 Pandoc 转换或后处理。
-
--O\t--output
-\tThe output file path which you want to save from pandoc convertation
-\tor post processing.
-\tPandoc 转换或后处理后文件的保存路径。
-
--M\t--metadata-file
-\tThe metadata yaml file path which you want for pandoc convertation
-\t用于 Pandoc 转换的 metadata 文件路径。
-
--B\t--bibliography
-\tThe Bibtex format bibliography file path which you want for pandoc convertation
-\t用于 Pandoc 转换的 Bibtex 格式参考文献文件路径。
-
---clean
-\tClean the temporary files.
-\t清理临时文件。
-
--H\t--help
-\tPrint helper text.
-\t打印帮助文本。
-''')
+parser.parse_args()
 
 
 if __name__ == '__main__':
-    PRE_PROCESSING = False
-    POST_PROCESSING = False
-    FILE = None
-    OUTPUT = None
-    METADATA_FILE = None
-    BIBLIOGRAPHY = None
-    PANDOC_COMMAND = None
+    ARGS = parser.parse_args()
 
-    for arg in sys.argv:
-        if arg == '--pre':
-            PRE_PROCESSING = True
-        if arg == '--post':
-            POST_PROCESSING = True
-        if arg == '--clean':
-            clean()
-            sys.exit(0)
-        if arg == '-H' or arg == '--help':
-            print_helper()
-            sys.exit(0)
-        if arg == '-F' or arg == '--file':
-            FILE = os.path.join(os.getcwd(),
-                                sys.argv[sys.argv.index(arg) + 1])
-        if arg == '-O' or arg == '--output':
-            OUTPUT = os.path.join(os.getcwd(),
-                                  sys.argv[sys.argv.index(arg) + 1])
-        if arg == '-M' or arg == '--metadata-file':
-            METADATA_FILE = os.path.join(os.getcwd(),
-                                         sys.argv[sys.argv.index(arg) + 1])
-        if arg == '-B' or arg == '--bibliography':
-            BIBLIOGRAPHY = os.path.join(os.getcwd(),
-                                        sys.argv[sys.argv.index(arg) + 1])
-        if arg == '--overwrite-pandoc-command':
-            PANDOC_COMMAND = sys.argv[sys.argv.index(arg) + 1]
-
-    if PRE_PROCESSING:
+    if ARGS.pre:
         pre_process()
-    elif POST_PROCESSING:
+    elif ARGS.post:
         post_process()
-    elif PANDOC_COMMAND is not None:
+    elif ARGS.new:
+        init(ARGS.new)
+    elif ARGS.pandoc_command is not None:
         pre_process()
         print("Your Pandoc command: ")
-        print(PANDOC_COMMAND)
+        print(ARGS.pandoc_command)
         print("Here goes with the Pandoc debug: ")
-        status = os.system(PANDOC_COMMAND)
+        status = os.system(ARGS.pandoc_command)
         if (status == 0):
             print("Pandoc convertation done.\n")
             post_process(output=os.path.join(
-                os.path.dirname(sys.argv[0]), OUTPUT))
+                os.getcwd(), ARGS.output))
         else:
             print(
                 "Pandoc convertation failed. Please check the Pandoc command and debug info.\n")
-    elif not PRE_PROCESSING and \
-            not POST_PROCESSING and \
-            OUTPUT is not None and \
-            FILE is not None and \
-            METADATA_FILE is not None:
+    elif not ARGS.pre and \
+            not ARGS.post and \
+            ARGS.output is not None and \
+            ARGS.file is not None and \
+            ARGS.metadata_file is not None:
         pre_process()
-        status = pandoc_process(source=FILE)
+        status = pandoc_process(source=ARGS.file)
         if (status == 0):
             print("Pandoc convertation done.\n")
             post_process(output=os.path.join(
-                os.path.dirname(sys.argv[0]), OUTPUT))
+                os.getcwd(), ARGS.output))
         else:
             print(
                 "Pandoc convertation failed. Please check the Pandoc command and debug info.\n")
-    else:
-        if len(sys.argv) > 1:
-            print('参数组合不正确。使用 -H / --help 查看帮助文本。')
