@@ -399,6 +399,8 @@ if __name__ == '__main__':
         post_process()
     elif ARGS.new:
         init(ARGS.new)
+    elif ARGS.clean:
+        clean()
     elif ARGS.pandoc_command is not None:
         pre_process()
         print("Your Pandoc command: ")
