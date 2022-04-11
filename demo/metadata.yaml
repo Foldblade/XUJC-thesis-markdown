@@ -47,17 +47,19 @@ fignos-plus-name: 图
 fignos-star-name: 图
 fignos-caption-name: 图
 fignos-caption-separator: space
-fignos-number-by-section: false # 是否按章节编号
+fignos-number-by-section: true # 是否按章节编号
+# fignos-section-separator: '-' # 章节编号分隔符，如 1-1，默认为 1.1
 
 # pandoc-tablenos 配置
 tablenos-plus-name: 表
 tablenos-star-name: 表
 tablenos-caption-name: 表
 tablenos-caption-separator: space
-tablenos-number-by-section: false # 是否按章节编号
+tablenos-number-by-section: true # 是否按章节编号
+# fignos-section-separator: '-' # 章节编号分隔符，如 1-1，默认为 1.1
 
 # pandoc-eqnos 配置
 eqnos-plus-name: 式
 eqnos-star-name: 式
-eqnos-eqref: true
-eqnos-number-by-section: false # 是否按章节编号
+eqnos-number-by-section: true # 是否按章节编号
+# fignos-section-separator: '-' # 章节编号分隔符，如 1-1，默认为 1.1

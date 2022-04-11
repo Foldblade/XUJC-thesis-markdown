@@ -134,18 +134,15 @@ def pandoc_process(*, source=os.path.join(WHERE_SCRIPT, 'demo/paper.md'),
                       # 资源文件路径，默认与输入文件一致
                       + '--resource-path="%s" ' % os.path.dirname(source)
                       + '--highlight-style monochrome '  # 考虑到最后需要打印，选了个灰度的高亮风格
-                      + '--filter pandoc-fignos '  # 图片自动编号
-                      + '--filter pandoc-tablenos '  # 表格自动编号
-                      # '--filter pandoc_eqnos '  # 公式自动编号，
-
-                      # 2022年 3 月 31 日，个人测试 pandoc_eqnos 存在 bug，会导致生成的 docx 文件无法打开
-                      # 开发者 nOkuda 提出了问题并提交了 PR，参见：https://github.com/tomduck/pandoc-eqnos/pull/64
-                      # 我们会下载 https://raw.githubusercontent.com/nOkuda/pandoc-eqnos/docxOpen/pandoc_eqnos.py
-                      # 并将 pandoc_eqnos.py 放置在本文件的同一层级目录下，并使用该文件作为 pandoc_qunos 的过滤器。
-                      # 请关注 https://github.com/tomduck/pandoc-eqnos/pull/64 是否被合并、
-                      # pandoc_eqnos 是否更新高于 2.5.0 的版本。若是、且想使用官方版本，
-                      # 请：注释下一行，并取消上方“公式自动编号”行的注释。
-                      + '--filter "%s" ' % os.path.join(WHERE_SCRIPT, 'pandoc_eqnos.py')
+                      # 图片自动编号
+                      + '--filter "%s" ' % os.path.join(
+                          WHERE_SCRIPT, 'pandoc_fignos.py')
+                      # 表格自动编号
+                      + '--filter "%s" ' % os.path.join(
+                          WHERE_SCRIPT, 'pandoc_tablenos.py')
+                      # 公式自动编号
+                      + '--filter "%s" ' % os.path.join(
+                          WHERE_SCRIPT, 'pandoc_eqnos.py')
 
                       # 上面三个自动编号过滤器必须前置于我们的自定义过滤器与 --citeproc
 
@@ -261,7 +258,11 @@ def pre_process():
         os.mkdir(os.path.join(WHERE_SCRIPT, 'bin'))
     download("http://www.zotero.org/styles/chinese-gb7714-2005-numeric",
              os.path.join(WHERE_SCRIPT, 'assets/chinese-gb7714-2005-numeric.csl'))
-    download("https://cdn.jsdelivr.net/gh/nOkuda/pandoc-eqnos@docxOpen/pandoc_eqnos.py",
+    download("https://cdn.jsdelivr.net/gh/foldblade/pandoc-fignos@section-separator/pandoc_fignos.py",
+             os.path.join(WHERE_SCRIPT, 'pandoc_fignos.py'))
+    download("https://cdn.jsdelivr.net/gh/foldblade/pandoc-tablenos@section-separator/pandoc_tablenos.py",
+             os.path.join(WHERE_SCRIPT, 'pandoc_tablenos.py'))
+    download("https://cdn.jsdelivr.net/gh/foldblade/pandoc-eqnos@section-separator/pandoc_eqnos.py",
              os.path.join(WHERE_SCRIPT, 'pandoc_eqnos.py'))
     if not os.path.exists(os.path.join(WHERE_SCRIPT, 'assets/template.docx')):
         zipDir(os.path.join(WHERE_SCRIPT, 'assets/template'),
