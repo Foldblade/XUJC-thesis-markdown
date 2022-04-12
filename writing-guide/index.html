@@ -359,18 +359,18 @@
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    图片、表格、公式的引用及自动标号
+    图片、表格、公式的引用及自动编号
   </a>
   
-    <nav class="md-nav" aria-label="图片、表格、公式的引用及自动标号">
+    <nav class="md-nav" aria-label="图片、表格、公式的引用及自动编号">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    图片及自动标号
+    图片及自动编号
   </a>
   
-    <nav class="md-nav" aria-label="图片及自动标号">
+    <nav class="md-nav" aria-label="图片及自动编号">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -652,18 +652,18 @@
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    图片、表格、公式的引用及自动标号
+    图片、表格、公式的引用及自动编号
   </a>
   
-    <nav class="md-nav" aria-label="图片、表格、公式的引用及自动标号">
+    <nav class="md-nav" aria-label="图片、表格、公式的引用及自动编号">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    图片及自动标号
+    图片及自动编号
   </a>
   
-    <nav class="md-nav" aria-label="图片及自动标号">
+    <nav class="md-nav" aria-label="图片及自动编号">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -864,7 +864,7 @@
 <span class="gi">+                  #  + &#39;--number-sections &#39;  # 章节自动编号</span><span class="w"></span>
 <span class="w"> </span>                     + source)<span class="w"></span>
 </code></pre></div>
-<h2 id="_6">图片、表格、公式的引用及自动标号</h2>
+<h2 id="_6">图片、表格、公式的引用及自动编号</h2>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>自动编号是可选的。您完全可以按照 Markdown 语法手动进行编号。</p>
@@ -883,7 +883,7 @@
 <p>有关我们自定义的配置项：</p>
 <div class="highlight"><pre><span></span><code><span class="nt">***-section-separator</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-&#39;</span><span class="w"> </span><span class="c1"># 章节编号分隔符，如 1-1，若注释或删除则默认为 1.1</span><span class="w"></span>
 </code></pre></div>
-<h3 id="_7">图片及自动标号</h3>
+<h3 id="_7">图片及自动编号</h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>该项目采用的是<a href="https://github.com/foldblade/pandoc-fignos">我们修改过的 pandoc-fignos</a>。但官方文档仍是适用的。</p>
@@ -895,7 +895,7 @@
 <p>您可以像这样插入一张图片：</p>
 <div class="highlight"><pre><span></span><code>![<span class="nt">Photo by Baim Hanif on Unsplash, Free to use under the Unsplash License</span>](<span class="na">readme.assets/baim-hanif-pYWuOMhtc6k-unsplash.jpg</span>){#fig:graduation}
 </code></pre></div>
-<p>其中，中括号内写图片的说明文字（题目），括号内是文件的路径，最后的大括号中 <code>#fig:</code> 来自 pandoc-fignos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 <code>+@fig:graduation{nolink=True}</code> 这样的语法去引用图片并实现自动标号，一般来说，行内引用以 <code>+</code> 开头，行首引用以 <code>*</code> 开头。<code>nolink=True</code> 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：<code>{+@fig:graduation}</code>。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 <a href="https://github.com/tomduck/pandoc-tablenos">pandoc-fignos 文档</a>。</p>
+<p>其中，中括号内写图片的说明文字（题目），括号内是文件的路径，最后的大括号中 <code>#fig:</code> 来自 pandoc-fignos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 <code>+@fig:graduation{nolink=True}</code> 这样的语法去引用图片并实现自动编号，一般来说，行内引用以 <code>+</code> 开头，行首引用以 <code>*</code> 开头。<code>nolink=True</code> 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：<code>{+@fig:graduation}</code>。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 <a href="https://github.com/tomduck/pandoc-tablenos">pandoc-fignos 文档</a>。</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>我们建议您使用 Markdown 编辑器生成相对 Markdown 文件的<strong>相对路径</strong>，因为我们会默认 Markdown 文件所在目录为资源所在目录。</p>
@@ -933,7 +933,7 @@
 <p>您可以在表格前后这样这样插入表格的说明文字（题目）：</p>
 <div class="highlight"><pre><span></span><code>: 知识共享许可协议的四项基本权利 {#tbl:CC_four_rights}
 </code></pre></div>
-<p>最后的大括号中 <code>#tbl:</code> 来自 pandoc-tablenos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 <code>+@tbl:CC_four_rights{nolink=True}</code> 这样的语法去引用图片并实现自动标号，一般来说，行内引用以 <code>+</code> 开头，行首引用以 <code>*</code> 开头。<code>nolink=True</code> 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：<code>{+@tbl:CC_four_rights}</code>。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 <a href="https://github.com/tomduck/pandoc-tablenos">pandoc-tablenos 文档</a>。</p>
+<p>最后的大括号中 <code>#tbl:</code> 来自 pandoc-tablenos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 <code>+@tbl:CC_four_rights{nolink=True}</code> 这样的语法去引用图片并实现自动编号，一般来说，行内引用以 <code>+</code> 开头，行首引用以 <code>*</code> 开头。<code>nolink=True</code> 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：<code>{+@tbl:CC_four_rights}</code>。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 <a href="https://github.com/tomduck/pandoc-tablenos">pandoc-tablenos 文档</a>。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>若需修改自动编号格式，可在元数据文件中修改它的配置。</p>
@@ -1130,7 +1130,7 @@
 <div class="highlight"><pre><span></span><code><span class="sb">$$</span><span class="nb"> </span><span class="nv">\pi</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">3</span><span class="nb">.</span><span class="m">141592653589793238462643</span><span class="nb"> </span><span class="nv">\ldots</span><span class="nb"> </span><span class="s">$$</span> <span class="nb">{</span>#eq:pi<span class="nb">}</span>
 <span class="sb">$$</span><span class="nb"> S </span><span class="o">=</span><span class="nb"> </span><span class="nv">\pi</span><span class="nb"> </span><span class="nv">\times</span><span class="nb"> r^{</span><span class="m">2</span><span class="nb">} </span><span class="s">$$</span> <span class="nb">{</span>#eq:area<span class="nb">_</span>of<span class="nb">_</span>circle<span class="nb">}</span>
 </code></pre></div>
-<p>最后的大括号中 <code>#eq:</code> 来自 pandoc-eqnos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 <code>+@eq:area_of_circle{nolink=True}</code> 这样的语法去引用图片并实现自动标号，一般来说，行内引用以 <code>+</code> 开头，行首引用以 <code>*</code> 开头。<code>nolink=True</code> 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：<code>{+@eq:area_of_circle}</code>。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 <a href="https://github.com/tomduck/pandoc-eqnos">pandoc-eqnos 文档</a>。</p>
+<p>最后的大括号中 <code>#eq:</code> 来自 pandoc-eqnos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 <code>+@eq:area_of_circle{nolink=True}</code> 这样的语法去引用图片并实现自动编号，一般来说，行内引用以 <code>+</code> 开头，行首引用以 <code>*</code> 开头。<code>nolink=True</code> 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：<code>{+@eq:area_of_circle}</code>。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 <a href="https://github.com/tomduck/pandoc-eqnos">pandoc-eqnos 文档</a>。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>若需修改自动编号格式，可在元数据文件中修改它的配置。</p>
