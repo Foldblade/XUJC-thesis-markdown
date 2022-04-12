@@ -749,15 +749,21 @@
 <ol>
 <li>预处理：下载所需的依赖</li>
 <li>Pandoc 处理：通过 Pandoc 生成一份 docx 文档，依赖自定义的 <code>filter.py</code> 过滤器</li>
-<li>后处理</li>
+<li>后处理<ol>
 <li>使用 python-docx 在封面插入校徽</li>
 <li>解包 docx 文档，解析 XML，删除第一个 <code>\newSectionInNewPage</code> 及其之前的全部内容；修改 Word 文档版式设定中的 字符间距控制 - 只压缩标点符号，这更符合中文的默认配置。</li>
+</ol>
+</li>
 </ol>
 <p>欲了解更多细节， 请移步 <code>processer.py</code>。</p>
 <h2 id="_3">模板文件样式说明</h2>
 <p>模板文件保存在 <code>/assets/template</code> 文件夹中，我们的程序会 Zip 打包该文件夹，并生成 <code>template.docx</code> 以供 Pandoc 使用。该节解释了 <code>template.docx</code> 模板文件内的各类样式，且给出了在 Markdown 中对应的写法。</p>
 <p>本模板的样式中，中文采取黑体的地方，西文字体统一采用 Arial；中文采取宋体的地方，西文字体统一采用 Times New Roman。</p>
 <p>以下所述“样式”，均满足了撰写规范[@ShaMenDa]；当撰写规范未做出明确规定时，则采取我个人的撰写习惯与本人指导老师的习惯。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>想要<a href="../modify-template-style/">修改模板文件样式</a>？</p>
+</div>
 <h3 id="title-zh">Title ZH</h3>
 <p>样式：小三号 Arial 字体加粗，居中</p>
 <p>备注：仅需在元数据中修改对应字段，自动生成</p>
