@@ -585,7 +585,26 @@
 <p class="admonition-title">Tip</p>
 <p>如果您使用 Typora 作为 Markdown 编辑器，并已经使用过其中的文档转换功能，那您很可能已经安装了 Pandoc。请在终端中使用 <code>pandoc --version</code> 检查版本是否高于 2.13，若否，请卸载后重新安装。</p>
 </div>
-<p>如您不想安装 Pandoc，请在该项目根目录下新建 <code>bin</code> 目录，再前往 <a href="https://github.com/jgm/pandoc/releases">Pandoc Releases 页</a>自行下载适合您系统版本的可执行文件，并将可执行文件放在 <code>bin</code> 目录中。在 Windows 上，目录结构看起来应该类似：</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>如果您不想安装 Pandoc，可以暂时跳过该节。在<a href="#新手上路">新手上路</a>一节中，我们会指导您将可执行文件安放在合适位置。</p>
+</div>
+<h3 id="python">Python</h3>
+<p>该项目中的过滤器采用 Python 语言写就。请自行前往 <a href="https://www.python.org/downloads/">Python 官网</a>下载安装。有关安装的具体步骤，您可以参阅：<a href="https://www.runoob.com/python3/python3-install.html">Python3 环境搭建</a>。</p>
+<h3 id="zotero">Zotero</h3>
+<p>我们采用 Zotero 进行文献管理，这是一个免费且开源的文献管理软件。请自行前往 <a href="https://www.zotero.org/download/">Zotero 官网</a>下载安装</p>
+<p>如果您只是体验该项目，则暂时可以不必安装。若您愿意采用此项目撰写您的毕业论文，则我们强烈推荐您安装 Zotero 及 Zotero Connector 浏览器插件，并参阅<a href="../appendix/">附录</a>一章中的 Zotero 简明教程。</p>
+<h2 id="_5">新手上路</h2>
+<p>进行新手上路前，请确保您的写作环境已经满足前文所述的环境要求。</p>
+<ol>
+<li><code>git clone</code> 或<a href="https://github.com/Foldblade/XUJC-thesis-markdown/archive/refs/heads/master.zip">下载</a>该项目</li>
+<li>
+<p>在终端中运行以下命令，安装所需的 Python 依赖：</p>
+<div class="highlight"><pre><span></span><code>pip install panflute python-docx regex lxml
+</code></pre></div>
+</li>
+<li>
+<p>（针对不想安装 Pandoc 者）请在该项目根目录下新建 <code>bin</code> 目录，再前往 <a href="https://github.com/jgm/pandoc/releases">Pandoc Releases 页</a>自行下载适合您系统版本的可执行文件。这通常会是一个压缩包，譬如 <code>pandoc-2.18-windows-x86_64.zip</code>，请在解压后，将可执行文件（如 <code>pandoc.exe</code>）放在 <code>bin</code> 目录中。在 Windows 上，目录结构看起来应该类似：</p>
 <div class="highlight"><pre><span></span><code>│  .gitignore
 │  filter.py
 │  LICENSE
@@ -599,24 +618,13 @@
 │
 └─略...
 </code></pre></div>
-<h3 id="python">Python</h3>
-<p>该项目中的过滤器采用 Python 语言写就。请自行前往 <a href="https://www.python.org/downloads/">Python 官网</a>下载安装。有关安装的具体步骤，您可以参阅：<a href="https://www.runoob.com/python3/python3-install.html">Python3 环境搭建</a>。</p>
-<h3 id="zotero">Zotero</h3>
-<p>我们采用 Zotero 进行文献管理，这是一个免费且开源的文献管理软件。请自行前往 <a href="https://www.zotero.org/download/">Zotero 官网</a>下载安装</p>
-<p>如果您只是体验该项目，则暂时可以不必安装。若您愿意采用此项目撰写您的毕业论文，则我们强烈推荐您安装 Zotero 及 Zotero Connector 浏览器插件。</p>
-<h2 id="_5">新手上路</h2>
-<p>进行新手上路前，请确保您的写作环境已经满足前文所述的环境要求。</p>
-<ol>
-<li><code>git clone</code> 或<a href="https://github.com/Foldblade/XUJC-thesis-markdown/archive/refs/heads/master.zip">下载</a>该项目</li>
-<li>在终端中运行以下命令，安装所需的 Python 依赖：</li>
-</ol>
-<div class="highlight"><pre><span></span><code>pip install panflute python-docx regex lxml
-</code></pre></div>
-<ol>
-<li>使用终端进入该项目根目录，运行：</li>
-</ol>
+</li>
+<li>
+<p>使用终端进入该项目根目录，运行：</p>
 <div class="highlight"><pre><span></span><code>python processer.py -O result.docx -F ./demo/readme.md -M ./demo/metadata.yaml -B ./demo/ref.bib
 </code></pre></div>
+</li>
+</ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>在该命令的执行过程中，可能会出现 <code>[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:</code> 字样，Don't panic，毋需惊慌，只要最末一行出现 <code>Output file:</code> 即告成功。</p>
@@ -625,6 +633,10 @@
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p><code>demo</code> 中的 <code>readme.md</code> 是由 <code>docs</code> 目录下的各文档拼合而成的。图片采用相对路径，取自 <code>docs</code> 目录下的 <code>readme.assets</code> 目录。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>有关命令的详细解读，请参考<a href="../command-line/">命令行参数</a>一章。</p>
 </div>
 
               
