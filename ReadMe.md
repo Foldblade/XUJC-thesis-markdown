@@ -40,60 +40,9 @@
 - Python 3.x （>= 3.7，更老版本未经测试）
 - Zotero，用于管理文献
 
-## 开发环境
-
-我们的开发及测试环境是：
-
-- Windows 10
-- Python 3.7.3
-- pandoc 2.18
-  Compiled with pandoc-types 1.22.2, texmath 0.12.5, skylighting 0.12.3,
-  citeproc 0.7, ipynb 0.2, hslua 2.2.0
-  Scripting engine: Lua 5.4
-
-该项目未经过大规模测试，如有问题，欢迎提出 issue。我们将尽力解答。
-
-## 环境搭建
-
-请自行前往 [Pandoc 官网](https://pandoc.org/installing.html)、[Python 官网](https://www.python.org/downloads/)、[Zotero 官网](https://www.zotero.org/download/)下载安装。
-
-⚠务请注意，Pandoc 与 Python 应加入 PATH。如若您从官网下载、采用安装包方式进行安装，Pandoc 似乎应该会默认加入 PATH。如您不想将 Pandoc 加入 PATH，请在该项目根目录下新建 `bin` 目录，再前往 [Pandoc Releases 页](https://github.com/jgm/pandoc/releases)自行下载适合您系统版本的可执行文件，并将可执行文件放在 `bin` 目录中。在 Windows 上，目录结构看起来应该类似：
-
-```
-│  .gitignore
-│  filter.py
-│  LICENSE
-│  processer.py
-│  略...
-│
-├─bin
-│  │  pandoc.exe
-│
-├─略...
-│
-└─略...
-```
-
 ## 快速上手
 
-进行快速上手前，请确保您的写作环境已经满足前文所述的环境要求。
-
-1. `git clone` 或下载该项目
-2. 在终端中运行以下命令，安装所需的 Python 依赖：
-
-```bash
-pip install panflute python-docx regex lxml pandoc-fignos pandoc-eqnos pandoc-tablenos
-```
-
-3. 使用终端进入该项目根目录，运行：
-
-```bash
-python processer.py -O result.docx -F ./demo/readme.md -M ./demo/metadata.yaml -B ./demo/ref.bib
-```
-
-该命令可能会出现 `[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:` 字样，Don't panic，毋需惊慌，只要最末一行出现 `Output file: ` 即告成功——您应该可以看到，在项目的根目录生成了`result.docx`——快去看看吧！
-
-想了解具体写法，请移步 [`demo/readme.md`](./demo/readme.md) 查看文档。
+您可以访问我们的[文档网站](https://foldblade.github.io/XUJC-thesis-markdown)查看文档，或是移步 [`demo/readme.md`](./demo/readme.md) 查看文档。
 
 敬请注意：在更新后，建议您运行 `python processer.py --clean` 以清理临时文件。
 

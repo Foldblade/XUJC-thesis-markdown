@@ -47,17 +47,17 @@ Markdown 是一种轻量级标记语言，排版语法简洁，让人们更多�
 3. 自动生成引文
 4. 快速生成符合学校排版要求的 docx 文档
 
-# 开始使用
+# 快速开始
 
 ## 环境要求
 
 - Pandoc >= 2.13 （更老版本未经测试）
 - Python 3.x （>= 3.7，更老版本未经测试）
-- Zotero，用于管理文献
+- Zotero，用于管理文献（可选）
 
 ## 开发环境
 
-我们的开发及测试环境是：
+我们的开发环境是：
 
 - Windows 10
 - Python 3.7.3
@@ -70,55 +70,106 @@ Markdown 是一种轻量级标记语言，排版语法简洁，让人们更多�
 
 ## 环境搭建
 
-请自行前往 [Pandoc 官网](https://pandoc.org/installing.html)、[Python 官网](https://www.python.org/downloads/)、[Zotero 官网](https://www.zotero.org/download/)下载安装。
+### Pandoc
 
-⚠务请注意，Pandoc 与 Python 应加入 PATH。如若您从官网下载、采用安装包方式进行安装，Pandoc 似乎应该会默认加入 PATH。如您不想将 Pandoc 加入 PATH，请在该项目根目录下新建 `bin` 目录，再前往 [Pandoc Releases 页](https://github.com/jgm/pandoc/releases)自行下载适合您系统版本的可执行文件，并将可执行文件放在 `bin` 目录中。在 Windows 上，目录结构看起来应该类似：
+Pandoc 可实现不同标记语言间的格式转换，是该项目的重要依赖。请前往 [Pandoc 官网](https://pandoc.org/installing.html)下载安装。
 
-```
-│  .gitignore
-│  filter.py
-│  LICENSE
-│  processer.py
-│  略...
-│
-├─bin
-│  │  pandoc.exe
-│
-├─略...
-│
-└─略...
-```
+> 💡 提示：如果您使用 Typora 作为 Markdown 编辑器，并已经使用过其中的文档转换功能，那您很可能已经安装了 Pandoc。请在终端中使用 `pandoc --version` 检查版本是否高于 2.13，若否，请卸载后重新安装。
 
-## 快速上手
+> 💡 提示：如果您不想安装 Pandoc，可以暂时跳过该节。在[新手上路](#新手上路)一节中，我们会指导您将可执行文件安放在合适位置。
 
-进行快速上手前，请确保您的写作环境已经满足前文所述的环境要求。
+### Python
 
-1. `git clone` 或下载该项目
+该项目中的过滤器采用 Python 语言写就。请自行前往 [Python 官网](https://www.python.org/downloads/)下载安装。有关安装的具体步骤，您可以参阅：[Python3 环境搭建](https://www.runoob.com/python3/python3-install.html)。
+
+> ⚠ 注意：Python 需要加入 PATH。
+
+### Zotero
+
+我们采用 Zotero 进行文献管理，这是一个免费且开源的文献管理软件。请自行前往 [Zotero 官网](https://www.zotero.org/download/)下载安装
+
+如果您只是体验该项目，则暂时可以不必安装。若您愿意采用此项目撰写您的毕业论文，则我们强烈推荐您安装 Zotero 及 Zotero Connector 浏览器插件，并参阅[附录](appendix.md)一章中的 Zotero 简明教程。
+
+## 新手上路
+
+进行新手上路前，请确保您的写作环境已经满足前文所述的环境要求。
+
+1. `git clone` 或[下载](https://github.com/Foldblade/XUJC-thesis-markdown/archive/refs/heads/master.zip)该项目
 2. 在终端中运行以下命令，安装所需的 Python 依赖：
 
+    ```bash
+    pip install panflute python-docx regex lxml
+    ```
+
+3. （针对不想安装 Pandoc 者）请在该项目根目录下新建 `bin` 目录，再前往 [Pandoc Releases 页](https://github.com/jgm/pandoc/releases)自行下载适合您系统版本的可执行文件。这通常会是一个压缩包，譬如 `pandoc-2.18-windows-x86_64.zip`，请在解压后，将可执行文件（如 `pandoc.exe`）放在 `bin` 目录中。在 Windows 上，目录结构看起来应该类似：
+
+    ```
+    │  .gitignore
+    │  filter.py
+    │  LICENSE
+    │  processer.py
+    │  略...
+    │
+    ├─bin
+    │  └─ pandoc.exe
+    │
+    ├─略...
+    │
+    └─略...
+    ```
+
+4. 使用终端进入该项目根目录，运行：
+
+    ```bash
+    python processer.py -O result.docx -F ./demo/readme.md -M ./demo/metadata.yaml -B ./demo/ref.bib
+    ```
+
+> ⚠ 注意：在该命令的执行过程中，可能会出现 `[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:` 字样，Don't panic，毋需惊慌，只要最末一行出现 `Output file:` 即告成功。
+
+如不出意外，您应该可以看到，在项目的根目录生成了`result.docx`——快去体验吧！
+
+> 💡 提示：`demo` 中的 `readme.md` 是由 `docs` 目录下的各文档拼合而成的。图片采用相对路径，取自 `docs` 目录下的 `../docs/readme.assets` 目录。
+
+> 💡 提示：有关命令的详细解读，请参考[命令行参数](command-line.md)一章。
+
+
+# 从脚手架开始写作
+
+我们提供了脚手架以助您快速开始。
+
+您可以使用如下命令以创建一个脚手架：
+
 ```bash
-pip install panflute python-docx regex lxml pandoc-fignos pandoc-eqnos pandoc-tablenos
+python processer.py --new path_of_your_destination_directory
 ```
 
-3. 使用终端进入该项目根目录，运行：
+例如，通过以下命令，您可以在 D 盘 `my-thesis` 目录创建一个脚手架。
 
 ```bash
-python processer.py -O result.docx -F ./demo/readme.md -M ./demo/metadata.yaml -B ./demo/ref.bib
+python processer.py --new "D:\my-thesis"
 ```
 
-该命令可能会出现 `[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:` 字样，Don't panic，毋需惊慌，只要最末一行出现 `Output file:` 即告成功——您应该可以看到，在项目的根目录生成了`result.docx`——快去看看吧！
+您会在目录中看到如下两个文件：
 
-# 如何撰写
+- metadata.yaml
+- thesis.md
 
-我们建议您做好 demo 目录下所有文件的备份，最好一开始就复制一份出来，以免修改过多导致自己都不知道修改了什么。
+其中，`thesis.md` 提供了一个包含封面、中英文摘要、目录、正文、结论、致谢、参考文献、附录的论文基础模板；而 `metadata.yaml` 则是元数据与配置项所在地。
 
-如果您没有足够的耐心阅读文档，我们更建议您复制本文件后进行修改——且时常运行生成命令以检查错误，而不是从一份空白的 Markdown 文档开始。
+您可以从脚手架快速开始撰写——当然，永远要记得备份您的数据！
+
+有关写作的更多细节，请参阅[撰写指南](writing-guide.md)一章。
+
+
+# 撰写指南
+
+我们建议您做好 demo 目录下所有文件的备份，最好一开始就复制一份出来。如果您没有足够的耐心阅读文档，我们更建议运用脚手架开始写作，且时常运行生成命令以检查错误，而不是从一份空白的 Markdown 文档开始。
 
 ## Markdown
 
 Markdown 的基础语法，我相信凭借自己实力找到这个项目的人无需多言。
 
-但如果您还不会 Markdown，我建议您花费一些时间学习它——比起排版浪费的时间，我认为您更应该将时间花费在学习 Markdown 上。您可以参考[这个教程](https://markdown.com.cn/intro.html)，或是[这个知乎问题](https://www.zhihu.com/question/20409634)。当然，学好 Word 排版也是很有用的，但如果您连排版毕业论文都不会，我还是建议您好好学习一下 Office 操作。
+但如果您还不会 Markdown，我建议您花费一些时间学习它。您可以参考[这个教程](https://markdown.com.cn/intro.html)，或是[这个知乎问题](https://www.zhihu.com/question/20409634)。
 
 但单纯的 Markdown 并不足以支持我们完成毕业论文的生成。因此，请继续向下看。
 
@@ -126,9 +177,9 @@ Markdown 的基础语法，我相信凭借自己实力找到这个项目的人�
 
 由于 Markdown 到 docx 转换采用的是 Pandoc[@Pandoc]，这里就不得不提 Pandoc Markdown 语法了。您可以在撰写时使用 Pandoc Markdown 语法实现一些 Pandoc 特性，不过这可能需要您对 Pandoc 有着熟练掌握，并按需修改 `filter.py`。具体细节，请查阅[官方文档](https://pandoc.org/MANUAL.html#pandocs-markdown)，或是[这份（可能有些过时的）中文翻译](http://pages.tzengyuxio.me/pandoc/)。
 
-💡提示：如您需保留一个空段落——或者更通常情况下的，换行；例如，您的指导老师要求您在“结论”后空一行；那您应该在结论后空出一段，并输入四个空格。
-
 ## 自定义类 $\LaTeX$ 命令
+
+> ℹ️ 信息：这一节中包含封面、原创性声明、中英文摘要、目录等的生成。
 
 您可以使用我们自定义的一些类 $\LaTeX$ 命令辅助 docx 的排版。相信您应该已经在本文件的开头部分见过它们了：
 
@@ -143,23 +194,37 @@ Markdown 的基础语法，我相信凭借自己实力找到这个项目的人�
 \pageBreak - 分页符
 ```
 
+比如，依照撰写规范[@ShaMenDa]，引言及正文之间是需要另起一页的。所以，您应该在引言与第一章之间，插入一个 `\pageBreak`。
+
+> 💡 提示：如若您的学院要求“每个章节以新一页作为开始”，则也需在每个章节标题前插入一个 `\pageBreak`。
+
+> ⚠ 注意：您**必须**在文档开头插入一个 `\newSectionInNewPage`。
+
+Pandoc 在生成时，会自动在文档开头生成元数据中的标题、作者等信息，这对我们来说是多余的。因此，在后处理流程中，我们会删除第一个 `\newSectionInNewPage` 及其之前的所有内容。
+
 部分 Markdown 编辑器支持 `[TOC]` 目录。您也可以在适当位置插入 `[TOC]`，我们的过滤器会将 `[TOC]` 视为 `\toc`。这些命令的转换过程发生在项目根目录的 `filter.py` 中，您可以自行前往，查看具体的转换与实现。
 
-封面、原创性声明均取自学校提供的模板文件。有关封面内容、页眉内容的自动填写，请参阅下一节[元数据](#元数据)。
-
-您**必须**在文档开头插入一个 `\newSectionInNewPage`。Pandoc 在生成时，会自动在文档开头生成元数据中的标题、作者等信息，这对我们来说是多余的。因此，在后处理流程中，我们会删除第一个 `\newSectionInNewPage` 及其之前的所有内容。
-
-比如，依照撰写规范[@ShaMenDa]，引言及正文之间是需要另起一页的。所以，您应该在引言与第一章之间，插入一个 `\pageBreak`。如若您的学院要求“每个章节以新一页作为开始”，则也需在每个章节标题前插入一个 `\pageBreak`。
-
-## 封底
-
-默认会在文档末尾生成空白页作为封底。如您不需要，请参阅[不在文档末尾生成空白页作为封底](#不在文档末尾生成空白页作为封底)一节，在生成命令后加上参数 `--no-blank-back-cover`。
+封面、原创性声明均取自学校提供的模板文件，唯进行了排版的优化，如将“回车换页”优化为了更科学的分页符换页，此改动不会影响您的使用。
 
 ## 元数据
 
-Pandoc 提供了 YAML 元数据扩展。您可以发现一个 `demo/metadata.yaml` 文件。在该文件中，您可以修改标题、作者等信息，撰写您的摘要，也可以进行一些诸如图片自动编号、表格自动编号、公式自动编号的配置。
+> ℹ️ 信息：这一节中包含封面中的标题、作者、院系、专业、学号、指导教师、职称等信息的配置，以及中英文摘要和关键词的配置。
+
+`demo/metadata.yaml` 文件以及脚手架中的 `metadata.yaml` 均是我们的元数据文件。在该文件中，您可以修改封面中的标题、作者等信息，撰写您的摘要，也可以进行一些诸如图片自动编号、表格自动编号、公式自动编号的配置。
 
 您可以用代码或文本编辑器打开 YAML 文件进行编辑。如果您并不熟悉 YAML 语法，请在完成编辑后将全部内容复制到 [YAML 校验工具](https://www.bejson.com/validators/yaml_editor/)进行校验，通过后再进行保存。
+
+> 💡 提示：YAML 的注释用 `#`。
+
+## 封底
+
+默认会在文档末尾生成空白页作为封底。如您不需要，请参阅[不在文档末尾生成空白页作为封底](command-line.md#不在文档末尾生成空白页作为封底)一节，在生成命令后加上参数 `--no-blank-back-cover`。
+
+## 段落
+
+自由地按照 Markdown 语法撰写段落即可。要创建段落，请使用空白行将一行或多行文本进行分隔。不要用空格或制表符缩进段落。
+
+> 💡 提示：如您需保留一个空段落——或者更通常意义上的“换行”；例如，您的指导老师要求您在“结论”后空一行；那您应该在结论后空出一段，并在那一段落中输入四个空格。由于 Markdown 靠两个换行符进行段落的划分，因此，实际的 Markdown 应该表现为：结论与结论第一段之间空出三行，在其中的第二行输入四个空格。
 
 ## 章节标题及自动编号
 
@@ -175,73 +240,117 @@ Pandoc 提供了 YAML 元数据扩展。您可以发现一个 `demo/metadata.yam
       - （1）
         - ①
 
-等，这需要您在撰写标题时就手动加入，如 `# 第一章 绪论`而不像自动编号这样的 `# 绪论`。请在根目录的 `processer.py` 中找到 `pandoc_process` 函数，在其中注释以下内容：
+等，这需要您在撰写标题时就手动加入。您需要手动撰写标题如 `# 第一章 绪论`而不像自动编号这样的 `# 绪论`。此外，您还需要在根目录的 `processer.py` 中找到 `pandoc_process` 函数，在其中注释以下内容：
 
 ````diff
 --- processer.py
                       + '--csl "%s" ' % os.path.join(WHERE_SCRIPT, 'assets/chinese-gb7714-2005-numeric.csl')
--                      + '--number-sections '  # 章节自动编号
-+                 #    + '--number-sections '  # 章节自动编号
+-                     + '--number-sections '  # 章节自动编号
++                  #  + '--number-sections '  # 章节自动编号
                       + source)
 ````
 
-## 图片、表格、公式的引用及自动标号
+## 图片、表格、公式的引用及自动编号
 
-该功能采用 [pandoc-xnos](https://github.com/tomduck/pandoc-xnos) 过滤器套件实现[@Duck2022pandoc-xnos]。您可以在 `metadata.yaml` 中修改它的配置：
+> ℹ️ 信息：自动编号是可选的。您完全可以按照 Markdown 语法手动进行编号。
+
+> ⚠ 注意：该项目采用的是我们修改过的 pandoc-xnos 部分组件，但官方文档仍是适用的。
+
+该功能采用 [pandoc-xnos](https://github.com/tomduck/pandoc-xnos) 过滤器套件实现[@Duck2022pandoc-xnos]。您可以在元数据文件中修改它的配置：
 
 ```yaml
 ***-plus-name: 图 # 行内引用
 ***-star-name: 图 # 行首引用（汉字理论上是和行内没区别的，主要面向西文用户，大小写需求）
-***-caption-name: 图 # 描述文字名称，如 图、Fig、Figure 等
-***-caption-separator: period # 描述文字编号与描述文本分隔符
+***-caption-name: 图 # 说明文字（题目）名称，如 图、Fig、Figure 等
+***-caption-separator: space # 说明文字（题目）编号与说明文字（题目）分隔符，可取值为 none, colon, period, space, quad, newline
 ***-number-by-section: false # 是否按章节编号
 ```
 
-### 图片及自动标号
+有关我们自定义的配置项：
+
+```yaml
+***-section-separator: '-' # 章节编号分隔符，如 1-1，若注释或删除则默认为 1.1
+```
+
+### 图片及自动编号
+
+> ⚠ 注意：该项目采用的是[我们修改过的 pandoc-fignos](https://github.com/foldblade/pandoc-fignos)。但官方文档仍是适用的。
 
 该功能采用 pandoc-fignos[Duck2022pandoc-fignos] 实现。
 
 在 Word 中的显示效果则类似：
 
-图片说明文字：`图 1  这是图片描述`
+图片说明文字（题目）：`图 1.1  这是图片描述`
 
-图片引用：`图 1`
+图片引用：`图 1.1`
 
 您可以像这样插入一张图片：
 
 ```markdown
-![Photo by Baim Hanif on Unsplash, Free to use under the Unsplash License](readme.assets/baim-hanif-pYWuOMhtc6k-unsplash.jpg){#fig:graduation}
+![Photo by Baim Hanif on Unsplash, Free to use under the Unsplash License](../docs/readme.assets/baim-hanif-pYWuOMhtc6k-unsplash.jpg){#fig:graduation}
 ```
 
-其中，中括号内写图片的说明文字，括号内是文件的路径（建议用编辑器生成相对 markdown 文件的**相对路径**，因为我们会默认 markdown 文件所在目录为资源所在目录），最后的大括号中 `#fig:` 来自 pandoc-fignos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@fig:graduation{nolink=True}` 这样的语法去引用图片并实现自动标号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@fig:graduation}`。具体细节，请参阅 [pandoc-fignos 文档](https://github.com/tomduck/pandoc-tablenos)。
+其中，中括号内写图片的说明文字（题目），括号内是文件的路径，最后的大括号中 `#fig:` 来自 pandoc-fignos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@fig:graduation{nolink=True}` 这样的语法去引用图片并实现自动编号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@fig:graduation}`。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 [pandoc-fignos 文档](https://github.com/tomduck/pandoc-tablenos)。
+
+> 💡 提示：我们建议您使用 Markdown 编辑器生成相对 Markdown 文件的**相对路径**，因为我们会默认 Markdown 文件所在目录为资源所在目录。
+
+> ℹ️ 信息：若需修改自动编号格式，可在元数据文件中修改它的配置。
+
+> 💡 提示：如果你需要修改章节分隔符，如从 图 1.1 变成 图 1-1，则应该在元数据中设置 `fignos-section-separator: '-'`。
+
+如果您想手动为图片编号，仅需按 Markdown 标准语法撰写：
+
+```markdown
+![图 1.1 Photo by Baim Hanif on Unsplash, Free to use under the Unsplash License](../docs/readme.assets/baim-hanif-pYWuOMhtc6k-unsplash.jpg)
+```
+
+#### 样例
+
+> ⚠ 注意：样例部分唯有在生成的 docx 中才能看到最终效果。在 Markdown 编辑器或渲染结果中，您可以参考学习语法。
 
 上述语法插入的图片来自 [Unsplash](https://unsplash.com/s/photos/graduation?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) 网站的 [Baim Hanif](https://unsplash.com/@baim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)，采用 [Unsplash License](https://unsplash.com/license) 授权免费使用，如下+@fig:graduation{nolink=True}所示：
 
-![Photo by Baim Hanif on Unsplash,  Free to use under the Unsplash License](readme.assets/baim-hanif-pYWuOMhtc6k-unsplash.jpg){#fig:graduation}
+![Photo by Baim Hanif on Unsplash,  Free to use under the Unsplash License](../docs/readme.assets/baim-hanif-pYWuOMhtc6k-unsplash.jpg){#fig:graduation}
 
 另一张来自 [Unsplash](https://unsplash.com/s/photos/graduation?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) 网站 [Joan Kwamboka](https://unsplash.com/@city_child?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) 的图片，采用 [Unsplash License](https://unsplash.com/license) 授权免费使用，如下{+@fig:graduation2}所示：
 
-![Photo by Joan Kwamboka on Unsplash, Free to use under the [Unsplash License](https://unsplash.com/license)](readme.assets/joan-kwamboka-hvL7qlvZ5T4-unsplash.jpg){#fig:graduation2}
+![Photo by Joan Kwamboka on Unsplash, Free to use under the Unsplash License](../docs/readme.assets/joan-kwamboka-hvL7qlvZ5T4-unsplash.jpg){#fig:graduation2}
 
 ### 表格及自动编号
+
+> ⚠ 注意：该项目采用的是[我们修改过的 pandoc-tablenos](https://github.com/foldblade/pandoc-tablenos)，但官方文档仍是适用的。
 
 该功能采用 pandoc-tablenos[@Duck2022pandoc-tablenos] 实现。
 
 在 Word 中的显示效果则类似：
 
-表格说明文字：`表 1  这是表格描述`
+表格说明文字（题目）：`表 1.1  这是表格描述`
 
-表格引用：`表 1`
+表格引用：`表 1.1`
 
-表格的插入建议采用编辑器。目前，Markdown 中的表格并不支持合并单元格；HTML 表格也暂时不被支持。我们建议您留空所需的单元格，在生成 Word 文档后手动合并。我们的表格样式采用三线表，有关表格样式的详细情况，请参阅后文 [Table](#Table) 一节。
+表格的插入建议采用编辑器。目前，Markdown 中的表格并不支持合并单元格；HTML 表格也暂时不被支持。我们建议您留空所需的单元格，在生成 Word 文档后手动合并。我们的表格样式采用三线表，有关表格样式的详细情况，请参阅[项目实现](implement.md)一章中的[Table](#Table) 一节。
 
-您可以在表格前后这样这样插入表格的说明文字：
+您可以在表格前后这样这样插入表格的说明文字（题目）：
 
 ```markdown
 : 知识共享许可协议的四项基本权利 {#tbl:CC_four_rights}
 ```
 
-最后的大括号中 `#tbl:` 来自 pandoc-tablenos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@tbl:CC_four_rights{nolink=True}` 这样的语法去引用图片并实现自动标号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@tbl:CC_four_rights}`。具体细节，请参阅 [pandoc-tablenos 文档](https://github.com/tomduck/pandoc-tablenos)。
+最后的大括号中 `#tbl:` 来自 pandoc-tablenos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@tbl:CC_four_rights{nolink=True}` 这样的语法去引用图片并实现自动编号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@tbl:CC_four_rights}`。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 [pandoc-tablenos 文档](https://github.com/tomduck/pandoc-tablenos)。
+
+> ℹ️ 信息：若需修改自动编号格式，可在元数据文件中修改它的配置。
+
+> 💡 提示：如果你需要修改章节分隔符，如从 表 1.1 变成 表 1-1，则应该在元数据中设置 `tablenos-section-separator: '-'`。
+
+如果您想手动为表格编号，仅需按如下语法撰写：
+
+```markdown
+: 表 1.1 知识共享许可协议的四项基本权利 {#tbl:CC_four_rights}
+```
+
+#### 样例
+
+> ⚠ 注意：样例部分唯有在生成的 docx 中才能看到最终效果。在 Markdown 编辑器或渲染结果中，您可以参考学习语法。
 
 下+@tbl:CC_four_rights{nolink=True}引用自[知识共享许可协议 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE)：
 
@@ -270,63 +379,58 @@ Pandoc 提供了 YAML 元数据扩展。您可以发现一个 `demo/metadata.yam
 
 ### 公式及自动编号
 
+> ⚠ 注意：该项目采用的是[我们修改过的 pandoc-eqnos](https://github.com/foldblade/pandoc-tablenos)，但官方文档仍是适用的。
+
 该功能采用 pandoc-eqnos[@Duck2022pandoc-eqnos] 实现。
 
 在 Word 中的显示效果则类似：
 
-公式显示：`pi = 3.14159265  (1)`
+公式显示：`pi = 3.14159265  (1.1)`
 
-公式引用：开启美国数学协会风格：`式 (1)`、关闭美国数学协会风格：`式 1`
+公式引用：开启美国数学协会风格：`式 (1.1)`、关闭美国数学协会风格：`式 1.1`
 
-美国数学协会风格默认开启。您可以在 `metadata.yaml` 中修改它的配置，将 `true` 改为 `false`：
+美国数学协会风格默认关闭。您可以在 `metadata.yaml` 中修改它的配置，去除注释并设定为 `true`：
 
 ```yaml
 eqnos-eqref: true # 开启美国数学协会（AMS）风格引用
 ```
 
-您可以以下列命令输入 $\TeX$ 格式公式：
+您可以以下列语法输入公式：单行公式使用双美元符 `$$` 包裹，行内公式使用单美元符 `$` 包裹，公式需遵循 $\TeX$ 语法，您可以使用[LaTeX 公式编辑器](https://www.latexlive.com)辅助生成。
 
-```markdown
+```tex
 $$ \pi = 3.141592653589793238462643 \ldots $$ {#eq:pi}
-
 $$ S = \pi \times r^{2} $$ {#eq:area_of_circle}
 ```
 
-最后的大括号中 `#eq:` 来自 pandoc-eqnos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@eq:area_of_circle{nolink=True}` 这样的语法去引用图片并实现自动标号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@eq:area_of_circle}`。具体细节，请参阅 [pandoc-eqnos 文档](https://github.com/tomduck/pandoc-eqnos)。
+最后的大括号中 `#eq:` 来自 pandoc-eqnos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@eq:area_of_circle{nolink=True}` 这样的语法去引用图片并实现自动编号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@eq:area_of_circle}`。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 [pandoc-eqnos 文档](https://github.com/tomduck/pandoc-eqnos)。
+
+> ℹ️ 信息：若需修改自动编号格式，可在元数据文件中修改它的配置。
+
+> 💡 提示：如果你需要修改章节分隔符，如从 式 1.1 变成 式 1-1，则应该在元数据中设置 `eqnos-section-separator: '-'`。
+
+如果您想手动为公式编号，仅需按如下语法撰写：
+
+```tex
+$$ S = \pi \times r^{2} $$ (1.1)
+```
+
+#### 样例
+
+> ⚠ 注意：样例部分唯有在生成的 docx 中才能看到最终效果。在 Markdown 编辑器或渲染结果中，您可以参考学习语法。
 
 $$ \pi = 3.141592653589793238462643 \ldots $$ {#eq:pi}
 
 $$ S = \pi \times r^{2} $$ {#eq:area_of_circle}
 
-*@eq:pi{nolink=True} 展现了 Pi，它是一个无理数。计算圆的面积，一般会用{+@eq:area_of_circle}。
+*@eq:pi{nolink=True} 展现了圆周率 π，它是一个无理数。计算圆的面积，一般会用{+@eq:area_of_circle}。
 
 行内公式，可以使用语法 `$\pi = 3.141592653589793238462643 \ldots$` 。结果是这样的：$\pi = 3.141592653589793238462643 \ldots$。
 
-⚠请注意：由于本文档中出现了部分的 $\LaTeX$ 语法，在转换时可能出现 Warning，诸如 `[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:` 。在撰写时，请尽量保证公式采用 $\TeX$ 语法。
-
-⚠另请注意：根据笔者在 2022 年 3 月 31 日的测试，pandoc_eqnos 存在 bug，会导致生成的 docx 文件无法打开。开发者 nOkuda 提出了问题并提交了 [Pull Requests](https://github.com/tomduck/pandoc-eqnos/pull/64)。目前，我们会下载 [pandoc_eqnos.py](https://raw.githubusercontent.com/nOkuda/pandoc-eqnos/docxOpen/pandoc_eqnos.py) 文件，并将 pandoc_eqnos.py 放置在本文件的同一层级目录下，并使用该文件作为 pandoc_qunos 的过滤器。请关注上述 Pull Requests 是否被合并、pandoc_eqnos 是否更新高于 2.5.0 的版本。若是、且想使用官方版本，请按下修改 `processer.py`：
-
-```diff
---- processer.py
-                      + '--filter pandoc-fignos '  # 图片自动编号
-                      + '--filter pandoc-tablenos '  # 表格自动编号
--                     # '--filter pandoc_eqnos '  # 公式自动编号，
-+                     '--filter pandoc_eqnos '  # 公式自动编号，
-
-                      # 2022年 3 月 31 日，个人测试 pandoc_eqnos 存在 bug，会导致生成的 docx 文件无法打开
-                      # 开发者 nOkuda 提出了问题并提交了 PR，参见：https://github.com/tomduck/pandoc-eqnos/pull/64
-                      # 我们会下载 https://raw.githubusercontent.com/nOkuda/pandoc-eqnos/docxOpen/pandoc_eqnos.py
-                      # 并将 pandoc_eqnos.py 放置在本文件的同一层级目录下，并使用该文件作为 pandoc_qunos 的过滤器。
-                      # 请关注 https://github.com/tomduck/pandoc-eqnos/pull/64 是否被合并、
-                      # pandoc_eqnos 是否更新高于 2.5.0 的版本。若是、且想使用官方版本，
-                      # 请：注释下一行，并取消上方“公式自动编号”行的注释。
--                     + '--filter "%s" ' % os.path.join(WHERE_SCRIPT, 'pandoc_eqnos.py')
-+                     # + '--filter "%s" ' % os.path.join(WHERE_SCRIPT, 'pandoc_eqnos.py')
-
-                      # 上面三个自动编号过滤器必须前置于我们的自定义过滤器与 --citeproc
-```
+> ⚠ 注意：由于本文档中出现了部分的 $\LaTeX$ 语法，在转换时可能出现 Warning，诸如 `[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:` 。在撰写时，请尽量保证公式采用 $\TeX$ 语法。
 
 ## 代码与代码高亮
+
+> ⚠ 注意：代码块会采用 Consolas 字体，这可能无法符合部分指导老师对正文部分的要求。请谨慎使用。
 
 代码请使用 Markdown 代码块。代码高亮风格，参阅[Pandoc 文档 Syntax highlighting 一节](https://pandoc.org/MANUAL.html#syntax-highlighting)。考虑到打印需求，我们采用了一个灰度风格`monochrome`。高亮风格的样例，可以在[这里](https://github.com/kaityo256/pandoc_highlight)查看。如需修改，请在根目录的 `processer.py` 中找到 `pandoc_process` 函数中修改：
 
@@ -354,13 +458,43 @@ $$ S = \pi \times r^{2} $$ {#eq:area_of_circle}
 
 ### 引文文件与引文自动生成
 
-引文依靠 Pandoc 自动生成，需要提供一个 BibTeX 格式[@BibTeX]引文文件。您可以在 `/demo/ref.bib` 中找到本文使用的引文文件。具体教程，请参阅附录中的 [Zotero 简明教程](## Zotero_简明教程)。
+引文依靠 Pandoc 自动生成，需要提供一个 BibTeX 格式[@BibTeX]引文文件。您可以在 `/demo/ref.bib` 中找到本文使用的引文文件。具体教程，请参阅附录中的 [Zotero 简明教程](#Zotero_简明教程)。
 
-您可以通过以下语法插入引文：`[@BibTeX]`。在希望插入引文的地方，插入方括号，`@` 后跟 Zotero 内的 Citation Key 即可。比如，我又引用了一遍 BibTeX 官网[@BibTeX]。
+您可以通过以下语法插入引文：`[@BibTeX]`。在希望插入引文的地方，插入方括号，`@` 后跟 Zotero 内的 Citation Key 即可。
 
-# 文件转换与目标生成
+#### 样例
 
-以下命令**均假设您处于本项目目录内使用**。
+> ⚠ 注意：样例部分唯有在生成的 docx 中才能看到最终效果。在 Markdown 编辑器或渲染结果中，您可以参考学习语法。
+
+比如，我又引用了一遍 BibTeX 官网[@BibTeX]。
+
+
+# 修改模板文件
+
+有时，您也许会对默认的样式不满意，希望进行修改。
+
+在修改模板文件前，您应至少成功运行过一次[命令行参数](command-line.md)一章中的[一般性使用](#一般性使用)或[仅进行预处理](#仅进行预处理)的命令。
+
+前往本项目内的 `assets` 目录，您将找到一份 `template.docx`。请打开该文件并修改其中的样式。
+
+我们在[项目实现](implement.md)一章的[模板文件样式说明](#模板文件样式说明)一节中，列出了我们用到的、且做出主要修改的样式。
+
+您可以在生成的 docx 文件中，确认要修改的样式，并在 `template.docx` 中做出修改。
+
+> ⚠ 注意：是修改“样式”，而非在文档内容上进行编辑。
+
+![image-20220406192315077](../docs/readme.assets/image-20220406192315077.png)
+
+建议您调出“应用样式”窗口，查找或输入您欲修改的样式，点击“修改”以进行修改。
+
+> 🚨 危险：完成修改后，务请**自行备份**好您的 `template.docx`。[命令行参数](command-line.md)一章中的[清理](#清理)命令会删除 `assets/template.docx`。
+
+
+# 命令行参数
+
+> ⚠ 注意：以下命令给出的示例均假设您处于本项目根目录内运行。并不是所有示例都是可以成功运行的。
+
+> ℹ️ 信息：命令行参数理论上支持相对路径与绝对路径。您可以在我们的项目内外运行我们的 `procsser.py`，命令行参数的路径可以是绝对路径或是当前工作目录的相对路径。
 
 ## 一般性使用
 
@@ -400,6 +534,12 @@ python processer.py --post -O result.docx -F ./build/pandoc_processed.docx
 python processer.py --clean
 ```
 
+将清理预处理生成的内容。建议在每次更新后运行。
+
+> 🚨 危险：完成`assets/template.docx`修改后，请**自行备份**好您的 。我们的清理命令会删除 `assets/template.docx`。
+
+> 🚨 危险：运行该命令，将会删除 `bin`、`assets` 目录，请不要将您的修改内容留存在这些目录内。
+
 该命令将清理临时文件。
 
 ## 帮助文本
@@ -416,49 +556,29 @@ python processer.py ...略... --no-blank-back-cover
 
 若不添加该参数，则默认会在文档末尾生成空白页作为封底。
 
-## 创建模板
+## 创建脚手架
 
 ```bash
 python processer.py --new path_of_your_destination_directory
 ```
 
-使用该命令，在指定目录创建最小化的模板以便快速开始，
+使用该命令，在指定目录创建脚手架以便快速开始，
 
 ## 更多
 
 参阅 `processer.py`。
 
-时间紧迫，参数未经过详细测试。使用非上方指明参数写法，可能会产生意料之外的结果。
 
 # 生成后的操作
 
 您在打开生成的 docx 文件时，可能会遇到以下对话框。请选择是，以生成目录。
 
-![更新域提示](readme.assets/image-20220402190735954.png){#fig:generated_docx}
+![更新域提示](../docs/readme.assets/image-20220402190735954.png){#fig:generated_docx}
 
 您需要检查生成后的 docx 文件中图片的排版，调整图片的大小。
 
 当您的标题过长时，您可以按住 Shift + Enter，在需要的地方插入**软回车**。
 
-# 修改模板文件
-
-有时，您也许会对默认的样式不满意，希望进行修改。
-
-在修改模板文件前，您应至少成功运行过一次[一般性使用](#一般性使用)或[仅进行预处理](#仅进行预处理)的命令。
-
-前往本项目内的 `assets` 目录，您将找到一份 `template.docx`。请打开该文件并修改其中的样式。
-
-我们在[模板文件样式说明](#模板文件样式说明)一节中，列出了我们用到的、且做出主要修改的样式。
-
-您可以在生成的 docx 文件中，确认要修改的样式，并在 `template.docx` 中做出修改。
-
-⚠注意：是修改“样式”，而非在文档内容上进行编辑：
-
-![image-20220406192315077](readme.assets/image-20220406192315077.png)
-
-您可以调出“应用样式”窗口，查找或输入您欲修改的样式，点击“修改”以进行修改。
-
-完成修改后，请**自行备份**好您的 `template.docx`。我们的[清理](#清理)命令会删除 `assets/template.docx`，还请注意。
 
 # 项目实现
 
@@ -471,8 +591,8 @@ python processer.py --new path_of_your_destination_directory
 1. 预处理：下载所需的依赖
 2. Pandoc 处理：通过 Pandoc 生成一份 docx 文档，依赖自定义的 `filter.py` 过滤器
 3. 后处理
-    1. 使用 python-docx 在封面插入校徽
-    2. 解包 docx 文档，解析 XML，删除第一个 `\newSectionInNewPage` 及其之前的全部内容；修改 Word 文档版式设定中的 字符间距控制 - 只压缩标点符号，这更符合中文的默认配置。
+   1. 使用 python-docx 在封面插入校徽
+   2. 解包 docx 文档，解析 XML，删除第一个 `\newSectionInNewPage` 及其之前的全部内容；修改 Word 文档版式设定中的 字符间距控制 - 只压缩标点符号，这更符合中文的默认配置。
 
 欲了解更多细节， 请移步 `processer.py`。
 
@@ -689,12 +809,13 @@ Markdown 对应：Markdown 超链接
 
 Markdown 对应：Markdown 行内代码块
 
+
+
 # 拓展阅读
 
 - [Markdown 写作，Pandoc 转换：我的纯文本学术写作流程]( https://sspai.com/post/64842)
 - [如何用 Markdown 写论文？](https://sspai.com/post/43471)
 - [zotero 本地常见插件配置](https://www.cnblogs.com/wwyt123/p/16031880.html)（BETTER BIBTEX FOR ZOTERO 中文文献 cite key 缩短）
-- [Office Open XML](http://www.officeopenxml.com)，OpenXML 快速入门
 
 # 结论 {.unnumbered}
 
@@ -725,36 +846,37 @@ Zotero 是一个免费和开源的参考管理软件，用于管理书目数据�
 
 完成安装后打开，在“我的文库”中可以新建分类，适应您不同的论文写作需求：
 
-![新建分类](readme.assets/image-20220402181639642.png)
+![新建分类](../docs/readme.assets/image-20220402181639642.png)
 
 您还需要下载安装两个插件：[Better BibTeX](https://github.com/retorquere/zotero-better-bibtex/releases/latest) 和 [Jasminum](https://github.com/l0o0/jasminum/releases)。下载它们的 xpi 文件，打开 Zotero -> 工具 -> 插件 -> 右上小齿轮图标 -> Install Add-on From File ... -> 选择下载好的 xpi 文件进行安装。
 
 安装完毕后，进入 Zotero -> 编辑 -> 首选项 -> Better BibTeX，修改一个您舒适的 Cination key format（否则中文文献 Citation Key 会过长）。我选用的是：`[Auth:clean][year][Title:select=1,1:nopunct:split-ideographs:select=1,3:clean]`。
 
-![Better BibTeX 配置](readme.assets/image-20220402182854779.png)
+![Better BibTeX 配置](../docs/readme.assets/image-20220402182854779.png)
 
 在知网搜索文献，进入结果页。以下文为例，点击引用按钮：
 
-![搜索一篇文档](readme.assets/image-20220402183115900.png)
+![搜索一篇文档](../docs/readme.assets/image-20220402183115900.png)
 
 再点击浏览器中的 Zotero Connector，便可以保存文献到 Zotero：
 
-![保存到 Zotero](readme.assets/image-20220402183211884.png)
+![保存到 Zotero](../docs/readme.assets/image-20220402183211884.png)
 
-![插入结果](readme.assets/image-20220402183404519.png)
+![插入结果](../docs/readme.assets/image-20220402183404519.png)
 
 如果您不希望最后生成的参考文献中出现文献的网址，请在右侧的信息中删除 URL；如若您不希望出现访问日期，同理也请在右侧信息中进行删除。
 
 在知网下载的文献上方右键，将中文名称合并：
 
-![合并中文名称](readme.assets/image-20220402183738737.png)
+![合并中文名称](../docs/readme.assets/image-20220402183738737.png)
 
 在左侧“我的文库”下方的目录上右键，点击“导出分类”：
 
-![导出分类](readme.assets/image-20220402183817126.png)
+![导出分类](../docs/readme.assets/image-20220402183817126.png)
 
-![导出对话框](readme.assets/image-20220402190017380.png)
+![导出对话框](../docs/readme.assets/image-20220402190017380.png)
 
 便可保存为 BibTeX 格式的 bib 文件以供引文使用。
 
-⚠注意：请注意导出格式是 “BibTeX” 还是 “Better BibTeX”。在某些情况下，“Better BibTeX”可能无法达到您预期的引文类型。
+> ⚠ 注意：请注意导出格式是 “BibTeX” 还是 “Better BibTeX”。在某些情况下，“Better BibTeX”可能无法达到您预期的引文类型。
+

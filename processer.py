@@ -323,9 +323,9 @@ def init(path):
     :return: 无
     '''
     dest = os.path.join(os.getcwd(), path)
-    print(dest)
+    print("Initialize scaffold in %s..." % dest)
     if not os.path.exists(dest):
-        shutil.copytree(os.path.join(WHERE_SCRIPT, 'assets/minimal'), dest)
+        shutil.copytree(os.path.join(WHERE_SCRIPT, 'assets/scaffold'), dest)
     else:
         print("The specified directory already exists.")
 
@@ -340,6 +340,8 @@ def clean():
         shutil.rmtree(os.path.join(WHERE_SCRIPT, 'build'))
     if os.path.exists(os.path.join(WHERE_SCRIPT, 'bin')):
         shutil.rmtree(os.path.join(WHERE_SCRIPT, 'bin'))
+    if os.path.exists(os.path.join(WHERE_SCRIPT, 'docs_site')):
+        shutil.rmtree(os.path.join(WHERE_SCRIPT, 'docs_site'))
     if os.path.exists(os.path.join(WHERE_SCRIPT, 'pandoc_eqnos.py')):
         os.remove(os.path.join(WHERE_SCRIPT, 'pandoc_eqnos.py'))
     if os.path.exists(os.path.join(WHERE_SCRIPT, './assets/chinese-gb7714-2005-numeric.csl.py')):
