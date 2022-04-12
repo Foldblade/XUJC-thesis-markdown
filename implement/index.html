@@ -1,0 +1,966 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/implement/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
+    
+    
+      
+        <title>项目实现 - XUJC Thesis Markdown</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.644de097.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="XUJC Thesis Markdown" class="md-header__button md-logo" aria-label="XUJC Thesis Markdown" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            XUJC Thesis Markdown
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              项目实现
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Foldblade/XUJC-thesis-markdown" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    XUJC-thesis-markdown
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="XUJC Thesis Markdown" class="md-nav__button md-logo" aria-label="XUJC Thesis Markdown" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    XUJC Thesis Markdown
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Foldblade/XUJC-thesis-markdown" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    XUJC-thesis-markdown
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        主页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        快速开始
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../start-writing-from-the-scaffold/" class="md-nav__link">
+        从脚手架开始写作
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../writing-guide/" class="md-nav__link">
+        撰写指南
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modify-template-style/" class="md-nav__link">
+        修改模板样式
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../command-line/" class="md-nav__link">
+        命令行参数
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../after-generation/" class="md-nav__link">
+        生成后的操作
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          项目实现
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        项目实现
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    实现思路说明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    模板文件样式说明
+  </a>
+  
+    <nav class="md-nav" aria-label="模板文件样式说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#title-zh" class="md-nav__link">
+    Title ZH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstract-title-zh" class="md-nav__link">
+    Abstract Title ZH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstract-content-zh" class="md-nav__link">
+    Abstract Content ZH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#title-en" class="md-nav__link">
+    Title EN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstract-title-en" class="md-nav__link">
+    Abstract Title EN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstract-content-en" class="md-nav__link">
+    Abstract Content EN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    标题 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    标题 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-9" class="md-nav__link">
+    标题 3-9
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-paragraph" class="md-nav__link">
+    正文文本、First Paragraph
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-title-like" class="md-nav__link">
+    Introduction Title Like
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion-title" class="md-nav__link">
+    Conclusion Title
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-content" class="md-nav__link">
+    Reference Content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-captionimage-caption" class="md-nav__link">
+    Table caption、Image Caption
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#captioned-figure" class="md-nav__link">
+    Captioned Figure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    超链接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verbatim-char" class="md-nav__link">
+    Verbatim Char
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extended-reading/" class="md-nav__link">
+        拓展阅读
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/" class="md-nav__link">
+        附录
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    实现思路说明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    模板文件样式说明
+  </a>
+  
+    <nav class="md-nav" aria-label="模板文件样式说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#title-zh" class="md-nav__link">
+    Title ZH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstract-title-zh" class="md-nav__link">
+    Abstract Title ZH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstract-content-zh" class="md-nav__link">
+    Abstract Content ZH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#title-en" class="md-nav__link">
+    Title EN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstract-title-en" class="md-nav__link">
+    Abstract Title EN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstract-content-en" class="md-nav__link">
+    Abstract Content EN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    标题 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    标题 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-9" class="md-nav__link">
+    标题 3-9
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-paragraph" class="md-nav__link">
+    正文文本、First Paragraph
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-title-like" class="md-nav__link">
+    Introduction Title Like
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion-title" class="md-nav__link">
+    Conclusion Title
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-content" class="md-nav__link">
+    Reference Content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-captionimage-caption" class="md-nav__link">
+    Table caption、Image Caption
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#captioned-figure" class="md-nav__link">
+    Captioned Figure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    超链接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verbatim-char" class="md-nav__link">
+    Verbatim Char
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/Foldblade/XUJC-thesis-markdown/edit/master/docs/implement.md" title="编辑此页" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+
+<h1 id="_1">项目实现</h1>
+<h2 id="_2">实现思路说明</h2>
+<p>原计划是依靠一份 Markdown 依靠 Pandoc 完成论文输出，结果发现 Pandoc 对 docx 的输出有些一言难尽。标题、作者等元数据是硬编码在文档内的，这对我的处理工作产生了极大的困扰。</p>
+<p>所以，我们会：</p>
+<ol>
+<li>预处理：下载所需的依赖</li>
+<li>Pandoc 处理：通过 Pandoc 生成一份 docx 文档，依赖自定义的 <code>filter.py</code> 过滤器</li>
+<li>后处理</li>
+<li>使用 python-docx 在封面插入校徽</li>
+<li>解包 docx 文档，解析 XML，删除第一个 <code>\newSectionInNewPage</code> 及其之前的全部内容；修改 Word 文档版式设定中的 字符间距控制 - 只压缩标点符号，这更符合中文的默认配置。</li>
+</ol>
+<p>欲了解更多细节， 请移步 <code>processer.py</code>。</p>
+<h2 id="_3">模板文件样式说明</h2>
+<p>模板文件保存在 <code>/assets/template</code> 文件夹中，我们的程序会 Zip 打包该文件夹，并生成 <code>template.docx</code> 以供 Pandoc 使用。该节解释了 <code>template.docx</code> 模板文件内的各类样式，且给出了在 Markdown 中对应的写法。</p>
+<p>本模板的样式中，中文采取黑体的地方，西文字体统一采用 Arial；中文采取宋体的地方，西文字体统一采用 Times New Roman。</p>
+<p>以下所述“样式”，均满足了撰写规范[@ShaMenDa]；当撰写规范未做出明确规定时，则采取我个人的撰写习惯与本人指导老师的习惯。</p>
+<h3 id="title-zh">Title ZH</h3>
+<p>样式：小三号 Arial 字体加粗，居中</p>
+<p>备注：仅需在元数据中修改对应字段，自动生成</p>
+<p>Markdown 对应：无，适当位置插入 <code>\abstract</code>，修改元数据即可自动生成中文摘要</p>
+<p>排版规范：</p>
+<ul>
+<li>中文论文题目</li>
+</ul>
+<h3 id="abstract-title-zh">Abstract Title ZH</h3>
+<p>样式：四号黑体并加方括号</p>
+<p>备注：仅需在元数据中修改对应字段，自动生成</p>
+<p>Markdown 对应：无，适当位置插入 <code>\abstract</code>，修改元数据即可自动生成中文摘要</p>
+<p>排版规范：</p>
+<ul>
+<li>中文摘要标题</li>
+<li>中文关键词标题</li>
+</ul>
+<h3 id="abstract-content-zh">Abstract Content ZH</h3>
+<p>样式：小四号宋体</p>
+<p>备注：仅需在元数据中修改对应字段，自动生成</p>
+<p>Markdown 对应：无，适当位置插入 <code>\abstract</code>，修改元数据即可自动生成中文摘要</p>
+<p>排版规范：</p>
+<ul>
+<li>中文摘要内容</li>
+</ul>
+<h3 id="title-en">Title EN</h3>
+<p>样式：小三号 Arial 字体加粗，居中</p>
+<p>备注：仅需在元数据中修改对应字段，自动生成</p>
+<p>Markdown 对应：无，适当位置插入 <code>\abstractEn</code>，修改元数据即可自动生成英文摘要</p>
+<p>排版规范：</p>
+<ul>
+<li>英文论文题目</li>
+</ul>
+<h3 id="abstract-title-en">Abstract Title EN</h3>
+<p>样式：小四号 Arial 字体，加粗并加方括号</p>
+<p>备注：仅需在元数据中修改对应字段，自动生成</p>
+<p>Markdown 对应：无，适当位置插入 <code>\abstractEn</code>，修改元数据即可自动生成英文摘要</p>
+<p>排版规范：</p>
+<ul>
+<li>英文摘要标题</li>
+<li>英文关键词标题</li>
+</ul>
+<h3 id="abstract-content-en">Abstract Content EN</h3>
+<p>样式：五号 Arial 字体</p>
+<p>备注：仅需在元数据中修改对应字段，自动生成</p>
+<p>Markdown 对应：无，适当位置插入 <code>\abstractEn</code>，修改元数据即可自动生成中文摘要</p>
+<p>排版规范：</p>
+<ul>
+<li>英文摘要内容</li>
+</ul>
+<h3 id="1">标题 1</h3>
+<p>样式：小三号黑体</p>
+<p>备注：排版规范中未要求居中，但实践中都居中处理。故模板亦设置为居中对齐</p>
+<p>Markdown 对应：一级标题（H1）</p>
+<p>排版规范：</p>
+<ul>
+<li>第一级标题</li>
+</ul>
+<h3 id="2">标题 2</h3>
+<p>样式：四号黑体</p>
+<p>备注：左对齐</p>
+<p>Markdown 对应：二级标题（H2）</p>
+<p>排版规范：</p>
+<ul>
+<li>第二级标题</li>
+</ul>
+<h3 id="3-9">标题 3-9</h3>
+<p>样式：小四号宋体</p>
+<p>备注：左对齐</p>
+<p>Markdown 对应：3-6 级标题（H3-6）</p>
+<p>排版规范：</p>
+<ul>
+<li>第三级起标题</li>
+</ul>
+<h3 id="first-paragraph">正文文本、First Paragraph</h3>
+<p>样式：小四号宋体，每段首行缩进 2 字符，行高固定值 20 磅</p>
+<p>备注：无</p>
+<p>Markdown 对应：段落</p>
+<p>排版规范：</p>
+<ul>
+<li>引言内容</li>
+<li>正文</li>
+<li>结论内容</li>
+<li>致谢语内容</li>
+<li>附录内容</li>
+</ul>
+<h3 id="introduction-title-like">Introduction Title Like</h3>
+<p>样式：四号黑体，居中</p>
+<p>备注：由过滤器自动实现引言、致谢、参考文献的“另起一页，标题和内容之间空两行”之效果；附录则仅应用样式</p>
+<p>Markdown 对应：一级标题（H1）。标题内容仅可取值为：引言、致谢、致谢语、参考文献、附录</p>
+<p>排版规范：</p>
+<ul>
+<li>引言</li>
+<li>致谢语标题</li>
+<li>参考文献标题</li>
+<li>附录标题</li>
+</ul>
+<h3 id="conclusion-title">Conclusion Title</h3>
+<p>样式：四号宋体，居中</p>
+<p>备注：</p>
+<p>Markdown 对应：一级标题（H1）。标题内容仅可取值为：结论、总结</p>
+<p>排版规范：</p>
+<ul>
+<li>结论标题</li>
+</ul>
+<h3 id="reference-content">Reference Content</h3>
+<p>样式：五号宋体，左顶格</p>
+<p>备注：由过滤器自动实现“五号宋体，左顶格”之效果</p>
+<p>Markdown 对应：一级标题（H1）。标题内容仅可取值为：参考文献</p>
+<p>排版规范：</p>
+<ul>
+<li>参考文献内容</li>
+</ul>
+<h3 id="table-captionimage-caption">Table caption、Image Caption</h3>
+<p>样式：五号宋体、Times New Roman，居中，段落间距：段前: 3 磅、段后: 3 磅</p>
+<p>备注：该样式并未在撰写规范中详细注明。</p>
+<p>Markdown 对应：参阅<a href="#图片及自动标号">图片及自动标号</a>、<a href="#表格及自动标号">表格及自动标号</a></p>
+<h3 id="table">Table</h3>
+<p>样式：五号宋体、Times New Roman，居中；段落间距：段后: 10 磅；单倍行距，单元格内左对齐；不允许跨页断行、标题行在各页顶端重复出现；具体表现为“三线表”样式</p>
+<p>备注：该样式并未在撰写规范中详细注明。</p>
+<p>Markdown 对应：Markdown 表格</p>
+<h3 id="captioned-figure">Captioned Figure</h3>
+<p>样式：五号宋体、Times New Roman，居中；段落间距：段前: 3 磅、段后: 3 磅；行距最小值 20 磅</p>
+<p>备注：该样式并未在撰写规范中详细注明。该样式为插入图片所用。</p>
+<p>Markdown 对应：Markdown 图片</p>
+<h3 id="_4">超链接</h3>
+<p>样式：颜色设置为“自动”</p>
+<p>备注：该样式并未在撰写规范中详细注明。</p>
+<p>Markdown 对应：Markdown 超链接</p>
+<h3 id="verbatim-char">Verbatim Char</h3>
+<p>样式：Consolas，小四</p>
+<p>备注：该样式并未在撰写规范中详细注明。为 Markdown 行内代码块所用。</p>
+<p>Markdown 对应：Markdown 行内代码块</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../after-generation/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 生成后的操作" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              生成后的操作
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../extended-reading/" class="md-footer__link md-footer__link--next" aria-label="下一页: 拓展阅读" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              拓展阅读
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c44cc438.min.js"></script>
+      
+    
+  </body>
+</html>
