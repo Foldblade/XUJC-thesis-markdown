@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://foldblade.github.io/XUJC-thesis-markdown/start-writing-from-the-scaffold/">
+        <link rel="canonical" href="https://foldblade.github.io/XUJC-thesis-markdown/Q-and-A/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
     
     
       
-        <title>从脚手架开始写作 - XUJC Thesis Markdown</title>
+        <title>Q&A - XUJC Thesis Markdown</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#qa" class="md-skip">
           跳转至
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              从脚手架开始写作
+              Q&A
             
           </span>
         </div>
@@ -258,21 +258,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../start-writing-from-the-scaffold/" class="md-nav__link">
         从脚手架开始写作
       </a>
-      
     </li>
   
 
@@ -358,11 +348,66 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Q-and-A/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Q&A
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Q&A
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#latex" class="md-nav__link">
+    为什么不用 \(\LaTeX\)？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wps" class="md-nav__link">
+    会支持 WPS 吗？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permissionerror" class="md-nav__link">
+    生成时，命令行最后出现 PermissionError: 之类的错误
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -417,6 +462,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#latex" class="md-nav__link">
+    为什么不用 \(\LaTeX\)？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wps" class="md-nav__link">
+    会支持 WPS 吗？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permissionerror" class="md-nav__link">
+    生成时，命令行最后出现 PermissionError: 之类的错误
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -427,28 +501,19 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/Foldblade/XUJC-thesis-markdown/edit/master/docs/start-writing-from-the-scaffold.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/Foldblade/XUJC-thesis-markdown/edit/master/docs/Q-and-A.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
 
-<h1 id="_1">从脚手架开始写作</h1>
-<p>我们提供了脚手架以助您快速开始。</p>
-<p>您可以使用如下命令以创建一个脚手架：</p>
-<div class="highlight"><pre><span></span><code>python processer.py --new path_of_your_destination_directory
-</code></pre></div>
-<p>例如，通过以下命令，您可以在 D 盘 <code>my-thesis</code> 目录创建一个脚手架。</p>
-<div class="highlight"><pre><span></span><code>python processer.py --new <span class="s2">&quot;D:\my-thesis&quot;</span>
-</code></pre></div>
-<p>您会在目录中看到如下两个文件：</p>
-<ul>
-<li>metadata.yaml</li>
-<li>thesis.md</li>
-</ul>
-<p>其中，<code>thesis.md</code> 提供了一个包含封面、中英文摘要、目录、正文、结论、致谢、参考文献、附录的论文基础模板；而 <code>metadata.yaml</code> 则是元数据与配置项所在地。</p>
-<p>您可以从脚手架快速开始撰写——当然，永远要记得备份您的数据！</p>
-<p>有关写作的更多细节，请参阅<a href="../writing-guide/">撰写指南</a>一章。</p>
+<h1 id="qa">Q&amp;A</h1>
+<h2 id="latex">为什么不用 <span class="arithmatex">\(\LaTeX\)</span>？</h2>
+<p>想呐，很想呐。不过学校是要求提交 Word 版本的。</p>
+<h2 id="wps">会支持 WPS 吗？</h2>
+<p>仅通过了 Office 2016、Office 2019 等版本的测试，未进行 WPS 等其他软件测试，如有异常也不计划进行支持。我们建议您采用较新版本的 Office 编辑、查看。不过，Pull Request 我们是欢迎的。</p>
+<h2 id="permissionerror">生成时，命令行最后出现 <code>PermissionError:</code> 之类的错误</h2>
+<p>检查您是否打开了生成的 docx 文档。当 docx 文档被打开或占用时，我们的程序将无法完成修改保存的操作，因此请您确认完全关闭生成的 docx 文档后再试。</p>
 
               
             </article>
@@ -462,7 +527,7 @@
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../quick-start/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 快速开始" rel="prev">
+        <a href="../implement/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 项目实现" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -471,20 +536,20 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              快速开始
+              项目实现
             </div>
           </div>
         </a>
       
       
         
-        <a href="../writing-guide/" class="md-footer__link md-footer__link--next" aria-label="下一页: 撰写指南" rel="next">
+        <a href="../extended-reading/" class="md-footer__link md-footer__link--next" aria-label="下一页: 拓展阅读" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              撰写指南
+              拓展阅读
             </div>
           </div>
           <div class="md-footer__button md-icon">
