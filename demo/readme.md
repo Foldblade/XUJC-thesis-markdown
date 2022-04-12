@@ -167,15 +167,17 @@ python processer.py --new "D:\my-thesis"
 
 ## Markdown
 
-Markdown 的基础语法，我相信凭借自己实力找到这个项目的人无需多言。
+Markdown 的基础语法，我相信凭借自己实力找到这个项目的人已经有所了解。
 
 但如果您还不会 Markdown，我建议您花费一些时间学习它。您可以参考[这个教程](https://markdown.com.cn/intro.html)，或是[这个知乎问题](https://www.zhihu.com/question/20409634)。
 
-但单纯的 Markdown 并不足以支持我们完成毕业论文的生成。因此，请继续向下看。
+单纯的 Markdown 并不足以支持我们完成毕业论文的生成。因此，请继续向下看。
 
 ## Pandoc Markdown
 
 由于 Markdown 到 docx 转换采用的是 Pandoc[@Pandoc]，这里就不得不提 Pandoc Markdown 语法了。您可以在撰写时使用 Pandoc Markdown 语法实现一些 Pandoc 特性，不过这可能需要您对 Pandoc 有着熟练掌握，并按需修改 `filter.py`。具体细节，请查阅[官方文档](https://pandoc.org/MANUAL.html#pandocs-markdown)，或是[这份（可能有些过时的）中文翻译](http://pages.tzengyuxio.me/pandoc/)。
+
+请放心，不会 Pandoc Markdown 语法并不会影响您对本项目的使用。
 
 ## 自定义类 $\LaTeX$ 命令
 
@@ -218,7 +220,7 @@ Pandoc 在生成时，会自动在文档开头生成元数据中的标题、作�
 
 ## 封底
 
-默认会在文档末尾生成空白页作为封底。如您不需要，请参阅[不在文档末尾生成空白页作为封底](command-line.md#不在文档末尾生成空白页作为封底)一节，在生成命令后加上参数 `--no-blank-back-cover`。
+默认会在文档末尾生成空白页作为封底。如您不需要，请参阅[命令行参数](command-line.md)一章中的[不在文档末尾生成空白页作为封底](#不在文档末尾生成空白页作为封底)一节，在生成命令后加上参数 `--no-blank-back-cover`。
 
 ## 段落
 
@@ -810,6 +812,21 @@ Markdown 对应：Markdown 超链接
 备注：该样式并未在撰写规范中详细注明。为 Markdown 行内代码块所用。
 
 Markdown 对应：Markdown 行内代码块
+
+
+# Q&A
+
+## 为什么不用 $\LaTeX$？
+
+想呐，很想呐。不过学校是要求提交 Word 版本的。
+
+## 会支持 WPS 吗？
+
+仅通过了 Office 2016、Office 2019 等版本的测试，未进行 WPS 等其他软件测试，如有异常也不计划进行支持。我们建议您采用较新版本的 Office 编辑、查看。不过，Pull Request 我们是欢迎的。
+
+## 生成时，命令行最后出现 `PermissionError:` 之类的错误
+
+检查您是否打开了生成的 docx 文档。当 docx 文档被打开或占用时，我们的程序将无法完成修改保存的操作，因此请您确认完全关闭生成的 docx 文档后再试。
 
 
 # 拓展阅读

@@ -14,6 +14,7 @@ nav:
   - 命令行参数: command-line.md
   - 生成后的操作: after-generation.md
   - 项目实现: implement.md
+  - Q&A: Q-and-A.md
   - 拓展阅读: extended-reading.md
   - 附录: appendix.md
 
@@ -35,7 +36,6 @@ theme:
       primary: light blue
       accent: pink
       toggle:
-        
         icon: material/brightness-7
         name: Switch to light mode
 
@@ -43,4 +43,11 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
   - mdx_truly_sane_lists # pip install mdx_truly_sane_lists
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

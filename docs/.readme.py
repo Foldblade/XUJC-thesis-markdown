@@ -17,6 +17,7 @@ files = [
     "command-line",
     "after-generation",
     "implement",
+    "Q-and-A",
     "extended-reading",
     "appendix",
 ]

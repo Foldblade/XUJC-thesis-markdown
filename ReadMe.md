@@ -6,8 +6,6 @@
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/foldblade)
 
-[TOC]
-
 ## 授权协议
 
 该项目开放源代码，但**并不是自由软件**。作者希望能将该项目对个人免费开放使用，但**不希望任何人以盈利为目的利用本软件**。
@@ -45,17 +43,3 @@
 您可以访问我们的[文档网站](https://foldblade.github.io/XUJC-thesis-markdown)查看文档，或是移步 [`demo/readme.md`](./demo/readme.md) 查看文档。
 
 敬请注意：在更新后，建议您运行 `python processer.py --clean` 以清理临时文件。
-
-## Q / A
-
-### 为什么不用 $\LaTeX$？
-
-想呐，很想呐。不过学校是要求提交 Word 版本的。
-
-### 会支持 WPS 吗？
-
-仅通过了 Office 2016、Office 2019 等版本的测试，未进行 WPS 等其他软件测试，如有异常也不计划进行支持。我们建议您采用较新版本的 Office 编辑、查看。不过，Pull Request 我们是欢迎的。
-
-### 出现 `PermissionError:` 之类的错误
-
-检查您是否打开了生成的 docx 文档。当 docx 文档被打开或占用时，我们的程序将无法完成修改保存的操作，因此请您确认完全关闭生成的 docx 文档后再试。
