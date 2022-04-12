@@ -43,3 +43,4 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - mdx_truly_sane_lists # pip install mdx_truly_sane_lists

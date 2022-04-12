@@ -94,7 +94,7 @@ Pandoc 可实现不同标记语言间的格式转换，是该项目的重要依�
 
 进行新手上路前，请确保您的写作环境已经满足前文所述的环境要求。
 
-1. `git clone` 或[下载](https://github.com/Foldblade/XUJC-thesis-markdown/archive/refs/heads/master.zip)该项目
+1. `git clone https://github.com/Foldblade/XUJC-thesis-markdown.git` 或[下载](https://github.com/Foldblade/XUJC-thesis-markdown/archive/refs/heads/master.zip)该项目
 2. 在终端中运行以下命令，安装所需的 Python 依赖：
 
     ```bash
@@ -604,6 +604,8 @@ python processer.py --new path_of_your_destination_directory
 
 以下所述“样式”，均满足了撰写规范[@ShaMenDa]；当撰写规范未做出明确规定时，则采取我个人的撰写习惯与本人指导老师的习惯。
 
+> 💡 提示：想要[修改模板文件样式](modify-template-style.md)？
+
 ### Title ZH
 
 样式：小三号 Arial 字体加粗，居中
@@ -808,7 +810,6 @@ Markdown 对应：Markdown 超链接
 备注：该样式并未在撰写规范中详细注明。为 Markdown 行内代码块所用。
 
 Markdown 对应：Markdown 行内代码块
-
 
 
 # 拓展阅读

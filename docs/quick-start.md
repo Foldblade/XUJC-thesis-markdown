@@ -48,7 +48,7 @@ Pandoc 可实现不同标记语言间的格式转换，是该项目的重要依�
 
 进行新手上路前，请确保您的写作环境已经满足前文所述的环境要求。
 
-1. `git clone` 或[下载](https://github.com/Foldblade/XUJC-thesis-markdown/archive/refs/heads/master.zip)该项目
+1. `git clone https://github.com/Foldblade/XUJC-thesis-markdown.git` 或[下载](https://github.com/Foldblade/XUJC-thesis-markdown/archive/refs/heads/master.zip)该项目
 2. 在终端中运行以下命令，安装所需的 Python 依赖：
 
     ```bash

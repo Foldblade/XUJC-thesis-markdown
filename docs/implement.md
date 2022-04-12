@@ -22,6 +22,9 @@
 
 以下所述“样式”，均满足了撰写规范[@ShaMenDa]；当撰写规范未做出明确规定时，则采取我个人的撰写习惯与本人指导老师的习惯。
 
+!!! tip
+    想要[修改模板文件样式](modify-template-style.md)？
+
 ### Title ZH
 
 样式：小三号 Arial 字体加粗，居中
@@ -226,4 +229,3 @@ Markdown 对应：Markdown 超链接
 备注：该样式并未在撰写规范中详细注明。为 Markdown 行内代码块所用。
 
 Markdown 对应：Markdown 行内代码块
-
