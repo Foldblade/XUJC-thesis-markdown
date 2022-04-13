@@ -336,23 +336,16 @@ def clean():
     :return: 无
     '''
     print("Cleaning...")
-    if os.path.exists(os.path.join(WHERE_SCRIPT, 'build')):
-        shutil.rmtree(os.path.join(WHERE_SCRIPT, 'build'))
-    if os.path.exists(os.path.join(WHERE_SCRIPT, 'bin')):
-        shutil.rmtree(os.path.join(WHERE_SCRIPT, 'bin'))
-    if os.path.exists(os.path.join(WHERE_SCRIPT, 'docs_site')):
-        shutil.rmtree(os.path.join(WHERE_SCRIPT, 'docs_site'))
-    if os.path.exists(os.path.join(WHERE_SCRIPT, 'pandoc_eqnos.py')):
-        os.remove(os.path.join(WHERE_SCRIPT, 'pandoc_eqnos.py'))
-    if os.path.exists(os.path.join(WHERE_SCRIPT, './assets/chinese-gb7714-2005-numeric.csl.py')):
-        os.remove(os.path.join(WHERE_SCRIPT,
-                  './assets/chinese-gb7714-2005-numeric.csl.py'))
-    if os.path.exists(os.path.join(WHERE_SCRIPT, './assets/logo_image.png')):
-        os.remove(os.path.join(WHERE_SCRIPT, './assets/logo_image.png'))
-    if os.path.exists(os.path.join(WHERE_SCRIPT, './assets/school_name_image.png')):
-        os.remove(os.path.join(WHERE_SCRIPT, './assets/school_name_image.png'))
-    if os.path.exists(os.path.join(WHERE_SCRIPT, './assets/template.docx')):
-        os.remove(os.path.join(WHERE_SCRIPT, './assets/template.docx'))
+    dirs = ['build', 'bin', 'docs_site']
+    for dir in dirs:
+        if os.path.exists(os.path.join(WHERE_SCRIPT, dir)):
+            shutil.rmtree(os.path.join(WHERE_SCRIPT, dir))
+    files = ['pandoc_eqnos.py', 'pandoc_fignos.py', 'pandoc_tablenos.py',
+             './assets/chinese-gb7714-2005-numeric.csl', './assets/logo_image.png',
+             './assets/school_name_image.png', './assets/template.docx']
+    for file in files:
+        if os.path.exists(os.path.join(WHERE_SCRIPT, file)):
+            os.remove(os.path.join(WHERE_SCRIPT, file))
     print("Cleaning done.")
 
 
