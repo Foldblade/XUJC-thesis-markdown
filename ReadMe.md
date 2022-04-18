@@ -2,6 +2,8 @@
 
 适用于 XUJC 毕业论文的 Markdown 解决方案。
 
+当然，需要注意的是，不同院系、不同指导老师的要求不一样，所以，最终多多少少需要对生成的 docx 文件进行调整，例如图片的大小、表格的尺寸等。总的来说，您可以使用 Markdown 撰写草稿，在文本定稿后使用本工具快速生成排版后的 docx 文档，最终根据老师需求进行一些微调后定稿。
+
 如果该项目确实提升了您的论文写作效率，欢迎为该项目加 Star、介绍给朋友、在论文的致谢部分感谢这个项目，或是将该项目列入参考文献。当然，我也会很感谢你请我喝一杯咖啡：
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/foldblade)

@@ -540,7 +540,7 @@ python processer.py --clean
 
 > 🚨 危险：完成`assets/template.docx`修改后，请**自行备份**好您的 。我们的清理命令会删除 `assets/template.docx`。
 
-> 🚨 危险：运行该命令，将会删除 `bin`、`assets` 目录，请不要将您的修改内容留存在这些目录内。
+> 🚨 危险：运行该命令，将会删除 `bin`、`build` 目录以及 `assets` 目录中的部分内容。请不要将您的修改内容留存在这些目录内。
 
 该命令将清理临时文件。
 
@@ -577,7 +577,7 @@ python processer.py --new path_of_your_destination_directory
 
 ![更新域提示](../docs/readme.assets/image-20220402190735954.png){#fig:generated_docx}
 
-您需要检查生成后的 docx 文件中图片的排版，调整图片的大小。
+您需要检查生成后的 docx 文件中图片的排版，调整图片的大小；根据您指导老师的要求，可能还需要调整表格的尺寸等。
 
 当您的标题过长时，您可以按住 Shift + Enter，在需要的地方插入**软回车**。
 
