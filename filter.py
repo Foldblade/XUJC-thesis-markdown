@@ -603,9 +603,9 @@ def action(elem, doc):
                 debug("中文摘要")
                 title = Div(*[Para(Str(doc.get_metadata()["title"]))],
                             attributes={"custom-style": "Title ZH"})
-                abstract_title = Span(Str("[摘要]"), attributes={
+                abstract_title = Span(Str("【摘要】"), attributes={
                                       "custom-style": "Abstract Title ZH"})
-                keywords_title = Span(Str("[关键词]"), attributes={
+                keywords_title = Span(Str("【关键词】"), attributes={
                                       "custom-style": "Abstract Title ZH"})
                 abstract_text = "".join(
                     doc.get_metadata()["abstract"].replace('\n\n', '\n').split('\n'))
