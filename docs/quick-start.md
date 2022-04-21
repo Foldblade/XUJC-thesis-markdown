@@ -52,7 +52,7 @@ Pandoc 可实现不同标记语言间的格式转换，是该项目的重要依�
 2. 在终端中运行以下命令，安装所需的 Python 依赖：
 
     ```bash
-    pip install panflute python-docx regex lxml
+    pip install panflute python-docx regex lxml pandoc-fignos pandoc-eqnos pandoc-tablenos
     ```
 
 3. （针对不想安装 Pandoc 者）请在该项目根目录下新建 `bin` 目录，再前往 [Pandoc Releases 页](https://github.com/jgm/pandoc/releases)自行下载适合您系统版本的可执行文件。这通常会是一个压缩包，譬如 `pandoc-2.18-windows-x86_64.zip`，请在解压后，将可执行文件（如 `pandoc.exe`）放在 `bin` 目录中。在 Windows 上，目录结构看起来应该类似：
