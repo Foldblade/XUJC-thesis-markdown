@@ -637,10 +637,10 @@ def action(elem, doc):
                     title,
                     Para(SoftBreak()),
                     Div(*[Para(abstract_title, Space(), Str(abstract_text))],
-                        attributes={"custom-style": "Abstract Content ZH"}),
+                        attributes={"custom-style": "Abstract Content EN"}),
                     Para(SoftBreak()),
                     Div(*[Para(keywords_title, Space(), Str(keywords_text))],
-                        attributes={"custom-style": "Abstract Content ZH"})
+                        attributes={"custom-style": "Abstract Content EN"})
                 ]
             else:
                 elem = []
@@ -687,6 +687,7 @@ def action(elem, doc):
             <w:footerReference r:id="rId10" w:type="default"/>
             <w:type w:val=\"nextPage\"/>
             <w:pgSz w:w="11906" w:h="16838" w:code="9"/>
+            <w:pgMar w:top="1440" w:right="1797" w:bottom="1440" w:left="2364" w:header="851" w:footer="992" w:gutter="0"/>
         </w:sectPr>
     </w:pPr>
 </w:p>

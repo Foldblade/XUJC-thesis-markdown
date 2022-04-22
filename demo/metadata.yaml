@@ -1,10 +1,10 @@
-title: 'XUJC Markdown 论文模板'
-titleEn: 'XUJC Thesis Markdown'
+title: 'XUJC Markdown 论文模板' # 中文标题
+titleEn: 'XUJC Thesis Markdown' # 英文标题
 author: 
-- V # 作者
+- V # 作者（姓名）
 school: 赛博学院 # 分院、系
 major: 控制论 # 专业
-grade: 2077 # 年级
+grade: '2077 级' # 年级
 studentID: CYB77001 # 学号
 adviser: 强尼・银手 # 指导教师
 academicTitle: 主唱 # 职称
