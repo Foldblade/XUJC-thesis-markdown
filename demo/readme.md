@@ -47,6 +47,34 @@ Markdown 是一种轻量级标记语言，排版语法简洁，让人们更多�
 3. 自动生成引文
 4. 快速生成符合学校排版要求的 docx 文档
 
+# 三大元素
+
+我们需要三个文件以完成论文的生成：
+
+1. 使用 Markdown 撰写论文
+2. 使用元数据文件设定论文的部分信息、进行配置
+3. 使用 BibTeX 格式引文文件生成引文
+
+一个典型的论文基础目录结构是这样的：
+
+```
+.
+    thesis.md
+    metadata.yaml
+    ref.bib
+```
+
+- `thesis.md` 是 Markdown 格式的论文，您应当在这里参考[撰写指南](writing-guide.md)自由起舞、撰写论文
+- `metadata.yaml` 是元数据文件，您可以使用文本编辑器打开编辑，参考[撰写指南](writing-guide.md)修改封面、摘要的信息并进行一些配置
+- `ref.bib` 是 BibTeX 格式引文文件，这应当参考[附录](appendix.md)中的 [Zotero 简明教程](appendix.md#附录一 Zotero 简明教程 {.unnumbered})使用 Zotero 导出
+
+对一篇完整的论文来说，这三个文件不可或缺；但如果您刚刚开始写作，您可以暂不添加 BibTeX 格式的引文文件。
+
+> 💡 提示：例如，`demo` 目录中就存在着这三大元素;而我们的“[新建脚手架](start-writing-from-the-scaffold.md)”操作就仅会创建 Markdown 文件与元数据文件。
+
+三个文件的文件名是可以更改的，但相应地，您也要更改您的[生成命令](command-line.md)；当然，您也可以通过[图形用户界面（GUI）](gui.md)直接进行选择。
+
+
 # 快速开始
 
 ## 环境要求
@@ -90,6 +118,12 @@ Pandoc 可实现不同标记语言间的格式转换，是该项目的重要依�
 
 如果您只是体验该项目，则暂时可以不必安装。若您愿意采用此项目撰写您的毕业论文，则我们强烈推荐您安装 Zotero 及 Zotero Connector 浏览器插件，并参阅[附录](appendix.md)一章中的 Zotero 简明教程。
 
+### Markdown 编辑器
+
+用来编辑你的 Markdown 文件。Markdown 是一个纯文本文件，你可以使用常见的代码编辑器打开、编辑，诸如 VSCode 或 JetBrains 系 IDE 都对 Markdown 提供了支持。
+
+Markdown 编辑器挑一个趁手的就好，个人推荐 [Typora](https://typora.io/)，这是一个所见即所得的 Markdown 编辑器。
+
 ## 新手上路
 
 进行新手上路前，请确保您的写作环境已经满足前文所述的环境要求。
@@ -124,13 +158,17 @@ Pandoc 可实现不同标记语言间的格式转换，是该项目的重要依�
     python processer.py -O result.docx -F ./demo/readme.md -M ./demo/metadata.yaml -B ./demo/ref.bib
     ```
 
+> 💡 提示：不知道如何“使用终端进入该项目根目录”？在 Windows 下，使用文件资源管理器，找到存在 `processer.py` 的目录，按住 Shift 键，在文件资源管理器空白处右键，选择“在终端中打开”、“在 PowerShell 中打开”等。或者，打开命令提示符或 PowerShell，使用 [`cd` 命令](https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/cd)，在输入 `cd` 后接一个空格，粘贴存在 `processer.py` 的目录的路径后，按下回车，再复制第4步的命令。
+
 > ⚠ 注意：在该命令的执行过程中，可能会出现 `[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:` 字样，Don't panic，毋需惊慌，只要最末一行出现 `Output file:` 即告成功。
 
-如不出意外，您应该可以看到，在项目的根目录生成了`result.docx`——快去体验吧！
+如不出意外，您应该可以看到，在项目的根目录生成了`result.docx`，这是由 `demo` 目录中的[三大元素](three-elements.md)生成的。快去体验吧！
 
 > 💡 提示：`demo` 中的 `readme.md` 是由 `docs` 目录下的各文档拼合而成的。图片采用相对路径，取自 `docs` 目录下的 `../docs/readme.assets` 目录。
 
 > 💡 提示：有关命令的详细解读，请参考[命令行参数](command-line.md)一章。
+
+> 💡 提示：您也可以通过[图形用户界面](gui.md)中选择 `demo` 目录作为基础目录以体验生成效果。
 
 
 # 从脚手架开始写作
@@ -158,7 +196,32 @@ python processer.py --new "D:\my-thesis"
 
 您可以从脚手架快速开始撰写——当然，永远要记得备份您的数据！
 
+> 💡 提示：觉得太难？请参阅[图形用户界面（GUI）](gui.md)。
+
 有关写作的更多细节，请参阅[撰写指南](writing-guide.md)一章。
+
+
+# 图形用户界面（GUI）
+
+我们提供了简单的 GUI 以助您使用。要使用 GUI，请在项目根目录中执行：
+
+```
+python gui.py
+```
+
+稍后您将看到如图所示的 GUI。
+
+![GUI](../docs/readme.assets/image-20220421213645620.png)
+
+点击菜单栏中的“生成脚手架”，您可以选择一个空目录生成一个脚手架，并在其中开始写作。
+
+您可以在“选择基础目录”一栏中，点击右侧 `...` 按钮，选择您上一步指定的脚手架目录。我们的程序将会自动识别其中的 Markdown 文件、元数据文件与 BibTeX 格式引文文件这“[三大元素](three-elements.md)”。请在完成自动识别后**进行检查**，如果自动识别出的文件并不是您需要使用的文件，请点击右侧 `...` 按钮，重新选择您需要使用的文件。
+
+勾选“不要在封底添加空白页”，则不会在封底添加空白页。
+
+您还需要在“输出 docx 文件另存为”一栏中，点击右侧 `...` 按钮，指定输出文件的存放位置。
+
+点击“生成”按钮，便会在指定的输出文件存放位置生成输出文件。成功或是失败都会有弹窗提示，错误信息将会在窗体下方显示。
 
 
 # 撰写指南
@@ -574,6 +637,8 @@ python processer.py --new path_of_your_destination_directory
 
 参阅 `processer.py`。
 
+> 💡 提示：觉得太难？请参阅[图形用户界面（GUI）](gui.md)。
+
 
 # 生成后的操作
 
@@ -828,9 +893,21 @@ Markdown 对应：Markdown 行内代码块
 
 仅通过了 Office 2016、Office 2019 等版本的测试，未进行 WPS 等其他软件测试，如有异常也不计划进行支持。我们建议您采用较新版本的 Office 编辑、查看。不过，Pull Request 我们是欢迎的。
 
-## 生成时，命令行最后出现 `PermissionError:` 之类的错误
+## 可能的错误
+
+### 生成时，命令行最后出现 `PermissionError:` 之类的错误
 
 检查您是否打开了生成的 docx 文档。当 docx 文档被打开或占用时，我们的程序将无法完成修改保存的操作，因此请您确认完全关闭生成的 docx 文档后再试。
+
+### 命令行最后出现 `AttributeError: 'NoneType' object has no attribute 'findall'`
+
+```
+File "./processer.py", line 174, in document_process
+    sectPr = pPr.findall("w:sectPr", namespaces)
+AttributeError: 'NoneType' object has no attribute 'findall'
+```
+
+检查您是否在 Markdown 开头插入 `\newSectionInNewPage`。
 
 
 # 拓展阅读
@@ -887,7 +964,7 @@ Zotero 是一个免费和开源的参考管理软件，用于管理书目数据�
 
 ![插入结果](../docs/readme.assets/image-20220402183404519.png)
 
-如果您不希望最后生成的参考文献中出现文献的网址，请在右侧的信息中删除 URL；如若您不希望出现访问日期，同理也请在右侧信息中进行删除。
+> 💡 提示：如果您不希望最后生成的参考文献中出现文献的网址或 DOI，请在右侧的信息中删除 URL、DOI 或是相关信息；如若您不希望出现访问日期，同理也请在右侧信息中进行删除。
 
 在知网下载的文献上方右键，将中文名称合并：
 

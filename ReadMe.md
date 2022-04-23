@@ -8,6 +8,15 @@
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/foldblade)
 
+## 为什么您需要它
+
+- 通过 Markdown 专注于内容撰写
+- 减少排版所需时间与返工次数
+- 自动生成章节、图、表、公式编号，无需手动管理
+- 使用文献管理工具生成引文，无需手动整理格式插入
+- 使用您最喜爱的代码管理工具管理您的论文版本
+- 获得更加优雅的论文撰写体验
+
 ## 授权协议
 
 该项目开放源代码，但**并不是自由软件**。作者希望能将该项目对个人免费开放使用，但**不希望任何人以盈利为目的利用本软件**。

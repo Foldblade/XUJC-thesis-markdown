@@ -44,6 +44,12 @@ Pandoc 可实现不同标记语言间的格式转换，是该项目的重要依�
 
 如果您只是体验该项目，则暂时可以不必安装。若您愿意采用此项目撰写您的毕业论文，则我们强烈推荐您安装 Zotero 及 Zotero Connector 浏览器插件，并参阅[附录](appendix.md)一章中的 Zotero 简明教程。
 
+### Markdown 编辑器
+
+用来编辑你的 Markdown 文件。Markdown 是一个纯文本文件，你可以使用常见的代码编辑器打开、编辑，诸如 VSCode 或 JetBrains 系 IDE 都对 Markdown 提供了支持。
+
+Markdown 编辑器挑一个趁手的就好，个人推荐 [Typora](https://typora.io/)，这是一个所见即所得的 Markdown 编辑器。
+
 ## 新手上路
 
 进行新手上路前，请确保您的写作环境已经满足前文所述的环境要求。
@@ -78,13 +84,19 @@ Pandoc 可实现不同标记语言间的格式转换，是该项目的重要依�
     python processer.py -O result.docx -F ./demo/readme.md -M ./demo/metadata.yaml -B ./demo/ref.bib
     ```
 
+!!! tip
+    不知道如何“使用终端进入该项目根目录”？在 Windows 下，使用文件资源管理器，找到存在 `processer.py` 的目录，按住 Shift 键，在文件资源管理器空白处右键，选择“在终端中打开”、“在 PowerShell 中打开”等。或者，打开命令提示符或 PowerShell，使用 [`cd` 命令](https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/cd)，在输入 `cd` 后接一个空格，粘贴存在 `processer.py` 的目录的路径后，按下回车，再复制第4步的命令。
+
 !!! warning
     在该命令的执行过程中，可能会出现 `[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:` 字样，Don't panic，毋需惊慌，只要最末一行出现 `Output file:` 即告成功。
 
-如不出意外，您应该可以看到，在项目的根目录生成了`result.docx`——快去体验吧！
+如不出意外，您应该可以看到，在项目的根目录生成了`result.docx`，这是由 `demo` 目录中的[三大元素](three-elements.md)生成的。快去体验吧！
 
 !!! tip
     `demo` 中的 `readme.md` 是由 `docs` 目录下的各文档拼合而成的。图片采用相对路径，取自 `docs` 目录下的 `readme.assets` 目录。
 
 !!! tip
     有关命令的详细解读，请参考[命令行参数](command-line.md)一章。
+
+!!! tip
+    您也可以通过[图形用户界面](gui.md)中选择 `demo` 目录作为基础目录以体验生成效果。

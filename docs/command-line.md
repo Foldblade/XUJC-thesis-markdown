@@ -79,3 +79,6 @@ python processer.py --new path_of_your_destination_directory
 ## 更多
 
 参阅 `processer.py`。
+
+!!! tip
+    觉得太难？请参阅[图形用户界面（GUI）](gui.md)。

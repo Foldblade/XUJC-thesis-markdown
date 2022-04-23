@@ -7,8 +7,10 @@ repo_name: XUJC-thesis-markdown
 
 nav:
   - 主页: index.md
+  - 三大元素: three-elements.md
   - 快速开始: quick-start.md
   - 从脚手架开始写作: start-writing-from-the-scaffold.md
+  - 图形用户界面（GUI）: gui.md
   - 撰写指南: writing-guide.md
   - 修改模板样式: modify-template-style.md
   - 命令行参数: command-line.md

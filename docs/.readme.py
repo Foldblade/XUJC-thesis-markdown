@@ -10,8 +10,10 @@ readme_template = f.read()
 f.close()
 
 files = [
+    "three-elements",
     "quick-start",
     "start-writing-from-the-scaffold",
+    "gui",
     "writing-guide",
     "modify-template-style",
     "command-line",

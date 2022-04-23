@@ -56,10 +56,10 @@ tablenos-star-name: 表
 tablenos-caption-name: 表
 tablenos-caption-separator: space # 说明文字（题目）编号与说明文字（题目）分隔符，可取值为 none, colon, period, space, quad, newline
 tablenos-number-by-section: true # 是否按章节编号
-# fignos-section-separator: '-' # 章节编号分隔符，如 1-1，默认为 1.1
+# tablenos-section-separator: '-' # 章节编号分隔符，如 1-1，默认为 1.1
 
 # pandoc-eqnos 配置
 eqnos-plus-name: 式
 eqnos-star-name: 式
 eqnos-number-by-section: true # 是否按章节编号
-# fignos-section-separator: '-' # 章节编号分隔符，如 1-1，默认为 1.1
+# eqnos-section-separator: '-' # 章节编号分隔符，如 1-1，默认为 1.1

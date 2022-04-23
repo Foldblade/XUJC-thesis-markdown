@@ -23,4 +23,7 @@ python processer.py --new "D:\my-thesis"
 
 您可以从脚手架快速开始撰写——当然，永远要记得备份您的数据！
 
+!!! tip
+    觉得太难？请参阅[图形用户界面（GUI）](gui.md)。
+
 有关写作的更多细节，请参阅[撰写指南](writing-guide.md)一章。
