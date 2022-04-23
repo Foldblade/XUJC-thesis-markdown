@@ -245,6 +245,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../three-elements/" class="md-nav__link">
+        三大元素
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../quick-start/" class="md-nav__link">
         快速开始
       </a>
@@ -262,6 +277,21 @@
     <li class="md-nav__item">
       <a href="../start-writing-from-the-scaffold/" class="md-nav__link">
         从脚手架开始写作
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gui/" class="md-nav__link">
+        图形用户界面（GUI）
       </a>
     </li>
   
@@ -398,9 +428,29 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    可能的错误
+  </a>
+  
+    <nav class="md-nav" aria-label="可能的错误">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#permissionerror" class="md-nav__link">
     生成时，命令行最后出现 PermissionError: 之类的错误
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attributeerror-nonetype-object-has-no-attribute-findall" class="md-nav__link">
+    命令行最后出现 AttributeError: 'NoneType' object has no attribute 'findall'
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -483,9 +533,29 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    可能的错误
+  </a>
+  
+    <nav class="md-nav" aria-label="可能的错误">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#permissionerror" class="md-nav__link">
     生成时，命令行最后出现 PermissionError: 之类的错误
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attributeerror-nonetype-object-has-no-attribute-findall" class="md-nav__link">
+    命令行最后出现 AttributeError: 'NoneType' object has no attribute 'findall'
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -512,8 +582,15 @@
 <p>想呐，很想呐。不过学校是要求提交 Word 版本的。</p>
 <h2 id="wps">会支持 WPS 吗？</h2>
 <p>仅通过了 Office 2016、Office 2019 等版本的测试，未进行 WPS 等其他软件测试，如有异常也不计划进行支持。我们建议您采用较新版本的 Office 编辑、查看。不过，Pull Request 我们是欢迎的。</p>
-<h2 id="permissionerror">生成时，命令行最后出现 <code>PermissionError:</code> 之类的错误</h2>
+<h2 id="_1">可能的错误</h2>
+<h3 id="permissionerror">生成时，命令行最后出现 <code>PermissionError:</code> 之类的错误</h3>
 <p>检查您是否打开了生成的 docx 文档。当 docx 文档被打开或占用时，我们的程序将无法完成修改保存的操作，因此请您确认完全关闭生成的 docx 文档后再试。</p>
+<h3 id="attributeerror-nonetype-object-has-no-attribute-findall">命令行最后出现 <code>AttributeError: 'NoneType' object has no attribute 'findall'</code></h3>
+<div class="highlight"><pre><span></span><code>File &quot;./processer.py&quot;, line 174, in document_process
+    sectPr = pPr.findall(&quot;w:sectPr&quot;, namespaces)
+AttributeError: &#39;NoneType&#39; object has no attribute &#39;findall&#39;
+</code></pre></div>
+<p>检查您是否在 Markdown 开头插入 <code>\newSectionInNewPage</code>。</p>
 
               
             </article>

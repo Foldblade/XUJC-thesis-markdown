@@ -243,6 +243,21 @@
 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../three-elements/" class="md-nav__link">
+        三大元素
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -321,6 +336,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    Markdown 编辑器
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -351,6 +373,21 @@
     <li class="md-nav__item">
       <a href="../start-writing-from-the-scaffold/" class="md-nav__link">
         从脚手架开始写作
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gui/" class="md-nav__link">
+        图形用户界面（GUI）
       </a>
     </li>
   
@@ -545,6 +582,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    Markdown 编辑器
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -613,6 +657,9 @@
 <h3 id="zotero">Zotero</h3>
 <p>我们采用 Zotero 进行文献管理，这是一个免费且开源的文献管理软件。请自行前往 <a href="https://www.zotero.org/download/">Zotero 官网</a>下载安装</p>
 <p>如果您只是体验该项目，则暂时可以不必安装。若您愿意采用此项目撰写您的毕业论文，则我们强烈推荐您安装 Zotero 及 Zotero Connector 浏览器插件，并参阅<a href="../appendix/">附录</a>一章中的 Zotero 简明教程。</p>
+<h3 id="markdown">Markdown 编辑器</h3>
+<p>用来编辑你的 Markdown 文件。Markdown 是一个纯文本文件，你可以使用常见的代码编辑器打开、编辑，诸如 VSCode 或 JetBrains 系 IDE 都对 Markdown 提供了支持。</p>
+<p>Markdown 编辑器挑一个趁手的就好，个人推荐 <a href="https://typora.io/">Typora</a>，这是一个所见即所得的 Markdown 编辑器。</p>
 <h2 id="_5">新手上路</h2>
 <p>进行新手上路前，请确保您的写作环境已经满足前文所述的环境要求。</p>
 <ol>
@@ -644,11 +691,15 @@
 </code></pre></div>
 </li>
 </ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>不知道如何“使用终端进入该项目根目录”？在 Windows 下，使用文件资源管理器，找到存在 <code>processer.py</code> 的目录，按住 Shift 键，在文件资源管理器空白处右键，选择“在终端中打开”、“在 PowerShell 中打开”等。或者，打开命令提示符或 PowerShell，使用 <a href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/cd"><code>cd</code> 命令</a>，在输入 <code>cd</code> 后接一个空格，粘贴存在 <code>processer.py</code> 的目录的路径后，按下回车，再复制第4步的命令。</p>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>在该命令的执行过程中，可能会出现 <code>[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:</code> 字样，Don't panic，毋需惊慌，只要最末一行出现 <code>Output file:</code> 即告成功。</p>
 </div>
-<p>如不出意外，您应该可以看到，在项目的根目录生成了<code>result.docx</code>——快去体验吧！</p>
+<p>如不出意外，您应该可以看到，在项目的根目录生成了<code>result.docx</code>，这是由 <code>demo</code> 目录中的<a href="../three-elements/">三大元素</a>生成的。快去体验吧！</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p><code>demo</code> 中的 <code>readme.md</code> 是由 <code>docs</code> 目录下的各文档拼合而成的。图片采用相对路径，取自 <code>docs</code> 目录下的 <code>readme.assets</code> 目录。</p>
@@ -656,6 +707,10 @@
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>有关命令的详细解读，请参考<a href="../command-line/">命令行参数</a>一章。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>您也可以通过<a href="../gui/">图形用户界面</a>中选择 <code>demo</code> 目录作为基础目录以体验生成效果。</p>
 </div>
 
               
@@ -670,7 +725,7 @@
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="上一页: 主页" rel="prev">
+        <a href="../three-elements/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 三大元素" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -679,7 +734,7 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              主页
+              三大元素
             </div>
           </div>
         </a>
