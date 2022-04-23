@@ -11,6 +11,7 @@ from tkinter import scrolledtext, filedialog, messagebox
 from tkinter.ttk import *
 import os
 import subprocess
+import processer
 
 WHERE_SCRIPT = os.path.split(os.path.realpath(__file__))[0]
 
@@ -226,6 +227,24 @@ def generate_scaffold():
         messagebox.showerror('错误', '生成失败。')
 
 
+def check_update():
+    '''
+    检查更新
+    '''
+    maybe_update = processer.check_update()
+
+    if(maybe_update) is not None:
+        print("最新版本是: v%s" % maybe_update)
+        print(
+            "前往下载页：https://github.com/Foldblade/XUJC-thesis-markdown/releases/latest")
+        response = messagebox.askquestion(
+            '更新可用', '您当前使用的版本是：v%s，发现新版本：v%s，是否前往下载页？' % (processer.VERSION, maybe_update))
+        if(response == 'yes'):
+            webbrowser.open(
+                "https://github.com/Foldblade/XUJC-thesis-markdown/releases/latest", new=0, autoraise=True)
+            main_window.destroy()
+
+
 main_menu = Menu(main_window)
 # 新增命令菜单项，使用 add_command() 实现
 main_menu.add_command(label="项目主页", command=open_project_site)
@@ -234,6 +253,7 @@ main_menu.add_command(label="生成脚手架", command=generate_scaffold)
 # 显示菜单
 main_window.config(menu=main_menu)
 
+main_window.after_idle(check_update)
 
 # 组件
 main_window.title('XUJC-thesis-markdown')

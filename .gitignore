@@ -10,3 +10,4 @@ pandoc_tablenos.py
 pandoc_eqnos.py
 *.docx
 .gui_config.json
+/__pycache__

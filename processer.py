@@ -1,4 +1,6 @@
 # encoding: utf-8
+import json
+from urllib.error import URLError
 import zipfile
 import os
 import sys
@@ -349,6 +351,78 @@ def clean():
     print("Cleaning done.")
 
 
+def split_version(version_string):
+    """
+    将字符串按照 "." 分割，并将每部分转成数字
+    :param version_string: 版本号字符串
+    :return: 版本号列表
+    """
+    version_list = version_string.split('.')
+    return [int(n) for n in version_list]
+
+
+def justify_two_version_list(list1, list2):
+    """
+    如果两个数字列表长度不一，需要将短一点的列表末尾补零，让它们长度相等
+    :param lst1:
+    :param lst2:
+    :return:
+    """
+    len1, len2 = len(list1), len(list2)
+    if len1 > len2:
+        list1 += [0] * (len1-len2)
+    elif len1 < len2:
+        list2 += [0] * (len2-len1)
+    return list1, list2
+
+
+def compare_version_lists(current_version, to_compair_version):
+    """
+    比较版本号列表，从高位到底位逐位比较，根据情况判断大小。
+    :param current_version: 当前版本
+    :param to_compair_version: 要比较的版本
+    :return:
+    """
+    for v1, v2 in zip(current_version, to_compair_version):
+        if v1 > v2:
+            return False
+        elif v1 < v2:
+            return True
+    return False
+
+
+def check_update():
+    '''
+    检查更新
+    :return: 存在更新：新版本号，不存在更新：None
+    '''
+    url = 'https://api.github.com/repos/Foldblade/XUJC-thesis-markdown/releases/latest'
+
+    try:
+        response = urllib.request.urlopen(url)
+    except URLError as e:
+        # if hasattr(e, 'reason'):
+        #     print('We failed to reach a server.')
+        #     print('Reason: ', e.reason)
+        # elif hasattr(e, 'code'):
+        #     print('The server couldn\'t fulfill the request.')
+        #     print('Error code: ', e.code)
+        # pass
+        return None
+    else:
+        data = json.loads(response.read().decode('utf-8'))
+        tag_name = data['tag_name']
+        version1, version2 = justify_two_version_list(
+            split_version(VERSION), split_version(tag_name))
+        if (compare_version_lists(version1, version2)):
+            return tag_name
+        else:
+            return None
+
+
+with open(os.path.join(WHERE_SCRIPT, "VERSION")) as f:
+    VERSION = f.read()
+
 parser = argparse.ArgumentParser(
     description="Generate XUJC thesis docx from markdown.")
 parser.add_argument("--new", help="Create a new template directory at the specified location. " +
@@ -379,20 +453,23 @@ parser.add_argument("--no-blank-back-cover", action="store_false", default=True,
                     "不要添加空白页作为封底。")
 parser.add_argument("--clean", action="store_true", help="Clean the temporary files. " +
                     "清理临时文件。")
+parser.add_argument("-V",
+                    "--version", action="store_true", help="Check version. " +
+                    "查看当前版本。")
 # parser.add_argument(
 #     "--debug", action="store_true", help="Print debug info. " +
 #     "输出调试信息。")
 
-parser.parse_args()
-
-
 if __name__ == '__main__':
     ARGS = parser.parse_args()
+    maybe_update = check_update()
 
     if ARGS.pre:
         pre_process()
     elif ARGS.post:
         post_process()
+    elif ARGS.version:
+        print("XUJC-thesis-markdown v%s" % VERSION)
     elif ARGS.new:
         init(ARGS.new)
     elif ARGS.clean:
@@ -424,3 +501,8 @@ if __name__ == '__main__':
         else:
             print(
                 "Pandoc convertation failed. Please check the Pandoc command and debug info.\n")
+
+    if(maybe_update) is not None:
+        print("The newest version is: v%s" % maybe_update)
+        print(
+            "You can download it at: https://github.com/Foldblade/XUJC-thesis-markdown/releases/latest")
