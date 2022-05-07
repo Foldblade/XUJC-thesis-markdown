@@ -17,9 +17,13 @@
 ### 命令行最后出现 `AttributeError: 'NoneType' object has no attribute 'findall'`
 
 ```
-File "./processer.py", line 174, in document_process
+File "./processer.py", line xyz, in document_process
     sectPr = pPr.findall("w:sectPr", namespaces)
 AttributeError: 'NoneType' object has no attribute 'findall'
 ```
 
-检查您是否在 Markdown 开头插入 `\newSectionInNewPage`。
+检查您的 Markdown 文件是否存在内容、是否在 Markdown 开头插入 `\newSectionInNewPage`。
+
+### 命令行最后出现 `'pandoc' 不是内部或外部命令，也不是可运行的程序`
+
+没有安装 Pandoc。请安装 Pandoc 或将 Pandoc 可执行文件放入 bin 目录内。

@@ -25,6 +25,8 @@ theme:
   language: zh
   icon:
     repo: fontawesome/brands/github
+  features:
+    - content.tabs.link
   palette:
     - media: "(prefers-color-scheme: light)" 
       scheme: default
@@ -41,10 +43,15 @@ theme:
         icon: material/brightness-7
         name: Switch to light mode
 
+plugins:
+    - mkdocs-video
+
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 
   - pymdownx.arithmatex:
       generic: true
   - mdx_truly_sane_lists # pip install mdx_truly_sane_lists

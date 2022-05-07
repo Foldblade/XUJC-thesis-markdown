@@ -1,6 +1,5 @@
 # encoding: utf-8
 import json
-from urllib.error import URLError
 import zipfile
 import os
 import sys
@@ -12,7 +11,8 @@ from docx.shared import Cm
 from docx import Document
 from docx.enum.section import WD_SECTION
 from lxml import etree
-import urllib.request
+import progressbar
+import requests
 
 
 WHERE_SCRIPT = os.path.split(os.path.realpath(__file__))[0]
@@ -61,10 +61,21 @@ def download(url, file_name):
     :return: 无
     """
     if not os.path.exists(file_name):
-        print("Downloading %s to %s..." % (url, file_name))
-        f = open(file_name, 'wb')
-        f.write(urllib.request.urlopen(url).read())
-        f.close()
+        print(f"Downloading {url} to {file_name}...")
+        with open(file_name, 'wb') as f:
+            response = requests.request("GET", url, stream=True)
+            content_length = int(response.headers.get("Content-Length"))
+            widgets = ['Progress: ', progressbar.Percentage(), ' ',
+                       progressbar.Bar(marker='#', left='[', right=']'),
+                       ' ', progressbar.ETA(), ' ', progressbar.FileTransferSpeed()]
+            progress_bar = progressbar.ProgressBar(
+                widgets=widgets, maxval=content_length).start()
+            for chunk in response.iter_content(chunk_size=1):
+                if chunk:
+                    f.write(chunk)
+                    f.flush()
+                progress_bar.update(len(chunk) + 1)
+            progress_bar.finish()
     else:
         print("Already exists: %s, skip." % file_name)
 
@@ -258,7 +269,7 @@ def pre_process():
     # 创建 bin
     if not os.path.exists(os.path.join(WHERE_SCRIPT, 'bin')):
         os.mkdir(os.path.join(WHERE_SCRIPT, 'bin'))
-    download("http://www.zotero.org/styles/chinese-gb7714-2005-numeric",
+    download("https://www.zotero.org/styles/chinese-gb7714-2005-numeric",
              os.path.join(WHERE_SCRIPT, 'assets/chinese-gb7714-2005-numeric.csl'))
     download("https://cdn.jsdelivr.net/gh/foldblade/pandoc-fignos@section-separator/pandoc_fignos.py",
              os.path.join(WHERE_SCRIPT, 'pandoc_fignos.py'))
@@ -316,7 +327,7 @@ def post_process(*, source=os.path.join(WHERE_SCRIPT, 'build/pandoc_processed.do
         shutil.copy(os.path.join(WHERE_SCRIPT, 'build/final.docx'), output)
     zipDir(unzipped_dir_path, output)
     print("Post-processing done.")
-    print("Output file: %s" % output)
+    print(f"Output file: {output}")
 
 
 def init(path):
@@ -325,7 +336,7 @@ def init(path):
     :return: 无
     '''
     dest = os.path.join(os.getcwd(), path)
-    print("Initialize scaffold in %s..." % dest)
+    print(f"Initialize scaffold in {dest}...")
     if not os.path.exists(dest):
         shutil.copytree(os.path.join(WHERE_SCRIPT, 'assets/scaffold'), dest)
     else:
@@ -338,13 +349,14 @@ def clean():
     :return: 无
     '''
     print("Cleaning...")
-    dirs = ['build', 'bin', 'docs_site']
-    for dir in dirs:
-        if os.path.exists(os.path.join(WHERE_SCRIPT, dir)):
-            shutil.rmtree(os.path.join(WHERE_SCRIPT, dir))
+    dirs = ['build', 'bin', 'docs_site', 'venv']
+    for directory in dirs:
+        if os.path.exists(os.path.join(WHERE_SCRIPT, directory)):
+            shutil.rmtree(os.path.join(WHERE_SCRIPT, directory))
     files = ['pandoc_eqnos.py', 'pandoc_fignos.py', 'pandoc_tablenos.py',
              './assets/chinese-gb7714-2005-numeric.csl', './assets/logo_image.png',
-             './assets/school_name_image.png', './assets/template.docx']
+             './assets/school_name_image.png', './assets/template.docx',
+             '.gui_config.json']
     for file in files:
         if os.path.exists(os.path.join(WHERE_SCRIPT, file)):
             os.remove(os.path.join(WHERE_SCRIPT, file))
@@ -399,22 +411,15 @@ def check_update():
     url = 'https://api.github.com/repos/Foldblade/XUJC-thesis-markdown/releases/latest'
 
     try:
-        response = urllib.request.urlopen(url)
-    except URLError as e:
-        # if hasattr(e, 'reason'):
-        #     print('We failed to reach a server.')
-        #     print('Reason: ', e.reason)
-        # elif hasattr(e, 'code'):
-        #     print('The server couldn\'t fulfill the request.')
-        #     print('Error code: ', e.code)
-        # pass
+        response = requests.get(url)
+    except Exception as e:
         return None
     else:
-        data = json.loads(response.read().decode('utf-8'))
+        data = response.json()
         tag_name = data['tag_name']
         version1, version2 = justify_two_version_list(
             split_version(VERSION), split_version(tag_name))
-        if (compare_version_lists(version1, version2)):
+        if compare_version_lists(version1, version2):
             return tag_name
         else:
             return None
@@ -469,7 +474,7 @@ if __name__ == '__main__':
     elif ARGS.post:
         post_process()
     elif ARGS.version:
-        print("XUJC-thesis-markdown v%s" % VERSION)
+        print(f"XUJC-thesis-markdown v{VERSION}")
     elif ARGS.new:
         init(ARGS.new)
     elif ARGS.clean:
@@ -503,6 +508,6 @@ if __name__ == '__main__':
                 "Pandoc convertation failed. Please check the Pandoc command and debug info.\n")
 
     if(maybe_update) is not None:
-        print("The newest version is: v%s" % maybe_update)
+        print(f"The newest version is: v{maybe_update}")
         print(
             "You can download it at: https://github.com/Foldblade/XUJC-thesis-markdown/releases/latest")

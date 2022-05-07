@@ -29,11 +29,13 @@ contents = {}
 
 def process_to_emoji(src):
     src = src.replace('\r\n', '\n')
-    warning = re.compile(r'!!![\s]?warning\n\s\s\s\s')
-    danger = re.compile(r'!!![\s]?danger\n\s\s\s\s')
-    info = re.compile(r'!!![\s]?info\n\s\s\s\s')
-    tip = re.compile(r'!!![\s]?tip\n\s\s\s\s')
+    warning = re.compile(r'!!![\s]?warning\n[\s]{4,}')
+    failure = re.compile(r'!!![\s]?failure\n[\s]{4,}')
+    danger = re.compile(r'!!![\s]?danger\n[\s]{4,}')
+    info = re.compile(r'!!![\s]?info\n[\s]{4,}')
+    tip = re.compile(r'!!![\s]?tip\n[\s]{4,}')
     src = re.sub(warning, "> ⚠ 注意：", src)
+    src = re.sub(failure, "> ❌ 失败：", src)
     src = re.sub(danger, "> 🚨 危险：", src)
     src = re.sub(info, "> ℹ️ 信息：", src)
     src = re.sub(tip, "> 💡 提示：", src)

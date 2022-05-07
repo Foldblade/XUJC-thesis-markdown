@@ -50,7 +50,7 @@ python processer.py --clean
     完成`assets/template.docx`修改后，请**自行备份**好您的 。我们的清理命令会删除 `assets/template.docx`。
 
 !!! danger
-    运行该命令，将会删除 `bin`、`build` 目录以及 `assets` 目录中的部分内容。请不要将您的修改内容留存在这些目录内。
+    运行该命令，将会删除 `bin`、`build` 目录以及 `assets` 目录中的部分内容，创建的 `venv` 虚拟环境目录也将被删除。请不要将您的修改内容留存在这些目录内。
 
 该命令将清理临时文件。
 

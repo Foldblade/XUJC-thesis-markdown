@@ -29,7 +29,7 @@ Pandoc 可实现不同标记语言间的格式转换，是该项目的重要依�
     如果您使用 Typora 作为 Markdown 编辑器，并已经使用过其中的文档转换功能，那您很可能已经安装了 Pandoc。请在终端中使用 `pandoc --version` 检查版本是否高于 2.13，若否，请卸载后重新安装。
 
 !!! tip
-    如果您不想安装 Pandoc，可以暂时跳过该节。在[新手上路](#新手上路)一节中，我们会指导您将可执行文件安放在合适位置。
+    如果您不想安装 Pandoc，可以选择下载 Pandoc 的可执行文件。在下文的[新手上路](#新手上路)一节中，我们会指导您将可执行文件安放在合适的位置。
 
 ### Python
 
@@ -55,13 +55,7 @@ Markdown 编辑器挑一个趁手的就好，个人推荐 [Typora](https://typor
 进行新手上路前，请确保您的写作环境已经满足前文所述的环境要求。
 
 1. `git clone https://github.com/Foldblade/XUJC-thesis-markdown.git` 或[下载](https://github.com/Foldblade/XUJC-thesis-markdown/archive/refs/heads/master.zip)该项目
-2. 在终端中运行以下命令，安装所需的 Python 依赖：
-
-    ```bash
-    pip install panflute python-docx regex lxml pandoc-fignos pandoc-eqnos pandoc-tablenos
-    ```
-
-3. （针对不想安装 Pandoc 者）请在该项目根目录下新建 `bin` 目录，再前往 [Pandoc Releases 页](https://github.com/jgm/pandoc/releases)自行下载适合您系统版本的可执行文件。这通常会是一个压缩包，譬如 `pandoc-2.18-windows-x86_64.zip`，请在解压后，将可执行文件（如 `pandoc.exe`）放在 `bin` 目录中。在 Windows 上，目录结构看起来应该类似：
+2. （针对不想安装 Pandoc 者）请在该项目根目录下新建 `bin` 目录，再前往 [Pandoc Releases 页](https://github.com/jgm/pandoc/releases)自行下载适合您系统版本的可执行文件。这通常会是一个压缩包，譬如 `pandoc-2.18-windows-x86_64.zip`，请在解压后，将可执行文件（如 `pandoc.exe`）放在 `bin` 目录中。在 Windows 上，目录结构看起来应该类似：
 
     ```
     │  .gitignore
@@ -77,6 +71,51 @@ Markdown 编辑器挑一个趁手的就好，个人推荐 [Typora](https://typor
     │
     └─略...
     ```
+
+3. 安装所需的 Python 依赖
+
+   全局安装与 Python 虚拟环境二选一即可。我们更推荐您使用虚拟环境。
+
+   1. 全局安装
+
+    在终端中输入：
+
+    ```bash
+    pip install panflute python-docx regex lxml requests progressbar2 pandoc-fignos pandoc-eqnos pandoc-tablenos
+    ```
+
+   2. 选择使用 Python 虚拟环境（推荐）
+
+    您需要使用终端进入该项目根目录，通过以下命令创建一个虚拟环境：
+
+    ```bash
+    python -m venv venv
+    ```
+
+    该行命令不得随意更改，虚拟环境的名称必须是 venv。
+
+    通过以下命令激活虚拟环境：
+
+    === "Windows"
+        ```powershell
+        venv\Scripts\activate
+        ```
+
+        !!! failure
+            如果您在执行命令时出现“因为在此系统上禁止运行脚本”的错误，请执行 `Set-ExecutionPolicy RemoteSigned` 并在随后的询问中输入 `y` 以为当前用户设置 [PowerShell 的执行策略](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies)为 RemoteSigned。
+
+    === "Linux"
+        ```bash
+        source venv/bin/activate
+        ```
+
+    完成虚拟环境的激活后，通过以下命令安装依赖：
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+    如若您采用虚拟环境，则本项目相关的一切命令行操作均应在虚拟环境下运行。
 
 4. 使用终端进入该项目根目录，运行：
 

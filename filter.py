@@ -7,6 +7,7 @@ Pandoc filter using panflute
 import datetime
 import regex
 from panflute import *
+from processer import VERSION
 
 # 硬编码一些组件，懒得拆 XML 了
 page_break = RawBlock(
@@ -731,7 +732,11 @@ def action(elem, doc):
 
 
 def finalize(doc):
-    pass
+    doc.metadata['geneInfo.project'] = 'XUJC-thesis-markdown'
+    doc.metadata['geneInfo.url'] = 'https://github.com/foldblade/XUJC-thesis-markdown'
+    doc.metadata['geneInfo.version'] = VERSION
+    doc.metadata['geneInfo.datetime'] = datetime.datetime.now().strftime(
+        '%Y-%m-%d %H:%M:%S')
 
 
 def main(doc=None):

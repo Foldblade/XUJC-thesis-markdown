@@ -1,8 +1,6 @@
 # encoding: utf-8
 
-import codecs
 import ctypes
-from distutils.command.config import config
 import json
 import webbrowser
 import sys
@@ -16,7 +14,11 @@ import processer
 WHERE_SCRIPT = os.path.split(os.path.realpath(__file__))[0]
 
 
-class myStdout():  # 重定向类
+class myStdout():
+    '''
+    重定向类
+    '''
+
     def __init__(self):
         # 将其备份
         self.stdoutbak = sys.stdout
@@ -77,10 +79,12 @@ def select_dir():
 
 def save_as():
     '''
-    另存为 
+    另存为
     '''
-    dir_path = filedialog.asksaveasfilename(initialfile="result", defaultextension=".docx", filetypes=[
-        ("Word 文档 (*.docx)", ".docx")])
+    dir_path = filedialog.asksaveasfilename(initialfile="result",
+                                            defaultextension=".docx",
+                                            filetypes=[
+                                                ("Word 文档 (*.docx)", ".docx")])
     return dir_path
 
 
@@ -91,11 +95,11 @@ def set_base_dir(*, overwrite=None):
     if overwrite is None:
         BASE_DIR.set(select_dir())
         for file in os.listdir(BASE_DIR.get()):
-            if (os.path.splitext(file)[-1][1:] == "md"):
+            if os.path.splitext(file)[-1][1:] == "md":
                 set_markdown_file(overwrite=os.path.join(BASE_DIR.get(), file))
-            elif (os.path.splitext(file)[-1][1:] == "yaml"):
+            elif os.path.splitext(file)[-1][1:] == "yaml":
                 set_metadata_file(overwrite=os.path.join(BASE_DIR.get(), file))
-            elif (os.path.splitext(file)[-1][1:] == "bib"):
+            elif os.path.splitext(file)[-1][1:] == "bib":
                 set_ref_file(overwrite=os.path.join(BASE_DIR.get(), file))
     else:
         BASE_DIR.set(overwrite)
@@ -137,6 +141,31 @@ def set_output_file(*, overwrite=None):
     entry_output_file.after_idle(entry_output_file.xview_moveto, 1)
 
 
+def detect_venv():
+    '''
+    监测 venv
+    :return: 如果是 venv 环境，True，否则 False
+    '''
+    if os.path.exists(os.path.join(WHERE_SCRIPT, "venv")):
+        return True
+    else:
+        return False
+
+
+def deside_python():
+    '''
+    决定使用哪个 python
+    :return: 如果是 venv 环境，返回 venv 下的 python，否则返回系统 python
+    '''
+    if detect_venv():
+        if os.path.exists(os.path.join(WHERE_SCRIPT, "venv/bin")):
+            return os.path.join(WHERE_SCRIPT, "venv/bin/python")
+        elif os.path.exists(os.path.join(WHERE_SCRIPT, "venv/Scripts")):
+            return os.path.join(WHERE_SCRIPT, "venv/Scripts/python")
+    else:
+        return "python"
+
+
 def generate():
     '''
     调用 processer.py 进行处理
@@ -158,7 +187,7 @@ def generate():
     }
     with open(os.path.join(WHERE_SCRIPT, ".gui_config.json"), 'w', encoding='utf-8') as gui_config_json:
         json.dump(gui_config, gui_config_json, indent=4, ensure_ascii=False)
-    command = ('python "%s" ' % os.path.join(WHERE_SCRIPT, 'processer.py')
+    command = ("%s %s " % (deside_python(), os.path.join(WHERE_SCRIPT, 'processer.py'))
                + '-F "%s" ' % MARKDOWN_FILE.get()  # 输入 markdown 文件
                + ('-B "%s" ' %
                   REF_FILE.get() if REF_FILE.get() != "" else '')  # 引文文件
@@ -210,8 +239,8 @@ def generate_scaffold():
         return
     print("*** 开始生成脚手架... ***\n")
     os.removedirs(dest)
-    command = 'python "%s" --new "%s"' % (
-        os.path.join(WHERE_SCRIPT, 'processer.py'), dest)
+    command = '%s "%s" --new "%s"' % (deside_python(),
+                                      os.path.join(WHERE_SCRIPT, 'processer.py'), dest)
     p = subprocess.Popen(command, stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE,
                          text=True)
@@ -222,7 +251,7 @@ def generate_scaffold():
         #     print(p.stderr.read())
     print("****************************\n\n")
     if(subprocess.Popen.poll(p) == 0):
-        messagebox.showinfo('成功', '脚手架生成成功，位置：%s' % dest)
+        messagebox.showinfo('成功', "脚手架生成成功，位置：%s" % dest)
     else:
         messagebox.showerror('错误', '生成失败。')
 
@@ -238,7 +267,7 @@ def check_update():
         print(
             "前往下载页：https://github.com/Foldblade/XUJC-thesis-markdown/releases/latest")
         response = messagebox.askquestion(
-            '更新可用', '您当前使用的版本是：v%s，发现新版本：v%s，是否前往下载页？' % (processer.VERSION, maybe_update))
+            '更新可用', "您当前使用的版本是：v%s，发现新版本：v%s，是否前往下载页？" % (processer.VERSION, maybe_update))
         if(response == 'yes'):
             webbrowser.open(
                 "https://github.com/Foldblade/XUJC-thesis-markdown/releases/latest", new=0, autoraise=True)

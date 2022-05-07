@@ -1,6 +1,7 @@
 /build
 /bin
 /docs_site
+/docs/video/*
 /assets/logo_image.png
 /assets/school_name_image.png
 /assets/template.docx
@@ -11,3 +12,4 @@ pandoc_eqnos.py
 *.docx
 .gui_config.json
 /__pycache__
+/venv
