@@ -129,39 +129,6 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="查找">
-        
-        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            正在初始化搜索引擎
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-    
     
       <div class="md-header__source">
         <a href="https://github.com/Foldblade/XUJC-thesis-markdown" title="前往仓库" class="md-source" data-md-component="source">
@@ -646,7 +613,7 @@
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>如果您不想安装 Pandoc，可以暂时跳过该节。在<a href="#新手上路">新手上路</a>一节中，我们会指导您将可执行文件安放在合适位置。</p>
+<p>如果您不想安装 Pandoc，可以选择下载 Pandoc 的可执行文件。在下文的<a href="#新手上路">新手上路</a>一节中，我们会指导您将可执行文件安放在合适的位置。</p>
 </div>
 <h3 id="python">Python</h3>
 <p>该项目中的过滤器采用 Python 语言写就。请自行前往 <a href="https://www.python.org/downloads/">Python 官网</a>下载安装。有关安装的具体步骤，您可以参阅：<a href="https://www.runoob.com/python3/python3-install.html">Python3 环境搭建</a>。</p>
@@ -665,11 +632,6 @@
 <ol>
 <li><code>git clone https://github.com/Foldblade/XUJC-thesis-markdown.git</code> 或<a href="https://github.com/Foldblade/XUJC-thesis-markdown/archive/refs/heads/master.zip">下载</a>该项目</li>
 <li>
-<p>在终端中运行以下命令，安装所需的 Python 依赖：</p>
-<div class="highlight"><pre><span></span><code>pip install panflute python-docx regex lxml pandoc-fignos pandoc-eqnos pandoc-tablenos
-</code></pre></div>
-</li>
-<li>
 <p>（针对不想安装 Pandoc 者）请在该项目根目录下新建 <code>bin</code> 目录，再前往 <a href="https://github.com/jgm/pandoc/releases">Pandoc Releases 页</a>自行下载适合您系统版本的可执行文件。这通常会是一个压缩包，譬如 <code>pandoc-2.18-windows-x86_64.zip</code>，请在解压后，将可执行文件（如 <code>pandoc.exe</code>）放在 <code>bin</code> 目录中。在 Windows 上，目录结构看起来应该类似：</p>
 <div class="highlight"><pre><span></span><code>│  .gitignore
 │  filter.py
@@ -684,6 +646,46 @@
 │
 └─略...
 </code></pre></div>
+</li>
+<li>
+<p>安装所需的 Python 依赖</p>
+<p>全局安装与 Python 虚拟环境二选一即可。我们更推荐您使用虚拟环境。</p>
+<ol>
+<li>
+<p>全局安装</p>
+<p>在终端中输入：</p>
+<div class="highlight"><pre><span></span><code>pip install panflute python-docx regex lxml requests progressbar2 pandoc-fignos pandoc-eqnos pandoc-tablenos
+</code></pre></div>
+</li>
+<li>
+<p>选择使用 Python 虚拟环境（推荐）</p>
+<p>您需要使用终端进入该项目根目录，通过以下命令创建一个虚拟环境：</p>
+<div class="highlight"><pre><span></span><code>python -m venv venv
+</code></pre></div>
+<p>该行命令不得随意更改，虚拟环境的名称必须是 venv。</p>
+<p>通过以下命令激活虚拟环境：</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label><label for="__tabbed_1_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">activate</span>
+</code></pre></div>
+<div class="admonition failure">
+<p class="admonition-title">Failure</p>
+<p>如果您在执行命令时出现“因为在此系统上禁止运行脚本”的错误，请执行 <code>Set-ExecutionPolicy RemoteSigned</code> 并在随后的询问中输入 <code>y</code> 以为当前用户设置 <a href="https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies">PowerShell 的执行策略</a>为 RemoteSigned。</p>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">source</span> venv/bin/activate
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>完成虚拟环境的激活后，通过以下命令安装依赖：</p>
+<div class="highlight"><pre><span></span><code>pip install -r requirements.txt
+</code></pre></div>
+<p>如若您采用虚拟环境，则本项目相关的一切命令行操作均应在虚拟环境下运行。</p>
+</li>
+</ol>
 </li>
 <li>
 <p>使用终端进入该项目根目录，运行：</p>
@@ -777,7 +779,7 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../assets/javascripts/bundle.c44cc438.min.js"></script>
