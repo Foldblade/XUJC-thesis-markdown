@@ -162,7 +162,7 @@ def pandoc_process(*, source=os.path.join(WHERE_SCRIPT, 'demo/paper.md'),
                       # 自定义过滤器
                       + '--filter "%s" ' % os.path.join(WHERE_SCRIPT, 'filter.py')
                       + '--citeproc '  # 处理引用
-                      + source)
+                      + f'"{source}"')
     print("Pandoc command: ")
     print(pandoc_command)
     print("Here goes with the Pandoc debug: ")
@@ -197,6 +197,12 @@ def document_process(dir_path):
             t = r.find("w:t", namespaces)
             rpr = r.find("w:rPr", namespaces)
             # 处理 Pandoc 生成的 H1 编号为"第 x 章"，并将 tab 换成 空格
+            if t is not None:
+                # pandoc-xnos 生成的表题、图题会包含一个 &nbsp;
+                # 原先版本采用中文宋体 + 英文 Times New Roman 不会造成显示异常
+                # 但如若英文也采用宋体，则 &nbsp; 将会被显示为 2 英文字符宽度带来排版问题
+                # 故需将 &nbsp; 删除
+                t.text = t.text.replace(u'\xa0', "")
             if rpr is not None:
                 rStyle = rpr.find("w:rStyle", namespaces)
                 if rStyle is not None and rStyle.attrib.get("{%s}val" % namespaces["w"]) == "SectionNumber":
@@ -238,7 +244,10 @@ def modify_document_setting(dir_path):
     '''
     后处理流程之二
     修改 Word 文档版式设定中的 字符间距控制 - 只压缩标点符号
-    设定 <w:defaultTabStop w:val="420"/>， Tab 宽度 2 字符
+    设定 <w:defaultTabStop w:val="xxx"/> 修改 Tab 宽度
+    Tab 宽度 1 字符 w:val="240"，默认为 720
+    如若先前版本中正文英文采用 Times New Roman，则可尝试采用 420
+    https://docs.microsoft.com/zh-cn/dotnet/api/documentformat.openxml.wordprocessing.defaulttabstop?view=openxml-2.8.1
     :param dir_path: 待处理的解压后的 docx 目录
     :return: 无
     '''
@@ -250,7 +259,7 @@ def modify_document_setting(dir_path):
     root.find("w:characterSpacingControl", namespaces).set(
         '{%s}val' % namespaces["w"], 'compressPunctuation')
     root.find("w:defaultTabStop", namespaces).set(
-        '{%s}val' % namespaces["w"], '420')
+        '{%s}val' % namespaces["w"], '288')
 
     tree.write(os.path.join(dir_path, 'word/settings.xml'),
                encoding='utf-8', xml_declaration=True, standalone=True)
@@ -303,9 +312,9 @@ def pre_process():
 def post_process(*, source=os.path.join(WHERE_SCRIPT, 'build/pandoc_processed.docx'),
                  output=os.path.join(WHERE_SCRIPT, 'build/final.docx')):
     '''
-    后处理将向过滤器输出的 docx 文件添加校徽与校名图片，
+    后处理将向过滤器输出的 docx 文件添加校徽与校名图片
     设置字符间距控制为“只压缩标点符号”
-    设定 <w:defaultTabStop w:val="420"/>， Tab 宽度 2 字符
+    设定 <w:defaultTabStop w:val="xxx"/>， Tab 宽度
     修改 Header 1 为“第 x 章”
     替换 Header 后面的 Tab 为空格
 

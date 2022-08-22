@@ -296,7 +296,7 @@ def generate_cover(metadata):
     </w:r>
     <w:r>
         <w:rPr>
-            <w:rFonts w:ascii="Times New Roman" w:eastAsia="宋体" w:hint="eastAsia"/>
+            <w:rFonts w:ascii="宋体" w:eastAsia="宋体" w:hint="eastAsia"/>
             <w:b/>
             <w:sz w:val="44"/>
             <w:szCs w:val="44"/>
@@ -344,7 +344,7 @@ def generate_cover(metadata):
             <w:sz w:val="32"/>
             <w:szCs w:val="32"/>
         </w:rPr>
-        <w:t>分院、系：{school}</w:t>
+        <w:t>院    系：{school}</w:t>
     </w:r>
 </w:p>
 <w:p>
@@ -390,7 +390,7 @@ def generate_cover(metadata):
     </w:r>
     <w:r>
         <w:rPr>
-            <w:rFonts w:ascii="Times New Roman" w:eastAsia="宋体" w:hint="eastAsia"/>
+            <w:rFonts w:ascii="宋体" w:eastAsia="宋体" w:hint="eastAsia"/>
             <w:b/>
             <w:sz w:val="32"/>
             <w:szCs w:val="32"/>
@@ -420,7 +420,7 @@ def generate_cover(metadata):
     </w:r>
     <w:r>
         <w:rPr>
-            <w:rFonts w:ascii="Times New Roman" w:eastAsia="宋体" w:hint="eastAsia"/>
+            <w:rFonts w:ascii="宋体" w:eastAsia="宋体" w:hint="eastAsia"/>
             <w:b/>
             <w:sz w:val="32"/>
             <w:szCs w:val="32"/>
@@ -711,22 +711,24 @@ def action(elem, doc):
             div = Div(*para, attributes={"custom-style": "Conclusion Title"})
             elem = [div]
     '''
-    引号处理。
-    默认情况下，引号会作为 Quoted 类型。
-    中文双引号与西文双引号在 Unicode 中共用了编码。
-    然而，在 Word 中，未定义语言的双引号将会被处理为西文，
-    在我的模板中，西文会以 Times New Roman 字型处理，造成排版上的半宽。
-    考虑到论文中难免会出现西文双引号的需要（如代码等），
-    我并不想将双引号都硬编码为中文字符，
-    也并没有什么很好的解决方法，唯有在前后加个空格了。
     '''
-    if isinstance(elem, Quoted):
-        return_list = [elem]
-        if not isinstance(elem.prev, Space):
-            return_list.insert(0, Space)
-        if not isinstance(elem.prev, Space):
-            return_list.append(Space)
-        elem = return_list
+    # '''
+    # 引号处理。
+    # 默认情况下，引号会作为 Quoted 类型。
+    # 中文双引号与西文双引号在 Unicode 中共用了编码。
+    # 然而，在 Word 中，未定义语言的双引号将会被处理为西文，
+    # 在我的模板中，西文会以 Times New Roman 字型处理，造成排版上的半宽。
+    # 考虑到论文中难免会出现西文双引号的需要（如代码等），
+    # 我并不想将双引号都硬编码为中文字符，
+    # 也并没有什么很好的解决方法，唯有在前后加个空格了。
+    # '''
+    # if isinstance(elem, Quoted):
+    #     return_list = [elem]
+    #     if not isinstance(elem.prev, Space):
+    #         return_list.insert(0, Space)
+    #     if not isinstance(elem.prev, Space):
+    #         return_list.append(Space)
+    #     elem = return_list
 
     return elem
 
