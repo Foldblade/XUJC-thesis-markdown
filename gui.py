@@ -152,7 +152,7 @@ def detect_venv():
         return False
 
 
-def deside_python():
+def decide_python():
     '''
     决定使用哪个 python
     :return: 如果是 venv 环境，返回 venv 下的 python，否则返回系统 python
@@ -187,7 +187,7 @@ def generate():
     }
     with open(os.path.join(WHERE_SCRIPT, ".gui_config.json"), 'w', encoding='utf-8') as gui_config_json:
         json.dump(gui_config, gui_config_json, indent=4, ensure_ascii=False)
-    command = ("%s %s " % (deside_python(), os.path.join(WHERE_SCRIPT, 'processer.py'))
+    command = ('"%s" "%s" ' % (decide_python(), os.path.join(WHERE_SCRIPT, 'processer.py'))
                + '-F "%s" ' % MARKDOWN_FILE.get()  # 输入 markdown 文件
                + ('-B "%s" ' %
                   REF_FILE.get() if REF_FILE.get() != "" else '')  # 引文文件
@@ -239,7 +239,7 @@ def generate_scaffold():
         return
     print("*** 开始生成脚手架... ***\n")
     os.removedirs(dest)
-    command = '%s "%s" --new "%s"' % (deside_python(),
+    command = '%s "%s" --new "%s"' % (decide_python(),
                                       os.path.join(WHERE_SCRIPT, 'processer.py'), dest)
     p = subprocess.Popen(command, stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE,

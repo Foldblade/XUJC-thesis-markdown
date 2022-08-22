@@ -28,14 +28,14 @@ theme:
   features:
     - content.tabs.link
   palette:
-    - media: "(prefers-color-scheme: light)" 
+    - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: indigo
       accent: pink
       toggle:
         icon: material/brightness-4
         name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)" 
+    - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: light blue
       accent: pink
@@ -44,14 +44,15 @@ theme:
         name: Switch to light mode
 
 plugins:
-    - mkdocs-video
+  - search
+  - mkdocs-video
 
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
   - pymdownx.arithmatex:
       generic: true
   - mdx_truly_sane_lists # pip install mdx_truly_sane_lists

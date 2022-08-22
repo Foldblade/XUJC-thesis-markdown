@@ -162,7 +162,7 @@ def pandoc_process(*, source=os.path.join(WHERE_SCRIPT, 'demo/paper.md'),
                       # 自定义过滤器
                       + '--filter "%s" ' % os.path.join(WHERE_SCRIPT, 'filter.py')
                       + '--citeproc '  # 处理引用
-                      + source)
+                      + f'"{source}"')
     print("Pandoc command: ")
     print(pandoc_command)
     print("Here goes with the Pandoc debug: ")
