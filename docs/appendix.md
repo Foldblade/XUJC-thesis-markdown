@@ -27,6 +27,9 @@ Zotero 是一个免费和开源的参考管理软件，用于管理书目数据�
 ![插入结果](readme.assets/image-20220402183404519.png)
 
 !!! tip
+    如果您安装了 [Jasminum](https://github.com/l0o0/jasminum/releases) 插件，您也可以将下载到文献保留原始文件名、直接拖入 Zotero 窗口。Jasminum 插件会自动帮您补全元数据，这在您使用 WebVPN 访问知网、无法通过 Zotero Connector 保存文献时非常有用。
+
+!!! tip
     如果您不希望最后生成的参考文献中出现文献的网址或 DOI，请在右侧的信息中删除 URL、DOI 或是相关信息；如若您不希望出现访问日期，同理也请在右侧信息中进行删除。
 
 在知网下载的文献上方右键，将中文名称合并：
@@ -43,3 +46,4 @@ Zotero 是一个免费和开源的参考管理软件，用于管理书目数据�
 
 !!! warning
     请注意导出格式是 “BibTeX” 还是 “Better BibTeX”。在某些情况下，“Better BibTeX”可能无法达到您预期的引文类型。
+

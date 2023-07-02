@@ -143,7 +143,7 @@ Pandoc 在生成时，会自动在文档开头生成元数据中的标题、作�
 ![Photo by Baim Hanif on Unsplash, Free to use under the Unsplash License](readme.assets/baim-hanif-pYWuOMhtc6k-unsplash.jpg){#fig:graduation}
 ```
 
-其中，中括号内写图片的说明文字（题目），括号内是文件的路径，最后的大括号中 `#fig:` 来自 pandoc-fignos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@fig:graduation{nolink=True}` 这样的语法去引用图片并实现自动编号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@fig:graduation}`。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 [pandoc-fignos 文档](https://github.com/tomduck/pandoc-tablenos)。
+其中，中括号内写图片的说明文字（题目），括号内是文件的路径，最后的大括号中 `#fig:` 来自 pandoc-fignos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@fig:graduation{nolink=True}` 这样的语法去引用并实现自动编号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@fig:graduation}`。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 [pandoc-fignos 文档](https://github.com/tomduck/pandoc-fignos)。
 
 !!! tip
     我们建议您使用 Markdown 编辑器生成相对 Markdown 文件的**相对路径**，因为我们会默认 Markdown 文件所在目录为资源所在目录。
@@ -194,7 +194,7 @@ Pandoc 在生成时，会自动在文档开头生成元数据中的标题、作�
 : 知识共享许可协议的四项基本权利 {#tbl:CC_four_rights}
 ```
 
-最后的大括号中 `#tbl:` 来自 pandoc-tablenos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@tbl:CC_four_rights{nolink=True}` 这样的语法去引用图片并实现自动编号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@tbl:CC_four_rights}`。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 [pandoc-tablenos 文档](https://github.com/tomduck/pandoc-tablenos)。
+最后的大括号中 `#tbl:` 来自 pandoc-tablenos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@tbl:CC_four_rights{nolink=True}` 这样的语法去引用并实现自动编号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@tbl:CC_four_rights}`。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 [pandoc-tablenos 文档](https://github.com/tomduck/pandoc-tablenos)。
 
 !!! info
     若需修改自动编号格式，可在元数据文件中修改它的配置。
@@ -264,7 +264,7 @@ $$ \pi = 3.141592653589793238462643 \ldots $$ {#eq:pi}
 $$ S = \pi \times r^{2} $$ {#eq:area_of_circle}
 ```
 
-最后的大括号中 `#eq:` 来自 pandoc-eqnos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@eq:area_of_circle{nolink=True}` 这样的语法去引用图片并实现自动编号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@eq:area_of_circle}`。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 [pandoc-eqnos 文档](https://github.com/tomduck/pandoc-eqnos)。
+最后的大括号中 `#eq:` 来自 pandoc-eqnos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 `+@eq:area_of_circle{nolink=True}` 这样的语法去引用并实现自动编号，一般来说，行内引用以 `+` 开头，行首引用以 `*` 开头。`nolink=True` 表示不为引用生成超链接。当您引用时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：`{+@eq:area_of_circle}`。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 [pandoc-eqnos 文档](https://github.com/tomduck/pandoc-eqnos)。
 
 !!! info
     若需修改自动编号格式，可在元数据文件中修改它的配置。
