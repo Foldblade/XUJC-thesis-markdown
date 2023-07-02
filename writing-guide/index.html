@@ -10,8 +10,14 @@
       
         <link rel="canonical" href="https://foldblade.github.io/XUJC-thesis-markdown/writing-guide/">
       
+      
+        <link rel="prev" href="../gui/">
+      
+      
+        <link rel="next" href="../modify-template-style/">
+      
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
     
     
       
@@ -19,12 +25,13 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.644de097.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
-        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a6bdf11c.min.css">
       
+      
+
     
     
     
@@ -37,10 +44,11 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
+    
     
     
   </head>
@@ -77,16 +85,18 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href=".." title="XUJC Thesis Markdown" class="md-header__button md-logo" aria-label="XUJC Thesis Markdown" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -105,32 +115,36 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
+      
+        <form class="md-header__option" data-md-component="palette">
           
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
           
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
           
-            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69z"/></svg>
-            </label>
-          
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69z"/></svg>
-            </label>
-          
-        
-      </form>
+        </form>
+      
     
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -138,13 +152,13 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
@@ -155,7 +169,7 @@
           <div class="md-search-result__meta">
             正在初始化搜索引擎
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -167,7 +181,7 @@
         <a href="https://github.com/Foldblade/XUJC-thesis-markdown" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     XUJC-thesis-markdown
@@ -202,7 +216,7 @@
     <a href=".." title="XUJC Thesis Markdown" class="md-nav__button md-logo" aria-label="XUJC Thesis Markdown" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
     XUJC Thesis Markdown
@@ -212,7 +226,7 @@
       <a href="https://github.com/Foldblade/XUJC-thesis-markdown" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     XUJC-thesis-markdown
@@ -308,7 +322,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
@@ -823,17 +837,17 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-<a href="https://github.com/Foldblade/XUJC-thesis-markdown/edit/master/docs/writing-guide.md" title="编辑此页" class="md-content__button md-icon">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-</a>
+                  
+
+  
+  
 
 
-
-<h1 id="_1">撰写指南</h1>
+<div><h1 id="_1">撰写指南</h1>
 <p>我们建议您做好 demo 目录下所有文件的备份，最好一开始就复制一份出来。如果您没有足够的耐心阅读文档，我们更建议运用脚手架开始写作，且时常运行生成命令以检查错误，而不是从一份空白的 Markdown 文档开始。</p>
 <h2 id="markdown">Markdown</h2>
 <p>Markdown 的基础语法，我相信凭借自己实力找到这个项目的人已经有所了解。</p>
@@ -885,7 +899,7 @@
 <p>元数据中的 <code>abstract</code> 与 <code>abstractEn</code> 字段，我们强烈建议您在一行内完成撰写。如果您觉得一行不够“优雅”、希望分段呈现，则您必须在每段之间空一行（实际上便是在每段后加入两个换行符、按两下回车）。如果您仅使用一个回车、不在段落中空一行，您的中文摘要可能出现意想不到的情况，例如句间的空格。</p>
 </div>
 <h2 id="_3">封底</h2>
-<p>默认会在文档末尾生成空白页作为封底。如您不需要，请参阅<a href="../command-line/">命令行参数</a>一章中的<a href="#不在文档末尾生成空白页作为封底">不在文档末尾生成空白页作为封底</a>一节，在生成命令后加上参数 <code>--no-blank-back-cover</code>。</p>
+<p>默认会在文档末尾生成空白页作为封底。如您不需要，请参阅<a href="../command-line/">命令行参数</a>一章中的<a href="#%E4%B8%8D%E5%9C%A8%E6%96%87%E6%A1%A3%E6%9C%AB%E5%B0%BE%E7%94%9F%E6%88%90%E7%A9%BA%E7%99%BD%E9%A1%B5%E4%BD%9C%E4%B8%BA%E5%B0%81%E5%BA%95">不在文档末尾生成空白页作为封底</a>一节，在生成命令后加上参数 <code>--no-blank-back-cover</code>。</p>
 <h2 id="_4">段落</h2>
 <p>自由地按照 Markdown 语法撰写段落即可。要创建段落，请使用空白行将一行或多行文本进行分隔。不要用空格或制表符缩进段落。</p>
 <div class="admonition tip">
@@ -894,7 +908,7 @@
 </div>
 <h2 id="_5">章节标题及自动编号</h2>
 <p>不同于 Markdown 文件中通常只出现一个一级标题，在我们的 Markdown 中，第几级标题便是几级标题。这意味着，您的一级标题“绪论”，应该使用 Markdown 的一级标题语法：<code># 绪论</code>。</p>
-<p>引言、结论、致谢、参考文献、附录也采用一级标题。为了正确生成对应的样式，您的引言、结论、致谢、参考文献、附录，<strong>能且只能</strong>取值为：引言、总结、结论、致谢、致谢语、参考文献、附录。具体细节，请参阅<a href="#模板文件样式说明">模板文件样式说明</a>一节。如果您变换了这些标题，它们将无法得到正确处理。</p>
+<p>引言、结论、致谢、参考文献、附录也采用一级标题。为了正确生成对应的样式，您的引言、结论、致谢、参考文献、附录，<strong>能且只能</strong>取值为：引言、总结、结论、致谢、致谢语、参考文献、附录。具体细节，请参阅<a href="#%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6%E6%A0%B7%E5%BC%8F%E8%AF%B4%E6%98%8E">模板文件样式说明</a>一节。如果您变换了这些标题，它们将无法得到正确处理。</p>
 <p>我们默认配置了章节标题自动编号——包括每章开头自动转变为“第 x 章”，您仅需在 Markdown 中行云流水地创作即可。如果您选择了章节标题自动编号，正如 <code>demo/readme.md</code> 与脚手架所展示的那样，您还需要在引言、结论、致谢、参考文献、附录的后面加上 <code>{.unnumbered}</code>，这会让 Pandoc 意识到这几节是无需自动编号的。</p>
 <p>当然，您也可以选择手动编号——这将给您标题编号的更多自由度，比如结构为：</p>
 <ul>
@@ -913,11 +927,11 @@
 </li>
 </ul>
 <p>等，这需要您在撰写标题时就手动加入。您需要手动撰写标题如 <code># 第一章 绪论</code>而不像自动编号这样的 <code># 绪论</code>。此外，您还需要在根目录的 <code>processer.py</code> 中找到 <code>pandoc_process</code> 函数，在其中注释以下内容：</p>
-<div class="highlight"><pre><span></span><code><span class="gd">--- processer.py</span><span class="w"></span>
-<span class="w"> </span>                     + &#39;--csl &quot;%s&quot; &#39; % os.path.join(WHERE_SCRIPT, &#39;assets/chinese-gb7714-2005-numeric.csl&#39;)<span class="w"></span>
-<span class="gd">-                     + &#39;--number-sections &#39;  # 章节自动编号</span><span class="w"></span>
-<span class="gi">+                  #  + &#39;--number-sections &#39;  # 章节自动编号</span><span class="w"></span>
-<span class="w"> </span>                     + source)<span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="gd">--- processer.py</span>
+<span class="w"> </span>                     + '--csl "%s" ' % os.path.join(WHERE_SCRIPT, 'assets/chinese-gb7714-2005-numeric.csl')
+<span class="gd">-                     + '--number-sections '  # 章节自动编号</span>
+<span class="gi">+                  #  + '--number-sections '  # 章节自动编号</span>
+<span class="w"> </span>                     + source)
 </code></pre></div>
 <h2 id="_6">图片、表格、公式的引用及自动编号</h2>
 <div class="admonition info">
@@ -929,14 +943,14 @@
 <p>该项目采用的是我们修改过的 pandoc-xnos 部分组件，但官方文档仍是适用的。</p>
 </div>
 <p>该功能采用 <a href="https://github.com/tomduck/pandoc-xnos">pandoc-xnos</a> 过滤器套件实现[@Duck2022pandoc-xnos]。您可以在元数据文件中修改它的配置：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">***-plus-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">图</span><span class="w"> </span><span class="c1"># 行内引用</span><span class="w"></span>
-<span class="nt">***-star-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">图</span><span class="w"> </span><span class="c1"># 行首引用（汉字理论上是和行内没区别的，主要面向西文用户，大小写需求）</span><span class="w"></span>
-<span class="nt">***-caption-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">图</span><span class="w"> </span><span class="c1"># 说明文字（题目）名称，如 图、Fig、Figure 等</span><span class="w"></span>
-<span class="nt">***-caption-separator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">space</span><span class="w"> </span><span class="c1"># 说明文字（题目）编号与说明文字（题目）分隔符，可取值为 none, colon, period, space, quad, newline</span><span class="w"></span>
-<span class="nt">***-number-by-section</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># 是否按章节编号</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">***-plus-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">图</span><span class="w"> </span><span class="c1"># 行内引用</span>
+<span class="nt">***-star-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">图</span><span class="w"> </span><span class="c1"># 行首引用（汉字理论上是和行内没区别的，主要面向西文用户，大小写需求）</span>
+<span class="nt">***-caption-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">图</span><span class="w"> </span><span class="c1"># 说明文字（题目）名称，如 图、Fig、Figure 等</span>
+<span class="nt">***-caption-separator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">space</span><span class="w"> </span><span class="c1"># 说明文字（题目）编号与说明文字（题目）分隔符，可取值为 none, colon, period, space, quad, newline</span>
+<span class="nt">***-number-by-section</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># 是否按章节编号</span>
 </code></pre></div>
 <p>有关我们自定义的配置项：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">***-section-separator</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-&#39;</span><span class="w"> </span><span class="c1"># 章节编号分隔符，如 1-1，若注释或删除则默认为 1.1</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">***-section-separator</span><span class="p">:</span><span class="w"> </span><span class="s">'-'</span><span class="w"> </span><span class="c1"># 章节编号分隔符，如 1-1，若注释或删除则默认为 1.1</span>
 </code></pre></div>
 <h3 id="_7">图片及自动编号</h3>
 <div class="admonition warning">
@@ -950,7 +964,7 @@
 <p>您可以像这样插入一张图片：</p>
 <div class="highlight"><pre><span></span><code>![<span class="nt">Photo by Baim Hanif on Unsplash, Free to use under the Unsplash License</span>](<span class="na">readme.assets/baim-hanif-pYWuOMhtc6k-unsplash.jpg</span>){#fig:graduation}
 </code></pre></div>
-<p>其中，中括号内写图片的说明文字（题目），括号内是文件的路径，最后的大括号中 <code>#fig:</code> 来自 pandoc-fignos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 <code>+@fig:graduation{nolink=True}</code> 这样的语法去引用图片并实现自动编号，一般来说，行内引用以 <code>+</code> 开头，行首引用以 <code>*</code> 开头。<code>nolink=True</code> 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：<code>{+@fig:graduation}</code>。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 <a href="https://github.com/tomduck/pandoc-tablenos">pandoc-fignos 文档</a>。</p>
+<p>其中，中括号内写图片的说明文字（题目），括号内是文件的路径，最后的大括号中 <code>#fig:</code> 来自 pandoc-fignos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 <code>+@fig:graduation{nolink=True}</code> 这样的语法去引用并实现自动编号，一般来说，行内引用以 <code>+</code> 开头，行首引用以 <code>*</code> 开头。<code>nolink=True</code> 表示不为引用生成超链接。当您引用时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：<code>{+@fig:graduation}</code>。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 <a href="https://github.com/tomduck/pandoc-fignos">pandoc-fignos 文档</a>。</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>我们建议您使用 Markdown 编辑器生成相对 Markdown 文件的<strong>相对路径</strong>，因为我们会默认 Markdown 文件所在目录为资源所在目录。</p>
@@ -972,9 +986,9 @@
 <p>样例部分唯有在生成的 docx 中才能看到最终效果。在 Markdown 编辑器或渲染结果中，您可以参考学习语法。</p>
 </div>
 <p>上述语法插入的图片来自 <a href="https://unsplash.com/s/photos/graduation?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a> 网站的 <a href="https://unsplash.com/@baim?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Baim Hanif</a>，采用 <a href="https://unsplash.com/license">Unsplash License</a> 授权免费使用，如下+@fig:graduation{nolink=True}所示：</p>
-<p><img alt="Photo by Baim Hanif on Unsplash,  Free to use under the Unsplash License" src="../readme.assets/baim-hanif-pYWuOMhtc6k-unsplash.jpg" />{#fig:graduation}</p>
+<p><img alt="Photo by Baim Hanif on Unsplash,  Free to use under the Unsplash License" src="../readme.assets/baim-hanif-pYWuOMhtc6k-unsplash.jpg">{#fig:graduation}</p>
 <p>另一张来自 <a href="https://unsplash.com/s/photos/graduation?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a> 网站 <a href="https://unsplash.com/@city_child?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Joan Kwamboka</a> 的图片，采用 <a href="https://unsplash.com/license">Unsplash License</a> 授权免费使用，如下{+@fig:graduation2}所示：</p>
-<p><img alt="Photo by Joan Kwamboka on Unsplash, Free to use under the Unsplash License" src="../readme.assets/joan-kwamboka-hvL7qlvZ5T4-unsplash.jpg" />{#fig:graduation2}</p>
+<p><img alt="Photo by Joan Kwamboka on Unsplash, Free to use under the Unsplash License" src="../readme.assets/joan-kwamboka-hvL7qlvZ5T4-unsplash.jpg">{#fig:graduation2}</p>
 <h3 id="_9">表格及自动编号</h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -988,7 +1002,7 @@
 <p>您可以在表格前后这样这样插入表格的说明文字（题目）：</p>
 <div class="highlight"><pre><span></span><code>: 知识共享许可协议的四项基本权利 {#tbl:CC_four_rights}
 </code></pre></div>
-<p>最后的大括号中 <code>#tbl:</code> 来自 pandoc-tablenos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 <code>+@tbl:CC_four_rights{nolink=True}</code> 这样的语法去引用图片并实现自动编号，一般来说，行内引用以 <code>+</code> 开头，行首引用以 <code>*</code> 开头。<code>nolink=True</code> 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：<code>{+@tbl:CC_four_rights}</code>。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 <a href="https://github.com/tomduck/pandoc-tablenos">pandoc-tablenos 文档</a>。</p>
+<p>最后的大括号中 <code>#tbl:</code> 来自 pandoc-tablenos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 <code>+@tbl:CC_four_rights{nolink=True}</code> 这样的语法去引用并实现自动编号，一般来说，行内引用以 <code>+</code> 开头，行首引用以 <code>*</code> 开头。<code>nolink=True</code> 表示不为引用生成超链接。当您引用时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：<code>{+@tbl:CC_four_rights}</code>。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 <a href="https://github.com/tomduck/pandoc-tablenos">pandoc-tablenos 文档</a>。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>若需修改自动编号格式，可在元数据文件中修改它的配置。</p>
@@ -1020,12 +1034,12 @@
 <td>您（用户）可以复制、发行、展览、表演、放映、广播或通过信息网络传播本作品；您必须按照作者或者许可人指定的方式对作品进行署名。</td>
 </tr>
 <tr>
-<td><strong><a href="https://zh.wikipedia.org/wiki/相同方式共享">相同方式共享</a></strong>（英语：<strong>S</strong>hare<strong>A</strong>like，<strong>sa</strong>）</td>
+<td><strong><a href="https://zh.wikipedia.org/wiki/%E7%9B%B8%E5%90%8C%E6%96%B9%E5%BC%8F%E5%85%B1%E4%BA%AB">相同方式共享</a></strong>（英语：<strong>S</strong>hare<strong>A</strong>like，<strong>sa</strong>）</td>
 <td>您可以自由复制、散布、展示及演出本作品；若您改变、转变或更改本作品，仅在遵守与本作品相同的授权条款下，您才能散布由本作品产生的派生作品。（参见 <a href="https://zh.wikipedia.org/wiki/Copyleft">copyleft</a>）。</td>
 </tr>
 <tr>
 <td><strong>非商业性使用</strong>（英语：<strong>N</strong>on<strong>c</strong>ommercial,<strong>nc</strong> ）</td>
-<td>您可以自由复制、散布、展示及演出本作品；您不得为<a href="https://zh.wikipedia.org/wiki/商业">商业</a>目的而使用本作品。</td>
+<td>您可以自由复制、散布、展示及演出本作品；您不得为<a href="https://zh.wikipedia.org/wiki/%E5%95%86%E4%B8%9A">商业</a>目的而使用本作品。</td>
 </tr>
 <tr>
 <td><strong>禁止演绎</strong>（英语：<strong>N</strong>o <strong>D</strong>erivative Works，<strong>nd</strong>)</td>
@@ -1056,7 +1070,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="https://zh.wikipedia.org/wiki/Apache许可证">Apache 许可证</a></td>
+<td><a href="https://zh.wikipedia.org/wiki/Apache%E8%AE%B8%E5%8F%AF%E8%AF%81">Apache 许可证</a></td>
 <td>2.0</td>
 <td>是</td>
 <td></td>
@@ -1072,7 +1086,7 @@
 <td>是</td>
 </tr>
 <tr>
-<td><a href="https://zh.wikipedia.org/wiki/BSD许可证">3 句版 BSD 许可证</a></td>
+<td><a href="https://zh.wikipedia.org/wiki/BSD%E8%AE%B8%E5%8F%AF%E8%AF%81">3 句版 BSD 许可证</a></td>
 <td></td>
 <td>是</td>
 <td></td>
@@ -1088,7 +1102,7 @@
 <td>是</td>
 </tr>
 <tr>
-<td><a href="https://zh.wikipedia.org/wiki/BSD许可证">2 句版 BSD 许可证</a></td>
+<td><a href="https://zh.wikipedia.org/wiki/BSD%E8%AE%B8%E5%8F%AF%E8%AF%81">2 句版 BSD 许可证</a></td>
 <td></td>
 <td>是</td>
 <td></td>
@@ -1104,7 +1118,7 @@
 <td></td>
 </tr>
 <tr>
-<td><a href="https://zh.wikipedia.org/wiki/GNU通用公共许可证">GNU 通用公共许可证</a></td>
+<td><a href="https://zh.wikipedia.org/wiki/GNU%E9%80%9A%E7%94%A8%E5%85%AC%E5%85%B1%E8%AE%B8%E5%8F%AF%E8%AF%81">GNU 通用公共许可证</a></td>
 <td>2.0</td>
 <td>是</td>
 <td>是</td>
@@ -1120,7 +1134,7 @@
 <td></td>
 </tr>
 <tr>
-<td><a href="https://zh.wikipedia.org/wiki/GNU通用公共许可证">GNU 通用公共许可证</a></td>
+<td><a href="https://zh.wikipedia.org/wiki/GNU%E9%80%9A%E7%94%A8%E5%85%AC%E5%85%B1%E8%AE%B8%E5%8F%AF%E8%AF%81">GNU 通用公共许可证</a></td>
 <td>3.0</td>
 <td>是</td>
 <td>是</td>
@@ -1136,7 +1150,7 @@
 <td></td>
 </tr>
 <tr>
-<td><a href="https://zh.wikipedia.org/wiki/GNU宽通用公共许可证">GNU 宽通用公共许可证</a></td>
+<td><a href="https://zh.wikipedia.org/wiki/GNU%E5%AE%BD%E9%80%9A%E7%94%A8%E5%85%AC%E5%85%B1%E8%AE%B8%E5%8F%AF%E8%AF%81">GNU 宽通用公共许可证</a></td>
 <td>2.1</td>
 <td>是</td>
 <td>是</td>
@@ -1152,7 +1166,7 @@
 <td></td>
 </tr>
 <tr>
-<td><a href="https://zh.wikipedia.org/wiki/GNU宽通用公共许可证">GNU 宽通用公共许可证</a></td>
+<td><a href="https://zh.wikipedia.org/wiki/GNU%E5%AE%BD%E9%80%9A%E7%94%A8%E5%85%AC%E5%85%B1%E8%AE%B8%E5%8F%AF%E8%AF%81">GNU 宽通用公共许可证</a></td>
 <td>3.0</td>
 <td>是</td>
 <td>是</td>
@@ -1179,13 +1193,13 @@
 <p>公式显示：<code>pi = 3.14159265  (1.1)</code></p>
 <p>公式引用：开启美国数学协会风格：<code>式 (1.1)</code>、关闭美国数学协会风格：<code>式 1.1</code></p>
 <p>美国数学协会风格默认关闭。您可以在 <code>metadata.yaml</code> 中修改它的配置，去除注释并设定为 <code>true</code>：</p>
-<div class="highlight"><pre><span></span><code><span class="nt">eqnos-eqref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># 开启美国数学协会（AMS）风格引用</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">eqnos-eqref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># 开启美国数学协会（AMS）风格引用</span>
 </code></pre></div>
 <p>您可以以下列语法输入公式：单行公式使用双美元符 <code>$$</code> 包裹，行内公式使用单美元符 <code>$</code> 包裹，公式需遵循 <span class="arithmatex">\(\TeX\)</span> 语法，您可以使用<a href="https://www.latexlive.com">LaTeX 公式编辑器</a>辅助生成。</p>
 <div class="highlight"><pre><span></span><code><span class="sb">$$</span><span class="nb"> </span><span class="nv">\pi</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">3</span><span class="nb">.</span><span class="m">141592653589793238462643</span><span class="nb"> </span><span class="nv">\ldots</span><span class="nb"> </span><span class="s">$$</span> <span class="nb">{</span>#eq:pi<span class="nb">}</span>
 <span class="sb">$$</span><span class="nb"> S </span><span class="o">=</span><span class="nb"> </span><span class="nv">\pi</span><span class="nb"> </span><span class="nv">\times</span><span class="nb"> r^{</span><span class="m">2</span><span class="nb">} </span><span class="s">$$</span> <span class="nb">{</span>#eq:area<span class="nb">_</span>of<span class="nb">_</span>circle<span class="nb">}</span>
 </code></pre></div>
-<p>最后的大括号中 <code>#eq:</code> 来自 pandoc-eqnos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 <code>+@eq:area_of_circle{nolink=True}</code> 这样的语法去引用图片并实现自动编号，一般来说，行内引用以 <code>+</code> 开头，行首引用以 <code>*</code> 开头。<code>nolink=True</code> 表示不为引用生成超链接。当您引用图片时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：<code>{+@eq:area_of_circle}</code>。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 <a href="https://github.com/tomduck/pandoc-eqnos">pandoc-eqnos 文档</a>。</p>
+<p>最后的大括号中 <code>#eq:</code> 来自 pandoc-eqnos，冒号后需要是一个全文唯一的字符串或是数字。您可以通过 <code>+@eq:area_of_circle{nolink=True}</code> 这样的语法去引用并实现自动编号，一般来说，行内引用以 <code>+</code> 开头，行首引用以 <code>*</code> 开头。<code>nolink=True</code> 表示不为引用生成超链接。当您引用时，如果选择添加超链接，您可能需要在引用命令外包裹以大括号：<code>{+@eq:area_of_circle}</code>。具体配置均存放于元数据文件中，有关配置的具体细节，请参阅 <a href="https://github.com/tomduck/pandoc-eqnos">pandoc-eqnos 文档</a>。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>若需修改自动编号格式，可在元数据文件中修改它的配置。</p>
@@ -1216,12 +1230,12 @@
 <p>代码块会采用 Consolas 字体，这可能无法符合部分指导老师对正文部分的要求。请谨慎使用。</p>
 </div>
 <p>代码请使用 Markdown 代码块。代码高亮风格，参阅<a href="https://pandoc.org/MANUAL.html#syntax-highlighting">Pandoc 文档 Syntax highlighting 一节</a>。考虑到打印需求，我们采用了一个灰度风格<code>monochrome</code>。高亮风格的样例，可以在<a href="https://github.com/kaityo256/pandoc_highlight">这里</a>查看。如需修改，请在根目录的 <code>processer.py</code> 中找到 <code>pandoc_process</code> 函数中修改：</p>
-<div class="highlight"><pre><span></span><code><span class="gd">--- processer.py</span><span class="w"></span>
-<span class="w"> </span>                     # 资源文件路径，默认与输入文件一致<span class="w"></span>
-<span class="w"> </span>                     + &#39;--resource-path=&quot;%s&quot; &#39; % os.path.dirname(source)<span class="w"></span>
-<span class="gd">-                     + &#39;--highlight-style monochrome &#39;  # 考虑到最后需要打印，选了个灰度的高亮风格</span><span class="w"></span>
-<span class="gi">+                     + &#39;--highlight-style pygments &#39;  # 换成了 pygments 风格</span><span class="w"></span>
-<span class="w"> </span>                     + &#39;--filter pandoc-fignos &#39;  # 图片自动编号<span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="gd">--- processer.py</span>
+<span class="w"> </span>                     # 资源文件路径，默认与输入文件一致
+<span class="w"> </span>                     + '--resource-path="%s" ' % os.path.dirname(source)
+<span class="gd">-                     + '--highlight-style monochrome '  # 考虑到最后需要打印，选了个灰度的高亮风格</span>
+<span class="gi">+                     + '--highlight-style pygments '  # 换成了 pygments 风格</span>
+<span class="w"> </span>                     + '--filter pandoc-fignos '  # 图片自动编号
 </code></pre></div>
 <h2 id="_14">参考文献及自动生成引文</h2>
 <h3 id="_15">参考文献放置</h3>
@@ -1231,58 +1245,31 @@
 </code></pre></div>
 <p>如不放置，将会在文末最后生成参考文献列表。</p>
 <h3 id="_16">引文文件与引文自动生成</h3>
-<p>引文依靠 Pandoc 自动生成，需要提供一个 BibTeX 格式[@BibTeX]引文文件。您可以在 <code>/demo/ref.bib</code> 中找到本文使用的引文文件。具体教程，请参阅附录中的 <a href="#Zotero_简明教程">Zotero 简明教程</a>。</p>
+<p>引文依靠 Pandoc 自动生成，需要提供一个 BibTeX 格式[@BibTeX]引文文件。您可以在 <code>/demo/ref.bib</code> 中找到本文使用的引文文件。具体教程，请参阅附录中的 <a href="#Zotero_%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B">Zotero 简明教程</a>。</p>
 <p>您可以通过以下语法插入引文：<code>[@BibTeX]</code>。在希望插入引文的地方，插入方括号，<code>@</code> 后跟 Zotero 内的 Citation Key 即可。</p>
 <h4 id="_17">样例</h4>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>样例部分唯有在生成的 docx 中才能看到最终效果。在 Markdown 编辑器或渲染结果中，您可以参考学习语法。</p>
 </div>
-<p>比如，我又引用了一遍 BibTeX 官网[@BibTeX]。</p>
+<p>比如，我又引用了一遍 BibTeX 官网[@BibTeX]。</p></div>
 
-              
-            </article>
-          </div>
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
         </div>
         
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="页脚">
-      
-        
-        <a href="../gui/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 图形用户界面（GUI）" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                上一页
-              </span>
-              图形用户界面（GUI）
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../modify-template-style/" class="md-footer__link md-footer__link--next" aria-label="下一页: 修改模板样式" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              修改模板样式
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1304,10 +1291,11 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.c44cc438.min.js"></script>
+      <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
       
         <script src="../javascripts/mathjax.js"></script>
       
