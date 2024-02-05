@@ -79,16 +79,16 @@ Markdown 是一种轻量级标记语言，排版语法简洁，让人们更多�
 
 ## 环境要求
 
-- Pandoc >= 2.13 （更老版本未经测试）
-- Python 3.x （>= 3.7，更老版本未经测试）
-- Zotero，用于管理文献（可选）
+- Pandoc >= 2.13 <3.0.0（开发时使用 2.18，测试未覆盖全部版本）
+- Python 3.x（开发时使用 3.11，测试未覆盖全部版本）
+- Zotero，用于管理文献
 
 ## 开发环境
 
 我们的开发环境是：
 
-- Windows 10
-- Python 3.7.3
+- Windows 11
+- Python 3.11.5
 - pandoc 2.18
   Compiled with pandoc-types 1.22.2, texmath 0.12.5, skylighting 0.12.3,
   citeproc 0.7, ipynb 0.2, hslua 2.2.0
@@ -102,9 +102,9 @@ Markdown 是一种轻量级标记语言，排版语法简洁，让人们更多�
 
 Pandoc 可实现不同标记语言间的格式转换，是该项目的重要依赖。请前往 [Pandoc 官网](https://pandoc.org/installing.html)下载安装。
 
-> 💡 提示：如果您使用 Typora 作为 Markdown 编辑器，并已经使用过其中的文档转换功能，那您很可能已经安装了 Pandoc。请在终端中使用 `pandoc --version` 检查版本是否高于 2.13，若否，请卸载后重新安装。
+> 💡 提示：如果您使用 Typora 作为 Markdown 编辑器，并已经使用过其中的文档转换功能，那您很可能已经安装了 Pandoc。请在终端中使用 `pandoc --version` 检查版本是否高于 2.13 且 小于 3.0.0。若否，请卸载后重新安装。
 
-> 💡 提示：如果您不想安装 Pandoc，可以选择下载 Pandoc 的可执行文件。在下文的[新手上路](#新手上路)一节中，我们会指导您将可执行文件安放在合适的位置。
+> ⚠ 注意：由于项目写就已有所时日，目前测试下 pandoc 的依赖还停留在较旧的 2.18 版本，3.0 及更高版本可能存在问题。我们更建议您下载 Pandoc 2.18 的可执行文件。在下文的[新手上路](#新手上路)一节中，我们会指导您将可执行文件安放在合适的位置。
 
 ### Python
 
@@ -129,7 +129,7 @@ Markdown 编辑器挑一个趁手的就好，个人推荐 [Typora](https://typor
 进行新手上路前，请确保您的写作环境已经满足前文所述的环境要求。
 
 1. `git clone https://github.com/Foldblade/XUJC-thesis-markdown.git` 或[下载](https://github.com/Foldblade/XUJC-thesis-markdown/archive/refs/heads/master.zip)该项目
-2. （针对不想安装 Pandoc 者）请在该项目根目录下新建 `bin` 目录，再前往 [Pandoc Releases 页](https://github.com/jgm/pandoc/releases)自行下载适合您系统版本的可执行文件。这通常会是一个压缩包，譬如 `pandoc-2.18-windows-x86_64.zip`，请在解压后，将可执行文件（如 `pandoc.exe`）放在 `bin` 目录中。在 Windows 上，目录结构看起来应该类似：
+2. （针对不想安装 Pandoc 者）请在该项目根目录下新建 `bin` 目录，再前往 [Pandoc Releases 页](https://github.com/jgm/pandoc/releases)自行下载适合您系统版本的可执行文件。这通常会是一个压缩包，譬如 `pandoc-2.18-windows-x86_64.zip`，请在解压后，将可执行文件（如 `pandoc.exe`）放在 `bin` 目录中。我们建议您使用 2.18 版本。在 Windows 上，目录结构看起来应该类似：
 
     ```
     │  .gitignore
@@ -196,7 +196,7 @@ Markdown 编辑器挑一个趁手的就好，个人推荐 [Typora](https://typor
     python processer.py -O result.docx -F ./demo/readme.md -M ./demo/metadata.yaml -B ./demo/ref.bib
     ```
 
-> 💡 提示：不知道如何“使用终端进入该项目根目录”？在 Windows 下，使用文件资源管理器，找到存在 `processer.py` 的目录，按住 Shift 键，在文件资源管理器空白处右键，选择“在终端中打开”、“在 PowerShell 中打开”等。或者，打开命令提示符或 PowerShell，使用 [`cd` 命令](https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/cd)，在输入 `cd` 后接一个空格，粘贴存在 `processer.py` 的目录的路径后，按下回车，再复制第4步的命令。
+> 💡 提示：不知道如何“使用终端进入该项目根目录”？在 Windows 下，使用文件资源管理器，找到存在 `processer.py` 的目录，按住 Shift 键，在文件资源管理器空白处右键，选择“在终端中打开”、“在 PowerShell 中打开”等。或者，打开命令提示符或 PowerShell，使用 [`cd` 命令](https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/cd)，在输入 `cd` 后接一个空格，粘贴存在 `processer.py` 的目录的路径后，按下回车，再复制第 4 步的命令。
 
 > ⚠ 注意：在该命令的执行过程中，可能会出现 `[WARNING] Could not convert TeX math \LaTeX, rendering as TeX:` 字样，Don't panic，毋需惊慌，只要最末一行出现 `Output file:` 即告成功。
 

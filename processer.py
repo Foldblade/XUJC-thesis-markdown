@@ -127,11 +127,12 @@ def pandoc_process(*, source=os.path.join(WHERE_SCRIPT, 'demo/paper.md'),
     '''
     print("Using Pandoc to convert Markdown to Word...")
     # 检测 PATH 中是否存在 pandoc 命令，不存在则将 bin 临时加入 PATH
-    if shutil.which('pandoc') is None:
-        print("Pandoc not found in PATH, temporarily add the bin directory to the PATH...")
-        os.environ["PATH"] += os.pathsep + \
-            os.path.join(WHERE_SCRIPT, 'bin') + os.pathsep
-    pandoc_command = ('pandoc '
+    # if shutil.which('pandoc') is None:
+    #     print("Pandoc not found in PATH, temporarily add the bin directory to the PATH...")
+    
+    # 优先使用 bin 中的 pandoc
+    os.environ["PATH"] = os.path.join(WHERE_SCRIPT, 'bin') + os.pathsep + os.environ["PATH"]
+    pandoc_command = ('pandoc ' 
                       # 注意：每行后面必须加个空格
                       # docx 样式模板
                       + '--reference-doc "%s" ' % os.path.join(WHERE_SCRIPT, 'assets/template.docx')
@@ -238,7 +239,7 @@ def modify_document_setting(dir_path):
     '''
     后处理流程之二
     修改 Word 文档版式设定中的 字符间距控制 - 只压缩标点符号
-    设定 <w:defaultTabStop w:val="420"/>， Tab 宽度 2 字符
+    设定 <w:defaultTabStop w:val="420"/>，Tab 宽度 2 字符
     :param dir_path: 待处理的解压后的 docx 目录
     :return: 无
     '''
@@ -305,7 +306,7 @@ def post_process(*, source=os.path.join(WHERE_SCRIPT, 'build/pandoc_processed.do
     '''
     后处理将向过滤器输出的 docx 文件添加校徽与校名图片，
     设置字符间距控制为“只压缩标点符号”
-    设定 <w:defaultTabStop w:val="420"/>， Tab 宽度 2 字符
+    设定 <w:defaultTabStop w:val="420"/>，Tab 宽度 2 字符
     修改 Header 1 为“第 x 章”
     替换 Header 后面的 Tab 为空格
 
